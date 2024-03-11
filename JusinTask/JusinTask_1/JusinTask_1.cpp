@@ -13,7 +13,30 @@ int main()
     cin >> i_KoreanScore >> i_EnglishScore >> i_MathScore;
 
     int i_TotalScore(i_KoreanScore + i_EnglishScore + i_MathScore);
-    cout <<"국어: "<<i_KoreanScore<<" 영어: "<<i_EnglishScore<<" 수학: "<<i_MathScore << " 총점: " << i_TotalScore<<" 평균: "<<i_TotalScore/3;
+    float f_Avg(0.f);
+    f_Avg = (float)i_TotalScore / 3.f;
+    //cout <<"국어: "<<i_KoreanScore<<" 영어: "<<i_EnglishScore<<" 수학: "<<i_MathScore << " 총점: " << i_TotalScore<<" 평균: "<<f_Avg;
+
+    if (90.f <= f_Avg <= 100.f)
+    {
+        cout << "A학점";
+    }
+    else if (80.f <= f_Avg <= 90.f)
+    {
+        cout << "B학점";
+    }
+    else if (70.f <= f_Avg <= 80.f)
+    {
+        cout << "C학점";
+    }
+    else if (60.f <= f_Avg <= 70.f)
+    {
+        cout << "D학점";
+    }
+    else
+    {
+        cout << "F학점";
+    }
     return 0;
 }
 
