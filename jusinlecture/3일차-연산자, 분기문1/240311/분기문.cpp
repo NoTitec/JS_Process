@@ -28,7 +28,7 @@ Jump :
 	
 	if (0)
 	{
-		//int		iTest(100);
+		int		iTest(100);
 
 		cout << "hello world" << endl;
 		//cout << iTest << endl;
@@ -36,6 +36,7 @@ Jump :
 
 	else if (1)			// if와 같은 조건을 갖고 세세한 분기를 하고자할 때 사용, else if는 경우에 따라 여러 개가 있을 수 있다.
 	{
+		int		iTest2(100);
 		cout << "hello jusin" << endl;
 	}
 

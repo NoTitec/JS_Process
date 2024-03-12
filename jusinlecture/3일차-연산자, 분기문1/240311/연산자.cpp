@@ -63,7 +63,7 @@ int main()
 
 	// <<, >>	: 비트를 왼쪽 또는 오른쪽으로 이동시키는 연산자
 
-	//char iData(10);
+	int iData(-10);
 
 	//cout << bitset<8>(iData) << endl;
 	//cout << "-----------------------------" << endl;
@@ -74,8 +74,8 @@ int main()
 	//cout << bitset<8>(iData >> 3) << endl;	// 10 / (2^3)
 	//cout << (iData >> 3) << endl;
 
-	//cout << bitset<8>(iData << 4) << endl;
-	//cout << (iData << 4) << endl;
+	cout << bitset<16>(iData<<7 ) << endl;
+	cout << (iData <<7) << endl;
 
 	/*float		fDst(100.f);
 

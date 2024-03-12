@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{73091AD0-A763-4CAB-A0E5-3675D13872A7}</ProjectGuid>
+    <ProjectGuid>{EF81C179-B88D-4BFC-BE4E-20E0C6459110}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My240311</RootNamespace>
+    <RootNamespace>My240312</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -146,13 +146,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="분기문.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="연산자.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="숙제 풀이.cpp">
+    <ClCompile Include="분기문.cpp" />
+    <ClCompile Include="숙제풀이.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
   </ItemGroup>
