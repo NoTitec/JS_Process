@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fure_shared_pointer", "Fure_shared_pointer.vcxproj", "{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Debug|x64.ActiveCfg = Debug|x64
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Debug|x64.Build.0 = Debug|x64
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Debug|x86.ActiveCfg = Debug|Win32
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Debug|x86.Build.0 = Debug|Win32
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Release|x64.ActiveCfg = Release|x64
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Release|x64.Build.0 = Release|x64
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Release|x86.ActiveCfg = Release|Win32
+		{DC6428DF-9CD2-4CF0-9763-4D7A74B88EB1}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32604613-875C-440A-8C78-DCDC35FA92E2}
+	EndGlobalSection
+EndGlobal
