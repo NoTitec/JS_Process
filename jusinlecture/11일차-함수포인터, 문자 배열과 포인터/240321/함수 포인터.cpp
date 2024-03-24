@@ -14,9 +14,9 @@ int main()
 
 	// 반환타입(*변수명)(매개변수 형식)
 
-	//void(*pFunc)() = Render;
+	void(*pFunc)() = Render;
 	// pFunc = 0x008912e9 {240321.exe!Render(void)}
-	//pFunc();
+	pFunc();
 
 	//int(*pPlus)(int, int) = Add;
 	//cout << pPlus(10, 20) << endl;

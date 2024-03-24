@@ -27,12 +27,12 @@ int main()
 	cout << tInfo.fB << endl;*/
 
 
-	/*uniInfo	tInfo = { 3.14f };
+	uniInfo	tInfo = { 3.14f };
 
 	cout << sizeof(uniInfo) << endl;
 
 	cout << tInfo.iA << endl;
-	cout << tInfo.fB << endl;*/
+	cout << tInfo.fB << endl;
 
 	return 0;
 }
