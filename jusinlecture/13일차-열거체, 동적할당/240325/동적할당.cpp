@@ -57,21 +57,21 @@ int main()
 	// (할당하고자 하는 데이터의 개수, 할당하고자 하는 메모리 크기)
 	// void*  calloc(size_t _Count,size_t _Size) : 할당할 경우 heap 공간이 자동 0 초기화가 됨
 
-	//int*	p = (int*)calloc(3, 4);		  // 동적 배열(heap 메모리에 할당하는 배열)
+	int*	p = (int*)calloc(3, 4);		  // 동적 배열(heap 메모리에 할당하는 배열)
 
-	// p[0] = 10;
-	// p[1] = 20;
-	// p[2] = 30;
+	 //p[0] = 10;
+	 //p[1] = 20;
+	 //p[2] = 30;
 
 	//for (int i = 0; i < 5; ++i)
-		//cout << p[i] << endl;
+	//	cout << p[i] << endl;
 
 	//cout << "--------------------------------" << endl;
 
-	//int*	pMalloc = (int*)malloc(12);		
+	int*	pMalloc = (int*)malloc(12);		
 	
-	//for (int i = 0; i < 5; ++i)
-		//cout << pMalloc[i] << endl;
+	for (int i = 0; i < 5; ++i)
+		cout << pMalloc[i] << endl;
 
 
 	/*int	iCount(0);
