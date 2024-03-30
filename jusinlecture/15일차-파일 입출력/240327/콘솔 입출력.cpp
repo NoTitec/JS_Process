@@ -12,7 +12,7 @@ int main()
 	// 텍스트 모드 문자열 함수
 	
 	// putchar : 아스키 코드 문자 한 글자를 출력하는 함수
-	// putchar(65);		// 콘솔용 텍스트 모드 문자 함수
+	//putchar(65);		// 콘솔용 텍스트 모드 문자 함수
 	
 	// fputc : 아스키 코드 문자 한 글자를 출력하는 함수
 	// fputc('B', stdout);	// 범용적인 텍스트 모드 문자 함수
@@ -59,23 +59,23 @@ int main()
 	// gets_s(szName, sizeof(szName));	// 공백(스페이스)을 읽어온다. enter를 읽어들이지 못함
 	// puts(szName);
 
-	// fgets(szName, sizeof(szName), stdin);	// enter(개행 문자)가 나올 때까지 읽어온다. 문자열의 null문자까지 고려, enter도 읽어들임
-	// fputs(szName, stdout);
+	 //fgets(szName, sizeof(szName), stdin);	// enter(개행 문자)가 나올 때까지 읽어온다. 문자열의 null문자까지 고려, enter도 읽어들임
+	 //fputs(szName, stdout);
 
 	// 버퍼 비우기 함수 : 입력 버퍼 비우기는 불가능
 	// fflush(stdout) : 출력 버퍼 비우기
 
-	/*char	szID[9] = "";
+	char	szID[9] = "";
 	char	szName[16] = "";
 
 	fgets(szID, sizeof(szID), stdin);
 	
-	while ('\n' != getchar());
+	//while ('\n' != getchar());
 
 	fgets(szName, sizeof(szName), stdin);
 
 	fputs(szID, stdout);
-	fputs(szName, stdout);*/
+	fputs(szName, stdout);
 
     return 0;
 }

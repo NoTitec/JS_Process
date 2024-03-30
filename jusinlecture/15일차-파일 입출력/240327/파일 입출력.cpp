@@ -111,37 +111,37 @@ int main()
 //				size_t      _ElementCount, // 출력할 메모리의 개수
 //				FILE*       _Stream)		// 개방한 스트림
 
-	FILE*	pFile = NULL;
+	//FILE*	pFile = NULL;
 
-	int		iArray[5] = { 1, 2, 3, 4, 5 };
+	//int		iArray[5] = { 1, 2, 3, 4, 5 };
 
-	errno_t		err = fopen_s(&pFile, "../Data/Binary.txt", "wb");
+	//errno_t		err = fopen_s(&pFile, "../Data/Binary.txt", "wb");
 
-	if (0 == err)
-	{
-		fwrite(iArray, sizeof(iArray), 1, pFile);
-		// fwrite(iArray, sizeof(int), 5, pFile);
+	//if (0 == err)
+	//{
+	//	//fwrite(iArray, sizeof(iArray), 1, pFile);
+	//	 fwrite(iArray, sizeof(int), 5, pFile);
 
-		cout << "저장 성공" << endl;
+	//	cout << "저장 성공" << endl;
 
-		fclose(pFile);	// 3단계
-	}
-	else
-	{
-		cout << "파일 개방 실패" << endl;
-	}
+	//	fclose(pFile);	// 3단계
+	//}
+	//else
+	//{
+	//	cout << "파일 개방 실패" << endl;
+	//}
 	//---------------읽기
 	// 
 	FILE*	pLoadFile = NULL;
 
 	int		iTemp[5] = { };
 
-	errno_t		err = fopen_s(&pLoadFile, "../Data/Binary.txt", "rb");
+	errno_t		err2 = fopen_s(&pLoadFile, "../Data/Binary.txt", "rb");
 
-	if (0 == err)
+	if (0 == err2)
 	{
 		fread(iTemp, sizeof(iTemp), 1, pLoadFile);
-		// fwrite(iTemp, sizeof(int), 5, pLoadFile);
+		//fread(iTemp, sizeof(int), 5, pLoadFile);
 
 		cout << "불러오기 성공" << endl;
 
