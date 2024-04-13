@@ -508,3 +508,6 @@ tasks.json
 
 #ignore Folder
 JusinETC
+
+#ignore Zip File
+*.zip
