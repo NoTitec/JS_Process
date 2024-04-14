@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "Test.h"
 
-//int		g_iNumber = 10;
+int		g_iNumber = 10;
 
 
 int main()
