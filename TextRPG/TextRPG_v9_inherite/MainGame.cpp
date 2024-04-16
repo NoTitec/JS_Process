@@ -2,11 +2,13 @@
 #include "stdafx.h"
 #include "CPlayer.h"
 #include "CField.h"
+#include "CStore.h"
 
 MainGame::MainGame()
 {
 	m_pPlayer = nullptr;
 	m_pField = nullptr;
+	m_pStore = nullptr;
 }
 
 MainGame::~MainGame()
@@ -23,6 +25,10 @@ void MainGame::Initialize()
 	if (!m_pField)
 	{
 		m_pField = new CField;
+	}
+	if (!m_pStore)
+	{
+		m_pStore = new CStore;
 	}
 }
 
@@ -48,7 +54,7 @@ void MainGame::Update()
 		{
 			m_pPlayer->Render();
 		}
-		cout << "1. 사냥터 진입 2. 게임 종료 :";
+		cout << "1. 사냥터 진입 2. 게임 종료 3. 상점:";
 		cin >> iInput;
 		switch (iInput)
 		{
@@ -58,7 +64,16 @@ void MainGame::Update()
 			break;
 
 		case 2:
+				
 			return;
+		case 3:
+			if (m_pStore)
+			{
+				m_pStore->Initialize();
+				m_pStore->Set_Player(m_pPlayer);
+				m_pStore->Update();
+			}
+			break;
 		}
 	}
 }

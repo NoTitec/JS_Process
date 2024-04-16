@@ -8,5 +8,9 @@ public:
 public:
 	enum JOBINDEX { WARRIOR = 1, WIZARD, THIEF };
 	void SelectJob();
+	void Render() const;
+	void SetItem(const char* itemname);
+private:
+	char m_item[30];
 };
 

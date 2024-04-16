@@ -11,7 +11,7 @@ public:
 	int Get_Attack();
 	int Get_Hp();
 	void Set_Hp(int iHp);
-	void Render() const;
+	virtual void Render() const;
 protected:
 	STAT m_Stat;
 };

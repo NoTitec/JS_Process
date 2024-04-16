@@ -1,14 +1,15 @@
 #pragma once
 
 class CPlayer;
-class CField;
-class CStore;
 
-class MainGame
+class CStore
 {
 public:
-	MainGame();
-	~MainGame();
+	CStore();
+	~CStore();
+
+public:
+	void Set_Player(CPlayer* pPlayer);
 
 public:
 	void Initialize();
@@ -17,7 +18,5 @@ public:
 
 private:
 	CPlayer* m_pPlayer;
-	CField* m_pField;
-	CStore* m_pStore;
 };
 

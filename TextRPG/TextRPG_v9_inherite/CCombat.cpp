@@ -15,7 +15,7 @@ int CCombat::Battle(Character* player, Character* monster)
 	while (true)
 	{
 		system("cls");
-		(CPlayer*)player->Render();
+		player->Render();
 		monster->Render();
 
 		cout << "1.°ø°İ 2.µµ¸Á:";

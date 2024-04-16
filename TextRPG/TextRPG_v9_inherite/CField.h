@@ -2,6 +2,7 @@
 
 class CPlayer;
 class CMonster;
+class Character;
 
 class CField
 {

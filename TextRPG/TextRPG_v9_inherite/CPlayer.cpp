@@ -3,6 +3,7 @@
 
 CPlayer::CPlayer()
 {
+	memset(m_item, 0, sizeof(m_item));
 }
 
 CPlayer::~CPlayer()
@@ -37,4 +38,17 @@ void CPlayer::SelectJob()
 		m_Stat.iHp = 100;
 		break;
 	}
+}
+
+void CPlayer::Render() const
+{
+	cout << "-------------플레이어-------------" << endl;
+	cout << "이름 : " << m_Stat.szName << endl;
+	cout << "체력 : " << m_Stat.iHp << "\t공격력 : " << m_Stat.iAttack << endl;
+	cout << "아이템 : " << m_item << endl;
+}
+
+void CPlayer::SetItem(const char* itemname)
+{
+	strcpy_s(m_item, sizeof(m_item), itemname);
 }

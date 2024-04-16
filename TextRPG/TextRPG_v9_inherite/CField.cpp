@@ -1,8 +1,10 @@
 #include "CField.h"
 #include "CPlayer.h"
+#include "Character.h"
 #include "CMonster.h"
 #include "CCombat.h"
 #include "stdafx.h"
+
 CField::CField()
 {
 	m_pPlayer = nullptr;
