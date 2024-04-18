@@ -33,7 +33,7 @@ public:
 	CObj	operator +(CObj& rObj)
 	{
 		CObj	Result(m_iX + rObj.m_iX, m_iY + rObj.m_iY);
-
+		//
 		return Result;
 	}
 
@@ -68,7 +68,7 @@ private:
 	int		m_iY;
 	int*	m_pData;
 };
-
+//복사생성자 3번? 왜?
 CObj	operator+ (int _iData, CObj& rObj)
 {
 	CObj	Result(rObj + _iData);
@@ -76,34 +76,34 @@ CObj	operator+ (int _iData, CObj& rObj)
 	return Result;
 }
 //
-//int main()
-//{
-//	// 연산자 오버로딩 : 함수 오버로딩의 규칙을 연산자에 적용하는 문법으로, 연산자의 이름을 한 함수를 만들어 제공하는 문법
-//	// 연산자 오버로딩은 연산자 기준, 좌측 객체를 기준으로 동작을 수행한다.
-//	// 원래 연산자의 기능을 다른 기능으로 바꿀 수 없다.
-//
-//	// 클래스 멤버로만 오버로딩이 가능한 연산자들
-//	// '=', '()', '[]', '->'
-//
-//
-//	// operator <- : 연산자 오버로딩을 위해 사용하는 키워드
-//
-//	// CObj	Temp(10, 20);
-//	// CObj	Src(30, 40);
-//
-//	// Temp = Temp + Src;
-//	//Temp = Temp + 20;
-//
-//	//Temp = 20 + Temp;
-//
-//	//++(++Temp);
-//	// (Temp++)++;
-//
-//	// Temp.Render();
-//
-//
-//	return 0;
-//}
+int main()
+{
+	// 연산자 오버로딩 : 함수 오버로딩의 규칙을 연산자에 적용하는 문법으로, 연산자의 이름을 한 함수를 만들어 제공하는 문법
+	// 연산자 오버로딩은 연산자 기준, 좌측 객체를 기준으로 동작을 수행한다.
+	// 원래 연산자의 기능을 다른 기능으로 바꿀 수 없다.
+
+	// 클래스 멤버로만 오버로딩이 가능한 연산자들
+	// '=', '()', '[]', '->'
+
+
+	// operator <- : 연산자 오버로딩을 위해 사용하는 키워드
+
+	 CObj	Temp(10, 20);
+	 CObj	Src(30, 40);
+
+	 //Temp = Temp + Src;
+	 //Temp = Temp + 20;
+
+	//Temp = 20 + Temp;
+
+	//++(++Temp);
+	 (Temp++)++;
+
+	 Temp.Render();
+
+
+	return 0;
+}
 #pragma endregion 연산자 오버로딩
 
 #pragma region 함수 객체
@@ -112,104 +112,106 @@ CObj	operator+ (int _iData, CObj& rObj)
 // STL 알고리즘의 조건자로 사용하기 위해 주로 작성
 // 조건자 : BOOL 타입의 반환 형식을 갖는 함수 또는 함수객체로써 참, 거짓에 따라 알고리즘의 수행 여부를 판단 시켜주는 문법
 
-class CPlus
-{
-public:
-	int	operator()(int _iDst, int _iSrc)
-	{
-		return _iDst + _iSrc;
-	}
-};
-
-class CSortRule
-{
-public:
-	virtual bool operator()(int _iDst, int _iSrc) = 0;
-};
-
-class CAscendingSort : public CSortRule
-{
-public:
-	virtual bool operator()(int _iDst, int _iSrc)
-	{
-		if (_iDst > _iSrc)
-			return true;
-		
-		else
-			return false;
-
-		//return _iDst > _iSrc;
-	}
-};
-
-class CDescendingSort : public CSortRule
-{
-public:
-	CDescendingSort(int _iData)  : m_iData(_iData){}
-
-public:
-	virtual bool operator()(int _iDst, int _iSrc)
-	{
-		if (_iDst < _iSrc)
-			return true;
-
-		else
-			return false;
-
-		//return _iDst < _iSrc;
-	}
-
-private:
-	int		m_iData;
-};
-
-bool	Less(int _iDst, int _iSrc)
-{
-	return _iDst > _iSrc;
-}
-
-bool	Greater(int _iDst, int _iSrc)
-{
-	return _iDst < _iSrc;
-}
-
-void	Bubble_Sort(int _iArray[], int _iSize, CSortRule& Functor)
-{
-	for (int i = 0; i < _iSize; ++i)
-	{
-		for(int j = 0; j <_iSize - 1; ++j)
-		{
-			if (Functor(_iArray[j], _iArray[j + 1]))
-				swap(_iArray[j], _iArray[j + 1]);
-		}
-	}
-}
-
-
-int main()
-{
-
-	/*CPlus		Functor;
-	cout << Functor(10, 20) << endl;*/
-
-
-	int		iArray[5] = { 5, 1, 2, 4, 3 };
-
-	for (int i = 0; i < 5; ++i)
-		cout << iArray[i] << "\t";
-
-	cout << endl;
-		
-	CDescendingSort	DESCE(10);
-
-	Bubble_Sort(iArray, 5, CDescendingSort(10));
-	cout << "------------------------------------------------" << endl;
-
-	for (int i = 0; i < 5; ++i)
-		cout << iArray[i] << "\t";
-
-	return 0;
-}
+//class CPlus
+//{
+//public:
+//	int	operator()(int _iDst, int _iSrc)
+//	{
+//		return _iDst + _iSrc;
+//	}
+//};
+//
+////여기서 CSortRule을 상속해서 만들었지만 보통 함수 객체는 상속없이 만듬(속도측면에서 이득을보기위해서, 특히 인라인함수로하면 더빠름)
+//class CSortRule
+//{
+//public:
+//	virtual bool operator()(int _iDst, int _iSrc) = 0;
+//};
+//
+//class CAscendingSort : public CSortRule
+//{
+//public:
+//	virtual bool operator()(int _iDst, int _iSrc)
+//	{
+//		if (_iDst > _iSrc)
+//			return true;
+//		
+//		else
+//			return false;
+//
+//		//return _iDst > _iSrc;
+//	}
+//};
+//
+//class CDescendingSort : public CSortRule
+//{
+//public:
+//	CDescendingSort(int _iData)  : m_iData(_iData){}
+//
+//public:
+//	virtual bool operator()(int _iDst, int _iSrc)
+//	{
+//		if (_iDst < _iSrc)
+//			return true;
+//
+//		else
+//			return false;
+//
+//		//return _iDst < _iSrc;
+//	}
+//
+//private:
+//	int		m_iData;
+//};
+//
+//bool	Less(int _iDst, int _iSrc)
+//{
+//	return _iDst > _iSrc;
+//}
+//
+//bool	Greater(int _iDst, int _iSrc)
+//{
+//	return _iDst < _iSrc;
+//}
+//
+//void	Bubble_Sort(int _iArray[], int _iSize, CSortRule& Functor)
+//{
+//	for (int i = 0; i < _iSize; ++i)
+//	{
+//		for(int j = 0; j <_iSize - 1; ++j)
+//		{
+//			if (Functor(_iArray[j], _iArray[j + 1]))
+//				swap(_iArray[j], _iArray[j + 1]);
+//		}
+//	}
+//}
+//
+//
+//int main()
+//{
+//
+//	/*CPlus		Functor;
+//	cout << Functor(10, 20) << endl;*/
+//
+//
+//	int		iArray[5] = { 5, 1, 2, 4, 3 };
+//
+//	for (int i = 0; i < 5; ++i)
+//		cout << iArray[i] << "\t";
+//
+//	cout << endl;
+//		
+//	CDescendingSort	DESCE(10);
+//
+//	//임시객체
+//	Bubble_Sort(iArray, 5, CDescendingSort(10));
+//	cout << "------------------------------------------------" << endl;
+//
+//	for (int i = 0; i < 5; ++i)
+//		cout << iArray[i] << "\t";
+//
+//	return 0;
+//}
 
 #pragma region 임시 객체
 
