@@ -7,7 +7,7 @@ Mystring::Mystring(const char* pName)
 	strcpy_s(m_string, iLength, pName);
 }
 
-Mystring::Mystring(const Mystring& rhs)
+Mystring::Mystring(const Mystring & rhs)
 {
 	int		iLength = strlen(rhs.m_string) + 1;
 	m_string = new char[iLength];
@@ -18,7 +18,7 @@ Mystring::Mystring(const Mystring& rhs)
 
 //인자로 참조받음
 Mystring& Mystring::operator=(const Mystring& Right)
-{
+{ 
 	int len = strlen(Right.m_string) + 1;
 	char* temp = new char[len];
 	strcpy_s(temp, len, Right.m_string);
@@ -28,7 +28,7 @@ Mystring& Mystring::operator=(const Mystring& Right)
 	return *this;
 }
 
-Mystring Mystring::operator+(const Mystring& Right)
+Mystring Mystring::operator+(Mystring& Right)
 {
 	int leftlen = strlen(this->m_string) + 1;
 	int rightlen = strlen(Right.m_string) + 1;
@@ -38,8 +38,7 @@ Mystring Mystring::operator+(const Mystring& Right)
 	strcpy_s(temp, leftlen, this->m_string);
 	strcat_s(temp, newlen, Right.m_string);
 	Mystring newString(temp);
-	delete[] temp;
-	temp = nullptr;
+	SAFE_DELETE_ARRAY(temp);
 	//복사생성자 호출 왜 안됨?????
 	return newString;
 }
