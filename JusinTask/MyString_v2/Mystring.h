@@ -13,6 +13,8 @@ public:
 	~Mystring() { delete[]m_string; m_string = nullptr; }
 
 public:
+	Mystring CopyTest(Mystring Right);
+public:
 	Mystring& operator =(const Mystring& Right);
 	Mystring operator+(Mystring& Right);
 	bool operator ==(const Mystring& Right);

@@ -6,6 +6,7 @@ int main()
 	Mystring b("bbb");
 	a = a + b;
 	a.PrintN();
+	a.CopyTest(b);
 	//Mystring c("aaa");
 	/*if (!(a == b))
 		cout << "불일치라 false리턴됨";

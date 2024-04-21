@@ -16,6 +16,14 @@ Mystring::Mystring(const Mystring & rhs)
 	cout << "복사 생성자 호출" << endl;
 }
 
+
+Mystring Mystring::CopyTest(Mystring Right)
+{
+	cout << "복사생성자 테스트 함수" << endl;
+	Mystring temp(Right);
+	return Right;
+}
+
 //인자로 참조받음
 Mystring& Mystring::operator=(const Mystring& Right)
 { 
@@ -38,6 +46,7 @@ Mystring Mystring::operator+(Mystring& Right)
 	strcpy_s(temp, leftlen, this->m_string);
 	strcat_s(temp, newlen, Right.m_string);
 	Mystring newString(temp);
+	//Mystring tempT(newString);
 	SAFE_DELETE_ARRAY(temp);
 	//복사생성자 호출 왜 안됨?????
 	return newString;
