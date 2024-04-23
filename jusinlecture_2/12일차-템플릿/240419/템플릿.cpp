@@ -45,7 +45,7 @@ T3		Add(T1 a, T2 b)
 
 //인자가 & 인 이유 : T로 받으면 복사본이 함수내부에서 사용되고 함수종료시 사라지기때문에 원본은 변한게 없기때문
 template<typename T>
-void Safe_Delete(T& Temp)
+void Safe_Delete(T Temp)
 {
 	if (Temp)
 	{

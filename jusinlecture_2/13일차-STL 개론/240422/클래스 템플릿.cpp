@@ -14,6 +14,8 @@ T		Func(T Number)
 }
 
 //클래스 템플릿은 어디까지나 템플릿이지 클래스가아니다
+//일반 템플릿 맴버변수는 내부 초기화 문장
+// static 맴버변수는 초기화시 T CObj<T>:: 필요
 template<typename T>
 class CObj
 {
@@ -41,7 +43,7 @@ private:
 	T			m_Y;
 	static		T		m_Sum;
 };
-//인자 초기화
+//인자 초기화???
 template<typename T>
 T CObj<T>::m_Sum;
 //생성자

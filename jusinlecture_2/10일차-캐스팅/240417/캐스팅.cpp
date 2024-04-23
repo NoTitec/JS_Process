@@ -9,6 +9,7 @@ public:
 	virtual ~CObj() {}
 };
 class CPlayer{};
+
 class CPlayer2 : public CObj 
 {
 public:
@@ -29,18 +30,18 @@ int main()
 
 	// 위험성 : 컴파일 타임에 수행하는 형 변환이어서 런 타임 시, 타입 체크가 되지 않아 위험한 변환을 인지하지 못한다.
 
-	// int		iNumber = static_cast<int>(3.14);
-	// cout << iNumber << endl;
+	//int		iNumber = static_cast<int>(3.14);
+	//cout << iNumber << endl;
 
-	// CPlayer*	pPlayer = new CPlayer;
+	 //CPlayer*	pPlayer = new CPlayer;
+	 //CPlayer2* pPlayer2 = new CPlayer2;
+	 //CObj*		pObj = (CObj*)pPlayer;	// c언어
+	 //CObj*		pObj2 = static_cast<CObj*>(pPlayer);	// 논리적인 형 변환이 아닌 경우 캐스팅을 허용하지 않음
 
-	// CObj*		pObj = (CObj*)pPlayer;	// c언어
-	// CObj*		pObj2 = static_cast<CObj*>(pPlayer);	// 논리적인 형 변환이 아닌 경우 캐스팅을 허용하지 않음
-
-	// CObj*		pObj = new CObj;
-	// 
-	// CPlayer2*	pPlayer = static_cast<CPlayer2*>(pObj);		
-	// pPlayer->Render();
+	 /*CObj*		pObj = new CObj;
+	 
+	 CPlayer2*	pPlayer = static_cast<CPlayer2*>(pObj);		
+	 pPlayer->Render();*/
 
 #pragma endregion static_cast 연산자
 
@@ -55,16 +56,20 @@ int main()
 	// 5. 비논리적인 캐스팅인 경우 nullptr을 반환
 
 
-	//CObj*		pObj = new CObj;
-	//CPlayer*	pPlayer = dynamic_cast<CPlayer*>(pObj);
-	//CPlayer2*	pPlayer2 = dynamic_cast<CPlayer2*>(pObj);
+	/*CObj*		pObj = new CObj;
+	CPlayer*	pPlayer = dynamic_cast<CPlayer*>(pObj);
+	CPlayer2*	pPlayer2 = dynamic_cast<CPlayer2*>(pObj);
 
-	//if (nullptr == pPlayer2)
-	//	cout << "이상해" << endl;
+	if (pPlayer == nullptr)
+	{
+		cout << "비논리적 형변환" << endl;
+	}
+	if (nullptr == pPlayer2)
+		cout << "이상해" << endl;
 
-	//pPlayer2->Render();
+	pPlayer2->Render();
 
-	/*CObj*		pObj = new CPlayer2;
+	CObj*		pObj = new CPlayer2;
 
 	static_cast<CPlayer2*>(pObj)->Render();
 	dynamic_cast<CPlayer2*>(pObj)->Render();*/
@@ -74,20 +79,20 @@ int main()
 
 #pragma region const_cast 연산자
 
-	// const_cast : const의 성향을 제거하는 캐스팅 연산자, 단, 포인터나 레퍼런스 형만 가능
+	 //const_cast : const의 성향을 제거하는 캐스팅 연산자, 단, 포인터나 레퍼런스 형만 가능
 
-	// const int iData = 10;
-	// const_cast<int>(iData) += 10;
+	 //const int iData = 10;
+	 //const_cast<int>(iData) += 10;
 
-	// int		iNumber(10);
-	// 
-	// const int*		ptr = &iNumber;		// 읽기 전용 포인터
-	// 
-	// int*	ptr2 = const_cast<int*>(ptr);
-	// 
-	// *ptr2 = 20;
-	// 
-	// cout << iNumber << endl;
+	 //int		iNumber(10);
+	 //
+	 //const int*		ptr = &iNumber;		// 읽기 전용 포인터
+	 //
+	 //int*	ptr2 = const_cast<int*>(ptr);
+	 //
+	 //*ptr2 = 20;
+	 //
+	 //cout << iNumber << endl;
 
 #pragma endregion const_cast 연산자
 
@@ -96,12 +101,12 @@ int main()
 	// reinterpret_cast : const 포인터를 제외한 모든 포인터의 형 변환을 허용, 비 논리적인 형 변환도 허용
 	// 예측 할 수 없는 결과를 초래하기 때문에 사용을 자제할 것을 권장
 
-	// CPlayer2*	pPlayer = new CPlayer2;
-	// CObj*		pObj = reinterpret_cast<CObj*>(pPlayer);
+	/* CPlayer2*	pPlayer = new CPlayer2;
+	 CObj*		pObj = reinterpret_cast<CObj*>(pPlayer);
 
-	// int		iNumber(65);
-	// char*	ptr = reinterpret_cast<char*>(&iNumber);
-	// cout << ptr << endl;
+	 int		iNumber(65);
+	 char*	ptr = reinterpret_cast<char*>(&iNumber);
+	 cout << ptr << endl;*/
 	
 #pragma endregion reinterpret_cast
 

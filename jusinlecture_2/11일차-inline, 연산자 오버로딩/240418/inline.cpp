@@ -19,7 +19,7 @@ int main()
 	// cout << SQUARE(3.14) << endl;
 	
 	// cout << Square(5) << endl;
-	// cout << Square(3.14) << endl;
+	 cout << Square(3.14) << endl;
 
 	// inline 함수가 일반 함수로 자동으로 전환되는 예
 
