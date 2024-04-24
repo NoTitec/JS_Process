@@ -22,6 +22,9 @@
     <Filter Include="MainGame">
       <UniqueIdentifier>{955d7a3b-dd2f-48f6-aec6-f95941345097}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Store">
+      <UniqueIdentifier>{793e1c63-34cc-4604-90fa-8ae4f5e6affa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -45,6 +48,12 @@
     <ClInclude Include="CWeapon.h">
       <Filter>Item</Filter>
     </ClInclude>
+    <ClInclude Include="CStore.h">
+      <Filter>Store</Filter>
+    </ClInclude>
+    <ClInclude Include="CArmor.h">
+      <Filter>Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -66,6 +75,12 @@
       <Filter>MainGame</Filter>
     </ClCompile>
     <ClCompile Include="CWeapon.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="CStore.cpp">
+      <Filter>Store</Filter>
+    </ClCompile>
+    <ClCompile Include="CArmor.cpp">
       <Filter>Item</Filter>
     </ClCompile>
   </ItemGroup>

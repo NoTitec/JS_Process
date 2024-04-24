@@ -18,3 +18,16 @@ protected:
 
 };
 
+enum ITEMTYPE
+{
+	IT_WEAPON,
+	IT_ARMOR,
+	IT_END
+};
+enum ITEMCLASS
+{
+	BEGINNER,
+	NORMAL,
+	RARE,
+	CLASS_END
+};

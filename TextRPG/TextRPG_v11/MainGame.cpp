@@ -1,11 +1,13 @@
-#include "MainGame.h"
+#include "stdafx.h"
 #include "Define.h"
+#include "MainGame.h"
 #include "Character.h"
 #include "CPlayer.h"
-#include "stdafx.h"
 #include "ItemBase.h"
 #include "CWeapon.h"
-MainGame::MainGame() :m_Player(nullptr), m_pFiled(nullptr), m_pStore(nullptr)
+#include "CArmor.h"
+#include "CStore.h"
+MainGame::MainGame() :m_Player(nullptr), m_pStore(nullptr) //m_pFiled(nullptr), 
 {
 }
 
@@ -21,18 +23,27 @@ void MainGame::Initialize()
 		m_Player = new CPlayer;
 		static_cast<CPlayer*>(m_Player)->SelectJob();
 	}
+	if (!m_pStore)
+	{
+		m_pStore = new CStore;
+	}
 }
 
 void MainGame::Update()
 {
 	int iInput(0);
-
+	//샘플 아이템
+	/*ItemBase* temp = new CWeapon("sample", 1, 0, 3);
+	ItemBase* temp2 = new CArmor("sample2", 0, 7, 7);
+	static_cast<CPlayer*>(m_Player)->Add_Item(temp);
+	static_cast<CPlayer*>(m_Player)->Add_Item(temp2);*/
+	//
 	while (true)
 	{
 		system("cls");
 		m_Player->Render();
 
-		cout << "1.사냥터 2. 상점 3.종료 4.아이템 추가 테스트";
+		cout << "1.사냥터 2. 상점 3.인벤토리 열기 4.종료";
 		cin >> iInput;
 		switch (iInput)
 		{
@@ -40,22 +51,17 @@ void MainGame::Update()
 			m_pFiled->Initialize();
 			m_pFiled->Set_Player(m_pBase);
 			m_pFiled->Update();
-			break;
+			break;*/
 		case 2:
 			m_pStore->Initialize();
-			m_pStore->Set_Player(m_pBase);
+			m_pStore->Set_Player(m_Player);
 			m_pStore->Update();
-			break;*/
+			break;
 		case 3:
-			return;
+			static_cast<CPlayer*>(m_Player)->Start_Inventory();
+			break;
 		case 4:
-			ItemBase * temp = new CWeapon("sample",1,2,3);
-			ItemBase* temp2 = new CWeapon("sample2", 7, 7, 7);
-			static_cast<CPlayer*>(m_Player)->Add_Item(temp);
-			static_cast<CPlayer*>(m_Player)->Add_Item(temp);
-
-			static_cast<CPlayer*>(m_Player)->Render_Inventory();
-			system("pause");
+			return;
 		}
 	}
 }
@@ -63,6 +69,6 @@ void MainGame::Update()
 void MainGame::Release()
 {
 	Safe_Delete(m_Player);
-	Safe_Delete(m_pFiled);
+	//Safe_Delete(m_pFiled);
 	Safe_Delete(m_pStore);
 }

@@ -1,6 +1,6 @@
 #pragma once
 class Character;
-class CField;
+//class CField;
 class CStore;
 
 class MainGame
@@ -16,7 +16,7 @@ public:
 
 private:
 	Character* m_Player;
-	CField* m_pFiled;
+	//CField* m_pFiled;
 	CStore* m_pStore;
 };
 

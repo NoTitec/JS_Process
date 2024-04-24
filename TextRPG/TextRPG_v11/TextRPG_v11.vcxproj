@@ -127,8 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CArmor.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CStore.h" />
     <ClInclude Include="CWeapon.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="ItemBase.h" />
@@ -136,8 +138,10 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CArmor.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CStore.cpp" />
     <ClCompile Include="CWeapon.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="MainGame.cpp" />
