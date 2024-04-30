@@ -27,6 +27,7 @@ list<int>::iterator		iter = intList.begin(); // +2;	// 임의 접근 반복자일 경우 �
 // 	// ++iter;
 // iter의 앞에 삽입함
  	intList.insert(iter, 500);
+	//삭제 후 다음 iter 반환
 // 	//iter = intList.erase(iter);
 // 
 // 	//cout << (*iter) << endl;
@@ -36,6 +37,9 @@ list<int>::iterator		iter = intList.begin(); // +2;	// 임의 접근 반복자일 경우 �
 // 	// 
 // 	// cout << "--------------------------------" << endl;
 intList.sort(greater<int>());		// 퀵 정렬 기반으로 설계된 노드 기반 정렬 함수
+
+//리스트 크기 구하는 함수
+//distance(intList.begin(),intList.end());
 // 
 // 	// intList.sort();
 // 	// intList.reverse();		// 원소들의 배치를 역으로 뒤집는 함수

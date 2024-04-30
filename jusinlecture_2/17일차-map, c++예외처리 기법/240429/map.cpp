@@ -21,21 +21,21 @@ struct tagFinder
 int main()
 {
 
-	map<const char*, int>			mapInt;
+	/*map<const char*, int>			mapInt;
 
 
 	mapInt.insert({ "AAA", 10 });
 	mapInt.insert({ "BBB", 20 });
-	mapInt.insert({ "CCC", 30 });
+	mapInt.insert({ "CCC", 30 });*/
 
 	//map<const char*, int>::iterator	iter = mapInt.find("BBB");
 
-	map<const char*, int>::iterator	iter = find_if(mapInt.begin(), mapInt.end(), tagFinder("BBB"));
+	//map<const char*, int>::iterator	iter = find_if(mapInt.begin(), mapInt.end(), tagFinder("BBB"));
 
-	if (iter == mapInt.end())
+	/*if (iter == mapInt.end())
 		cout << "찾는 원소가 없음" << endl;
 
-	cout << iter->first << "\t" << iter->second << endl;
+	cout << iter->first << "\t" << iter->second << endl;*/
 
 
 
@@ -45,16 +45,19 @@ int main()
 	// 2. 문자열 상수 : 알파벳 정렬이 안 됨, 주소값 기준 정렬을 하게 됨.
 	// 3. string 컨테이너(MFC의 CString 클래스) : 알파벳 정렬이 가능, 컨테이너 내부에 문자열 관련 조건자가 있어서 대소 비교를 스스로 실행하여 정렬 가능
 
-	// map<int, int, greater<int>>		mapInt;
+	//map은 3번째 조건자인자 default가 있음
+	// 원한다면 다른 조건자 지정가능
+	// 
+	 map<int, int, greater<int>>		mapInt2;
 	// 
 	// mapInt.insert({ 1, 100 });
 	// mapInt.insert({ 2, 200 });
-	// mapInt.insert({ 3, 300 });
+	mapInt2.insert({ 3, 300 });
 	// mapInt.insert({ 4, 400 });
 	// mapInt.insert({ 5, 500 });
 	// 
 	// 
-	// map<int, int>::iterator		iter = mapInt.begin();
+	 map<int, int>::iterator		iter = mapInt2.begin();
 	// 
 	// for (iter = mapInt.begin(); iter != mapInt.end(); ++iter)
 	// {
@@ -64,10 +67,12 @@ int main()
 	//++iter;
 	//++iter;
 
+	//삽입요소 반복자와 성공여부 bool pair 반환
 	// mapInt.insert({ 13, 1300 });
 
 	// iter = mapInt.erase(iter);
-	// mapInt.erase(3);		// key 값 기준으로 중간 삭제가 가능한 함수가 오버로딩 되어 있음
+	//삭제된 개수 반환
+	mapInt2.erase(3);		// key 값 기준으로 중간 삭제가 가능한 함수가 오버로딩 되어 있음
 
 	//cout << iter->first << "\t" << iter->second << endl;
 
@@ -82,7 +87,7 @@ int main()
 
 	//cout << iter->first << "\t" << iter->second << endl;
 
-	//cout << mapInt[3] << endl;
+	//cout << mapInt2[3] << endl;
 
 	
     return 0;

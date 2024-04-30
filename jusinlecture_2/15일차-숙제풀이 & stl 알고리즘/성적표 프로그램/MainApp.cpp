@@ -66,7 +66,7 @@ void CMainApp::Release()
 
 	//for_each(m_vecStu.begin(), m_vecStu.end(), Safe_Delete<CStudent*>);
 	
-	//for-each문은 3번째 인자 매개변수를 자동으로 넣나?
+	//for-each문은 3번째 인자인 함수나 함수객체에 첫번째 ~2번째인자 까지의 원소들을 내부적으로 함수나 객체에 매개변수로 넣어주도록 구현되어 있다.!!
 	for_each(m_vecStu.begin(), m_vecStu.end(), tagDelete());
 
 	m_vecStu.clear();
