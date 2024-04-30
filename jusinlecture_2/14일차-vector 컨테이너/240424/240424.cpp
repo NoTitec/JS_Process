@@ -15,7 +15,7 @@ void Safe_Delete(T& Temp)
 
 int main()
 {
-	/*vector<int*>		vecIntP;
+	vector<int*>		vecIntP;
 
 	vecIntP.push_back(new int);
 	vecIntP.push_back(new int);
@@ -25,52 +25,52 @@ int main()
 	for (vector<int*>::iterator iter = vecIntP.begin();
 		iter != vecIntP.end(); )
 	{
-		if (충돌)
+		//if (충돌)
 		{
 			Safe_Delete(*iter);
 			iter = vecIntP.erase(iter);
 		}
-		else
+		//else
 			++iter;
-	}*/
+	}
 	
 
 #pragma region 반복자
 
-	//vector<int>				vecInt;
-	//
-	//vecInt.push_back(10);
-	//vecInt.push_back(20);
-	//vecInt.push_back(30);
-	//vecInt.push_back(40);
+	vector<int>				vecInt;
+	
+	vecInt.push_back(10);
+	vecInt.push_back(20);
+	vecInt.push_back(30);
+	vecInt.push_back(40);
 
 	// 1. 출력 반복자 2. 입력 반복자 3. 순방향(정방향) 반복자 4. 양방향 반복자 5. 임의 접근 반복자
 	// *			  *, =		   *, =, ++				 *, =, ++, --	*, =, ++, --, +=, -= 			
 	
-	//vector<int>::iterator iter = vecInt.begin() + 2; // 임의 접근 반복자이기 때문에 가능
-	// iter += 2;	// 임의 접근 반복자이기 때문에 가능
+	vector<int>::iterator iter = vecInt.begin() + 2; // 임의 접근 반복자이기 때문에 가능
+	 iter += 2;	// 임의 접근 반복자이기 때문에 가능
 	
-	//vecInt.insert(iter, 500);		// 중간 삽입
-	//iter = vecInt.erase(iter);
+	vecInt.insert(iter, 500);		// 중간 삽입
+	iter = vecInt.erase(iter);
 
-	//cout << (*iter) << endl;
+	cout << (*iter) << endl;
 
 	/*for(iter = vecInt.begin(); iter != vecInt.end(); ++iter)
 		cout << (*iter) << endl;*/
 
 
-	//cout << (*(vecInt.end())) << endl;
+	cout << (*(vecInt.end())) << endl;
 
 
-	//vecInt.front() = 1234;
-	//vecInt.back() = 50000;
-	//
-	//for (size_t i = 0; i < vecInt.size(); ++i)
-	//	cout << vecInt[i] << endl;
+	vecInt.front() = 1234;
+	vecInt.back() = 50000;
+	
+	for (size_t i = 0; i < vecInt.size(); ++i)
+		cout << vecInt[i] << endl;
 
 
-	// cout << vecInt.front() << endl;
-	// cout << vecInt.back() << endl;
+	 cout << vecInt.front() << endl;
+	 cout << vecInt.back() << endl;
 
 
 #pragma endregion 반복자
