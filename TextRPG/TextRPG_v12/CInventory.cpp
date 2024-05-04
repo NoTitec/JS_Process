@@ -98,7 +98,9 @@ void CInventory::Equip_Item()
     {
         system("cls");
 
+        //플레이어 정보 출력
         m_pPlayer->Render();
+        //인벤토리 출력
         Render();
 
         cout << "0. 나가기 : ";

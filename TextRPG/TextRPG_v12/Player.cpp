@@ -1,5 +1,6 @@
 #include "Player.h"
-
+#include "CWeapon.h"
+#include "CArmor.h"
 Player::Player()
 {
 	//특정 자료형아니면 memset 으로 밀기
@@ -14,17 +15,38 @@ void Player::Equip_Item(ItemBase* pItem)
 {
 	ITEMTYPE eType = pItem->Get_Type();
 
-	// 기존 아이템이 장착되어 있는 상태
-	if (m_pItemSlot[eType])
+	//타입이 무기인 경우
+	if (eType == IT_WEAPON)
 	{
-		Apply_Item_Stat(-m_pItemSlot[eType]->Get_Info().iAttack, -m_pItemSlot[eType]->Get_Info().iHp);
-		m_pItemSlot[eType]->Set_State(ST_UNEQUIP);
-		m_pItemSlot[eType] = nullptr;
+		// 기존 무기아이템이 장착되어 있는 상태
+		if (m_pItemSlot[eType])
+		{
+			Apply_Item_Stat(-m_pItemSlot[eType]->Get_Info().iAttack, -m_pItemSlot[eType]->Get_Info().iHp);
+			m_pItemSlot[eType]->Set_State(ST_UNEQUIP);
+			m_pItemSlot[eType] = nullptr;
+		}
+		//무기 아이템슬롯이 비어있는 경우
+
+		//무기 스탯 적용
+		Apply_Item_Stat(pItem->Get_Info().iAttack, pItem->Get_Info().iHp);
+		dynamic_cast<ItemBase*>(pItem)->Set_State(ST_EQUIP);
+		m_pItemSlot[eType] = pItem;
 	}
 
-	Apply_Item_Stat(pItem->Get_Info().iAttack, pItem->Get_Info().iHp);
-	dynamic_cast<ItemBase*>(pItem)->Set_State(ST_EQUIP);
-	m_pItemSlot[eType] = pItem;
+	//타입이 방어구인 경우
+	if (eType == IT_ARMOR)
+	{
+		// 기존 방어구아이템이 장착되어 있는 상태
+		if (m_pItemSlot[eType])
+		{
+			Apply_Item_Stat(-m_pItemSlot[eType]->Get_Info().iAttack, -m_pItemSlot[eType]->Get_Info().iHp);
+			m_pItemSlot[eType]->Set_State(ST_UNEQUIP);
+			m_pItemSlot[eType] = nullptr;
+		}
+		Apply_Item_Stat(pItem->Get_Info().iAttack, pItem->Get_Info().iHp);
+		dynamic_cast<ItemBase*>(pItem)->Set_State(ST_EQUIP);
+		m_pItemSlot[eType] = pItem;
+	}
 }
 
 void Player::UnEquip_Item(ItemBase* pItem)

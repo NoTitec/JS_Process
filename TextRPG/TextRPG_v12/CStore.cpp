@@ -25,13 +25,13 @@ void CStore::Initialize()
 	weapon->Set_Type(IT_WEAPON);
 	m_pItem_Array[IT_WEAPON][RARE] = weapon;
 	ItemBase* armor = new CArmor("초급갑옷", 0, 10, 1000);
-	armor->Set_Type(IT_WEAPON);
+	armor->Set_Type(IT_ARMOR);
 	m_pItem_Array[IT_ARMOR][BEGINNER] = armor;
 	 armor = new CArmor("중급갑옷", 0, 20, 2000);
-	armor->Set_Type(IT_WEAPON);
+	armor->Set_Type(IT_ARMOR);
 	m_pItem_Array[IT_ARMOR][NORMAL] = armor;
 	 armor = new CArmor("고급갑옷", 0, 30, 3000);
-	armor->Set_Type(IT_WEAPON);
+	armor->Set_Type(IT_ARMOR);
 	m_pItem_Array[IT_ARMOR][RARE] = armor;
 }
 
@@ -118,7 +118,6 @@ void CStore::Buy_Item(ItemBase* pItem)
 	//플레이어 소지금이 아이템 가격보다 높고 인벤토리에 추가 시도 결과가 성공이면 
 	//구매성공 출력하고 소지금 감소시키기
 	//소지금 부족하면 잔액부족출력
-	cout << "구매함수 진입" << endl;
 	if (m_pPlayer->Get_Info().iMoney >= pItem->Get_Info().iMoney &&
 		m_pInventory->Add_Item(pItem))
 	{
