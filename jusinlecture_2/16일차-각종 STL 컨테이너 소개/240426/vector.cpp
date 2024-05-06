@@ -53,20 +53,20 @@
 
 #pragma region deque
 
-//int main()
-//{
-//	deque<int>	dq;
-//
-//	dq.push_back(10);
-//	dq.push_front(20);
-//	dq.push_back(30);
-//	dq.push_front(40);
-//
-//	for (size_t i = 0; i < dq.size(); ++i)
-//		cout << dq[i] << endl;
-//
-//	return 0;
-//}
+int main()
+{
+	deque<int>	dq;
+
+	dq.push_back(10);
+	dq.push_front(20);
+	dq.push_back(30);
+	dq.push_front(40);
+
+	for (size_t i = 0; i < dq.size(); ++i)
+		cout << dq[i] << endl;
+
+	return 0;
+}
 
 #pragma endregion deque
 
