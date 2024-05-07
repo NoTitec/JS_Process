@@ -33,7 +33,7 @@ public:
 		memcpy(m_pArray, rhs.m_pArray, sizeof(int) * rhs.m_iSize);
 	}
 	//이동 생성자
-	CMyArray(CMyArray&& rMove)
+	CMyArray (CMyArray&& rMove) noexcept
 	{
 		m_pArray = rMove.m_pArray;
 		m_iSize  = rMove.m_iSize;
@@ -86,22 +86,22 @@ int main()
 	// int	iResult = [](int iDst, int iSrc)-> int { return iDst + iSrc;  }(10, 20);
 	// cout << iResult << endl;
 
-	 // (ex1)
-	 // vector<int>		vecInt{ 10, 20, 30 , 40, 50 };
-	 // for_each(vecInt.begin(), vecInt.end(), [](int n) { cout << n << endl; });
+	//  (ex1)
+	//  vector<int>		vecInt{ 10, 20, 30 , 40, 50 };
+	//  for_each(vecInt.begin(), vecInt.end(), [](int n) { cout << n << endl; });
 
-	 // (ex2)
-	 // vector<int>		vecInt{ 10, 20, 33, 40, 50 };
-	 // 
-	 // auto iter = find_if(vecInt.begin(), vecInt.end(), 
-	 // [](int n)->bool
-	 // {
-	 // 	return 0 != n % 2;
-	 // });
-	 // 
-	 // cout << *iter << endl;
+	//  (ex2)
+	//  vector<int>		vecInt{ 10, 20, 33, 40, 50 };
+	//  
+	//  auto iter = find_if(vecInt.begin(), vecInt.end(), 
+	//  [](int n)->bool
+	//  {
+	//  	return 0 != n % 2;
+	//  });
+	//  
+	//  cout << *iter << endl;
 
-	
+	//
 	// (ex3)
 	//vector<int>		vecInt{ 1, 2, 3, 4, 5 };
 	// 
@@ -127,6 +127,7 @@ int main()
 
 	 int		iData(10);
 	 int&	r = iData;
+	 r = 20;
 	 //int& rt = 2;
 	 const int&	r2 = 10;
 	// 
@@ -135,7 +136,7 @@ int main()
 	// 
 	// cout << rr << endl;
 	// 
-	// rr = 200;
+	 rr = 200;
 	// 
 	// cout << rr << endl;
 
