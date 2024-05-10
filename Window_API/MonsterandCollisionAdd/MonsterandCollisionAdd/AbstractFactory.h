@@ -29,5 +29,14 @@ public:
 
 		return pObj;
 	}
+	//각도총알생성
+	static CObj* Create(float fX, float fY, float _fAngle)
+	{
+		CObj* pObj = new T;
+		pObj->Initialize();
+		pObj->Set_Pos(fX, fY);
+		pObj->Set_Angle(_fAngle);
+		return pObj;
+	}
 };
 

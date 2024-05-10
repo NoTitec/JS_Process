@@ -15,7 +15,7 @@ public:
 
 	void		Set_Direction(DIRECTION eDir) { m_eDir = eDir; }
 	void		Set_Dead() { m_bDead = true; }
-
+	void		Set_Angle(float _fAngle) { m_fAngle = _fAngle; }
 	INFO		Get_Info() { return m_tInfo; }
 	//RECT* Get_Rect_Pointer() { return &m_tRect; }
 
@@ -37,5 +37,11 @@ protected:
 
 	float		m_fSpeed;
 	bool		m_bDead;
+
+	//삼각함수용
+	//각도->호도법 실수형
+	float m_fAngle;
+	//선 길이
+	float m_fDistance;
 };
 

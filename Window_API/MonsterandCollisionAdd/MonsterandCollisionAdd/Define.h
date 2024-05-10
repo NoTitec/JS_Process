@@ -1,4 +1,5 @@
 #pragma once
+#define			PI 3.14f
 #define			PURE	= 0
 
 #define			WINCX	800

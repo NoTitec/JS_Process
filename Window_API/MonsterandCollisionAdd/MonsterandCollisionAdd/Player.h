@@ -23,5 +23,7 @@ private:
 
 private:
 	list<CObj*>* m_pBulletList;
+	//가르키는 x,y 좌표용 변수
+	POINT m_tPosition;
 };
 
