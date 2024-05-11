@@ -29,59 +29,32 @@ int CPlayer::Update()
 }
 void CPlayer::Key_Input()
 {
-	if (GetAsyncKeyState(VK_RIGHT))
-		m_tInfo.fX += m_fSpeed;
+	//포신기준 전진
+	if (GetAsyncKeyState(VK_UP))
+	{
+		m_tInfo.fX += LONG(m_fSpeed * (cos(m_fAngle * PI / 180.f)));
+		m_tInfo.fY -= LONG(m_fSpeed * (sin(m_fAngle * PI / 180.f)));
+	}
+	//포신기준 후진
+	if (GetAsyncKeyState(VK_DOWN))
+	{
+		m_tInfo.fX -= LONG(m_fSpeed * (cos(m_fAngle * PI / 180.f)));
+		m_tInfo.fY += LONG(m_fSpeed * (sin(m_fAngle * PI / 180.f)));
+	}
 
 	if (GetAsyncKeyState(VK_LEFT))
-		m_tInfo.fX -= m_fSpeed;
-
-	if (GetAsyncKeyState(VK_DOWN))
-		m_tInfo.fY += m_fSpeed;
-
-	if (GetAsyncKeyState(VK_UP))
-		m_tInfo.fY -= m_fSpeed;
-
-	if (GetAsyncKeyState('Z'))
 	{
 		m_fAngle += 5.f;
 	}
-	if (GetAsyncKeyState('X'))
+	if (GetAsyncKeyState(VK_RIGHT))
 	{
 		m_fAngle -= 5.f;
 	}
-	/*if (GetAsyncKeyState(VK_SPACE))
-	{
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_UP));
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_DOWN));
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_LEFT));
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RIGHT));
-		m_pBulletList->push_back(CAbstr actFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_LU));
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RU));
 
-	}*/
-
-	if (GetAsyncKeyState('W'))
+	if (GetAsyncKeyState(VK_SPACE))
 	{
 		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tPosition.x, m_tPosition.y, m_fAngle));
 	}
-
-	/*if (GetAsyncKeyState('A'))
-	{
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_LEFT));
-
-	}
-
-	if (GetAsyncKeyState('S'))
-	{
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_DOWN));
-
-	}
-
-	if (GetAsyncKeyState('D'))
-	{
-		m_pBulletList->push_back(CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RIGHT));
-
-	}*/
 }
 
 void CPlayer::Late_Update()
@@ -103,10 +76,5 @@ void CPlayer::Release()
 
 RECT* CPlayer::Get_Rect_Pointer()
 {
-	return nullptr;
+	return &m_tRect;
 }
-
-//CObj* CPlayer::Create_Bullet(DIRECTION eDir)
-//{
-//    return nullptr;
-//}

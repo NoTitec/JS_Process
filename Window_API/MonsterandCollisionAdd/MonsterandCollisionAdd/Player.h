@@ -19,11 +19,10 @@ public:
 	virtual RECT* Get_Rect_Pointer() override;
 private:
 	void		Key_Input();
-	//CObj* Create_Bullet(DIRECTION eDir);
 
 private:
 	list<CObj*>* m_pBulletList;
-	//가르키는 x,y 좌표용 변수
+	//포신끝가르키는 x,y 좌표용 변수
 	POINT m_tPosition;
 };
 

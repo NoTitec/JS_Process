@@ -37,6 +37,12 @@
     <Filter Include="Design\CollisionManager">
       <UniqueIdentifier>{8f68ceb6-af39-4893-87d0-cea6c8951817}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{7133b812-891a-4d16-9876-7d815447b51f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Zombie">
+      <UniqueIdentifier>{d2d6b2b9-33f9-416c-971e-4d806a9e6ae4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -78,6 +84,12 @@
     <ClInclude Include="Monster.h">
       <Filter>Obj\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="ZombieManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Obj\Zombie</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MonsterandCollisionAdd.cpp">
@@ -106,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>Obj\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Obj\Zombie</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

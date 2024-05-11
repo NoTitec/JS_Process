@@ -17,6 +17,7 @@ public:
 	void		Set_Dead() { m_bDead = true; }
 	void		Set_Angle(float _fAngle) { m_fAngle = _fAngle; }
 	INFO		Get_Info() { return m_tInfo; }
+	INFO* Get_Info_Pointer() { return &m_tInfo; }
 	//RECT* Get_Rect_Pointer() { return &m_tRect; }
 
 public:

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="00. MainGame">
+      <UniqueIdentifier>{625c72e9-e221-485a-8daa-935685dce07f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj">
+      <UniqueIdentifier>{8809d7c7-8fdf-4502-8f52-22ac3d1bc6a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Headers">
+      <UniqueIdentifier>{b88508ea-5c30-4424-b5f0-dc8696483240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\00. Player">
+      <UniqueIdentifier>{2a9a993b-079e-406b-a6d0-fcc46807ecf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Bullet">
+      <UniqueIdentifier>{f37bed50-7920-45eb-9935-4632cfebc651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Zombie">
+      <UniqueIdentifier>{f35f04de-8b8f-445f-9d05-9bcf58586815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design">
+      <UniqueIdentifier>{6eebcae4-9cee-46a0-a0fd-d3ed54a938de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\00. AbstractFactory">
+      <UniqueIdentifier>{f739debb-2d58-492c-8a85-97b58d1b5f96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\01. CollisionMgr">
+      <UniqueIdentifier>{2ecc9e27-858d-460b-ae4d-edab50154bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. Item">
+      <UniqueIdentifier>{c2f6b3ef-ba40-4869-8c64-2932ffcabffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\04. Barrier">
+      <UniqueIdentifier>{ebf15fc8-9c7a-4f00-b383-9559bdf96900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr">
+      <UniqueIdentifier>{c801a90c-a72b-4645-9714-06aee09bf286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\05. Grenade">
+      <UniqueIdentifier>{bf5d52e3-5fb3-4393-8aa0-4a8fbbf13836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\06. Bomb">
+      <UniqueIdentifier>{9d9bd33c-3a90-49b9-b9cb-fb44eeaafae8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Scene">
+      <UniqueIdentifier>{be9c8d1d-cc0c-4751-88ce-28a5676fe04a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieGame.h">
+      <Filter>99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>01. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>01. Obj\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>01. Obj\01. Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>01. Obj\02. Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>99. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>02. Design\00. AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>02. Design\01. CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CZombieMgr.h">
+      <Filter>03. Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>01. Obj\03. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemMgr.h">
+      <Filter>03. Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Grenade.h">
+      <Filter>01. Obj\05. Grenade</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.h">
+      <Filter>01. Obj\06. Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGameScene.h">
+      <Filter>04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>03. Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>04. Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ZombieGame.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="ZombieGame.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ZombieGame.cpp">
+      <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>01. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>01. Obj\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>01. Obj\01. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>01. Obj\02. Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>99. Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>02. Design\01. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CZombieMgr.cpp">
+      <Filter>03. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>01. Obj\03. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemMgr.cpp">
+      <Filter>03. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Grenade.cpp">
+      <Filter>01. Obj\05. Grenade</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>01. Obj\06. Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameScene.cpp">
+      <Filter>04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>03. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>04. Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
