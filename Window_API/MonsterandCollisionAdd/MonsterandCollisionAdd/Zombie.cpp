@@ -57,9 +57,9 @@ void CZombie::Late_Update()
 	float iZombieX = m_tInfo.fX;
 
 	float fR = sqrtf(((iPlayerY - iZombieY) * (iPlayerY - iZombieY)) + ((iPlayerX - iZombieX) * (iPlayerX - iZombieX)));
-	cout << fR;
 	float normalVectorY = (fR == 0.f) ? 0 : ((iPlayerY - iZombieY) / fR);
 	float normalVectorX = (fR == 0.f) ? 0 : ((iPlayerX - iZombieX) / fR);
+	//¿ø¸®´Â ¸ô·ç?
 	if (fR >= 5.0f)
 	{
 		m_tInfo.fX += (normalVectorX * m_fSpeed);
