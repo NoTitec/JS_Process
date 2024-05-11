@@ -2,10 +2,12 @@
 #include "stdafx.h"
 CZombie::CZombie()
 {
+
 }
 
 CZombie::~CZombie()
 {
+
 }
 
 void CZombie::Initialize()
@@ -57,14 +59,22 @@ void CZombie::Late_Update()
 	float iZombieX = m_tInfo.fX;
 
 	float fR = sqrtf(((iPlayerY - iZombieY) * (iPlayerY - iZombieY)) + ((iPlayerX - iZombieX) * (iPlayerX - iZombieX)));
-	float normalVectorY = (fR == 0.f) ? 0 : ((iPlayerY - iZombieY) / fR);
-	float normalVectorX = (fR == 0.f) ? 0 : ((iPlayerX - iZombieX) / fR);
-	//盔府绰 隔风?
-	if (fR >= 5.0f)
-	{
-		m_tInfo.fX += (normalVectorX * m_fSpeed);
-		m_tInfo.fY += (normalVectorY * m_fSpeed);
-	}
+	float normalVectorY = (fR == 0.f) ? 0.f : ((iPlayerY - iZombieY) / fR);
+	float normalVectorX = (fR == 0.f) ? 0.f : ((iPlayerX - iZombieX) / fR);
+	float fMoveDistance = (fR >= m_fSpeed) ? m_fSpeed : fR;
+	m_tInfo.fX += (normalVectorX * fMoveDistance);
+	m_tInfo.fY += (normalVectorY * fMoveDistance);
+	////盔府绰 隔风?
+	//if (fR >= m_fSpeed)
+	//{
+	//	m_tInfo.fX += (normalVectorX * m_fSpeed);
+	//	m_tInfo.fY += (normalVectorY * m_fSpeed);
+	//}
+	//else
+	//{
+	//	m_tInfo.fX += (normalVectorX * fR);
+	//	m_tInfo.fY += (normalVectorY * fR);
+	//}
 
 }
 

@@ -24,6 +24,7 @@ typedef struct tagInfo
 	float fNormalY;
 } INFO;
 
+
 enum OBJ_ID
 {
 	OBJ_PLAYER,
