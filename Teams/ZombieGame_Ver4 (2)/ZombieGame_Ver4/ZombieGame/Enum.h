@@ -1,0 +1,28 @@
+#pragma once
+
+enum OBJ_ID
+{
+	OBJ_PLAYER,
+	OBJ_BULLET,
+	OBJ_GRENADE,
+	OBJ_ZOMBIE,
+	OBJ_ITEM,
+	OBJ_BOMB,
+	OBJ_BARRIER,
+	OBJ_END
+};
+
+enum OBJ_ITEM_TYPE
+{
+	GUN,
+	OBJ_ITEM_TYPE_END
+};
+
+//좀비 타입 열거체
+enum ZOMBIE_TYPE
+{
+	NORMAL_ZOMBIE,
+	LIGHT_ZOMBIE,
+	HEAVY_ZOMBIE,
+	ZOMBIE_END
+};

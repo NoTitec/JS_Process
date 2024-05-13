@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="MainGame">
+      <UniqueIdentifier>{af7653f3-0368-4b9b-bc7e-42ce9ded4e04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj">
+      <UniqueIdentifier>{3f69193e-7e9d-4215-856f-6a0130e22ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Design">
+      <UniqueIdentifier>{1e45a6f4-828a-480c-b04b-a0f5d9dd87b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Player">
+      <UniqueIdentifier>{bcd8e02d-832c-4827-8a14-9a4f4305d7b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Monster">
+      <UniqueIdentifier>{1de515ba-aac8-43fc-a5e5-2a9af6c2b167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Bullet">
+      <UniqueIdentifier>{dad7e848-c51a-438f-96c9-05d4cd427984}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Design\AbstractFactory">
+      <UniqueIdentifier>{6dec05c0-81c9-4fa4-8d87-903d0396cc47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Design\CollisionManager">
+      <UniqueIdentifier>{8f68ceb6-af39-4893-87d0-cea6c8951817}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{7133b812-891a-4d16-9876-7d815447b51f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Zombie">
+      <UniqueIdentifier>{d2d6b2b9-33f9-416c-971e-4d806a9e6ae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Mouse">
+      <UniqueIdentifier>{76093904-ebca-4c26-91fe-6ea3423430d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj\Shield">
+      <UniqueIdentifier>{bc43b166-fcdf-4c6b-94a3-eb6257e97dd9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterandCollisionAdd.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Obj\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>Design\AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Obj\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Design\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Obj\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Obj\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Obj\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>Obj\Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrewBullet.h">
+      <Filter>Obj\Bullet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MonsterandCollisionAdd.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Obj\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractFactory.cpp">
+      <Filter>Design\AbstractFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Obj\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Design\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Obj\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Obj\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Obj\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>Obj\Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrewBullet.cpp">
+      <Filter>Obj\Bullet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MonsterandCollisionAdd.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="MonsterandCollisionAdd.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
