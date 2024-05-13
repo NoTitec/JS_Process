@@ -18,32 +18,30 @@ void CZombie::Initialize()
 	switch (m_iType)
 	{
 	case 0:
-		m_dwTime = GetTickCount();
 		Brush = (HBRUSH)CreateSolidBrush(RGB(255, 0, 0));
 		m_tInfo.fCX = 20.0f;
 		m_tInfo.fCY = 20.0f;
 		m_fSpeed = 2.0f;
-		m_iHP = 1;
-		m_iFullHp = 1;
+		m_iHP = 2;
+		m_iFullHp = 2;
 		break;
 	case 1:
 		Brush = (HBRUSH)CreateSolidBrush(RGB(0, 255, 0));
 		m_tInfo.fCX = 30.0f;
 		m_tInfo.fCY = 30.0f;
 		m_fSpeed = 1.5f;
-		m_iHP = 2;
+		m_iHP = 3;
 		// 체력바를 위해 추가했습니다. 신경 쓸 필요 x
-		m_iFullHp = 2;
-		
+		m_iFullHp = 3;
 		break;
 	case 2:
 		Brush = (HBRUSH)CreateSolidBrush(RGB(0, 0, 255));
 		m_tInfo.fCX = 60.0f;
 		m_tInfo.fCY = 60.0f;
 		m_fSpeed = 0.5f;
-		m_iHP = 10;
+		m_iHP = 4;
 		// 체력바를 위해 추가했습니다. 신경 쓸 필요 x
-		m_iFullHp = 10;
+		m_iFullHp = 4;
 		break;
 	}
 
@@ -74,8 +72,7 @@ void CZombie::Render(HDC _hdc)
 
 	switch ((OBJ_ZOMBIE_TYPE)m_iType)
 	{
-	case  OBJ_MIDDLE_ZOMBIE:		
-		::Ellipse(_hdc, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
+	case  OBJ_MIDDLE_ZOMBIE:		::Rectangle(_hdc, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
 		::SelectObject(_hdc, oldBrush);
 		::DeleteObject(oldBrush);
 		break;
@@ -117,15 +114,6 @@ void CZombie::Release()
 void CZombie::Move_Zombie()
 {
 	//플레이어 방향으로 이동
-	switch (m_iType)
-	{
-	case 1:
-		if (m_fdistance < 130.f)
-		{
-			m_fSpeed = 3.f;
-		}
-		break;
-	}
 	float fMoveDistance = (m_fdistance >= m_fSpeed) ? m_fSpeed : m_fdistance;
 	m_tInfo.fX += (m_vDir.fX * fMoveDistance);
 	m_tInfo.fY += (m_vDir.fY * fMoveDistance);
@@ -136,29 +124,6 @@ void CZombie::Dir_Update()
 	//플레이어 방향추적
 	Vec2 vMyPos = Get_Pos();
 	m_vDir = m_vTargetPos - vMyPos;
-	switch (m_iType)
-	{
-	case 0:
-		if (m_bRandDir == false)
-		{
-			if (m_dwTime + 500 < GetTickCount())
-			{
-				m_bRandDir = true;
-				m_dwTime = GetTickCount();
-			}
-		}
-		else
-		{
-			if (m_dwTime + 500 < GetTickCount())
-			{
-				m_bRandDir = false;
-				m_dwTime = GetTickCount();
-			}
-			m_vDir.fX += 180.f;
-			m_vDir.fY += 180.f;
-		}
-		break;
-	}
 	m_fdistance = m_vDir.Length();
 	m_vDir.Normalize();
 }

@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="04. Scene">
+      <UniqueIdentifier>{be9c8d1d-cc0c-4751-88ce-28a5676fe04a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. Headers">
+      <UniqueIdentifier>{b88508ea-5c30-4424-b5f0-dc8696483240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj">
+      <UniqueIdentifier>{8809d7c7-8fdf-4502-8f52-22ac3d1bc6a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr">
+      <UniqueIdentifier>{c801a90c-a72b-4645-9714-06aee09bf286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\ZombieMgr">
+      <UniqueIdentifier>{bca40965-36b0-4dd2-adb8-596609911872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\ItemMgr">
+      <UniqueIdentifier>{394dc8f8-eb74-4832-90c4-b7c7788d3266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\SceneMgr">
+      <UniqueIdentifier>{690fff28-e6c4-43f5-a3f6-94f3d1017674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\KeyMgr">
+      <UniqueIdentifier>{5d8683a3-e462-4b1a-a1f4-17534ddabdb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Design">
+      <UniqueIdentifier>{6eebcae4-9cee-46a0-a0fd-d3ed54a938de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Design\01. CollisionMgr">
+      <UniqueIdentifier>{2ecc9e27-858d-460b-ae4d-edab50154bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Scene\MainMenuScene">
+      <UniqueIdentifier>{79813d8f-b27f-42ef-8dc9-28a6619455bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Scene\MainGameScene">
+      <UniqueIdentifier>{d1dfc02b-381a-4664-beed-e3436a4e9ab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Scene\GameOverScene">
+      <UniqueIdentifier>{80e94a52-f2b4-4e3a-acd4-96efaf924611}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\Player">
+      <UniqueIdentifier>{2a9a993b-079e-406b-a6d0-fcc46807ecf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\Bullet">
+      <UniqueIdentifier>{f37bed50-7920-45eb-9935-4632cfebc651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\Zombie">
+      <UniqueIdentifier>{f35f04de-8b8f-445f-9d05-9bcf58586815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\Item">
+      <UniqueIdentifier>{c2f6b3ef-ba40-4869-8c64-2932ffcabffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Design\AbstractFactory">
+      <UniqueIdentifier>{f739debb-2d58-492c-8a85-97b58d1b5f96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Default">
+      <UniqueIdentifier>{c0bffa90-2610-4ea3-bd74-f2e619bed863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Default\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. MainGame">
+      <UniqueIdentifier>{625c72e9-e221-485a-8daa-935685dce07f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\Barrier">
+      <UniqueIdentifier>{893ee813-0ed1-4eed-bf90-4a74c0abe23c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\Turret">
+      <UniqueIdentifier>{fe8c5c4b-297d-4f03-828d-f5176cdbead0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\UIMgr">
+      <UniqueIdentifier>{f1a27305-bbd0-40a7-8f72-dbf1027bf868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. UI">
+      <UniqueIdentifier>{c04fc12f-e5fe-40a2-a53b-c9f2e3972bf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. UI\Skill">
+      <UniqueIdentifier>{c28a46d1-8bf2-43b0-aa82-4d80735b4778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. UI\Combo">
+      <UniqueIdentifier>{31c1e012-a216-486d-be83-035877721c02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\HpBar">
+      <UniqueIdentifier>{68048c49-e1bc-46d5-8f27-eef6c2b66528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\ComboMgr">
+      <UniqueIdentifier>{1d194f9d-064e-4954-bd03-a32f53d7f035}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainGame.h">
+      <Filter>01. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>02. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>02. Obj\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>02. Obj\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>02. Obj\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>00. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>05. Design\AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>05. Design\01. CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>02. Obj\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CZombieMgr.h">
+      <Filter>03. Mgr\ZombieMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemMgr.h">
+      <Filter>03. Mgr\ItemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>03. Mgr\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>03. Mgr\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>00. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>00. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>04. Scene\MainMenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGameScene.h">
+      <Filter>04. Scene\MainGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>04. Scene\GameOverScene</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="ZombieGame.h" />
+    <ClInclude Include="Barrier.h">
+      <Filter>02. Obj\Barrier</Filter>
+    </ClInclude>
+    <ClInclude Include="Turret.h">
+      <Filter>02. Obj\Turret</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>06. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>06. UI\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Combo.h">
+      <Filter>06. UI\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMgr.h">
+      <Filter>03. Mgr\UIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="HpBar.h">
+      <Filter>02. Obj\HpBar</Filter>
+    </ClInclude>
+    <ClInclude Include="ComboMgr.h">
+      <Filter>03. Mgr\ComboMgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ZombieGame.rc">
+      <Filter>Default\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Default\리소스 파일</Filter>
+    </Image>
+    <Image Include="ZombieGame.ico">
+      <Filter>Default\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>01. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>02. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>02. Obj\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>02. Obj\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>02. Obj\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>05. Design\01. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>02. Obj\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CZombieMgr.cpp">
+      <Filter>03. Mgr\ZombieMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemMgr.cpp">
+      <Filter>03. Mgr\ItemMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>03. Mgr\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>03. Mgr\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>04. Scene\MainMenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameScene.cpp">
+      <Filter>04. Scene\MainGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>04. Scene\GameOverScene</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Barrier.cpp">
+      <Filter>02. Obj\Barrier</Filter>
+    </ClCompile>
+    <ClCompile Include="Turret.cpp">
+      <Filter>02. Obj\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>06. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>06. UI\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Combo.cpp">
+      <Filter>06. UI\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMgr.cpp">
+      <Filter>03. Mgr\UIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="HpBar.cpp">
+      <Filter>02. Obj\HpBar</Filter>
+    </ClCompile>
+    <ClCompile Include="ComboMgr.cpp">
+      <Filter>03. Mgr\ComboMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
