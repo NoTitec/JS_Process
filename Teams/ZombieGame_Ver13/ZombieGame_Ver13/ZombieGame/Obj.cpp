@@ -28,12 +28,19 @@ void CObj::Posin_Update()
 	// m_vDir를 기반으로 포신 좌표를 구함.
 	m_vPosin.fX = m_tInfo.fX + (m_vDir * m_fDistance).fX;
 	m_vPosin.fY = m_tInfo.fY + (m_vDir * m_fDistance).fY;
+	
 }
 
 void CObj::Posin_Render(HDC hDC)
 {
+	//HPEN blackPen = CreatePen(PS_SOLID, 2, RGB(0,0,0));
+	//HPEN oldPen = (HPEN)::SelectObject(hDC, blackPen);
+	
 	MoveToEx(hDC, m_tInfo.fX, m_tInfo.fY, nullptr);
+
 	LineTo(hDC, m_vPosin.fX, m_vPosin.fY);
+	//::SelectObject(hDC, oldPen);
+	//::DeleteObject(blackPen);
 }
 
 void CObj::Update_Rect()

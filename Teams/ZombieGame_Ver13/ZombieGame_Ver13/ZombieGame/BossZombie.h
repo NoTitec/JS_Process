@@ -1,12 +1,10 @@
 #pragma once
 #include "Obj.h"
-
-class CHpBar;
-class CZombie : public CObj
+class CBossZombie : public CObj
 {
 public:
-	CZombie();
-	virtual ~CZombie();
+	CBossZombie();
+	virtual ~CBossZombie();
 public:
 	void Dir_Update() override;
 public:
@@ -27,19 +25,26 @@ public:
 	// Player 좌표를 매 프레임마다 업데이트 중(MainGameScene 클래스의 lateUpdate)
 	void TargetPos_Update(Vec2 _vTargetPos) { m_vTargetPos = _vTargetPos; }
 
-	void Move_Zombie();
-	
-	// 체력바 추가를 위해 추가했습니다. 신경 쓸 필요 X
+	//m_PatternType인자로 받아서 해당 타입 공격 수행
+	void Pattern_Attack(int _patterntype);
+	//호출될때마다 랜덤 각도 방향으로 이동방향 변경
+	void Random_Dir_Degree();
 	void Pos_Hp_Bar_Update();
 private:
-	// 멤버 변수
+	// 플레이어좌표
 	Vec2	m_vTargetPos;
 	HBRUSH Brush;
+	//플레이어와의 거리
 	float   m_fdistance;
-	DWORD m_dwTime;
+	//패턴 간격측정변수
+	DWORD m_dwPatternTime;
+	//패턴 타입용 변수 (최대 3, 0~3 4개패턴)
+	int m_iPatternType;
+	//랜덤이동 시간측정변수
+	DWORD m_dwMoveTime;
+
 	bool	m_bStuck;
 
-	// 체력바 추가를 위해 추가했습니다. 신경 쓸 필요 X
 	int	m_iFullHp;
 	INFO m_tHpBarInfo;
 	RECT m_tHpBarRect;

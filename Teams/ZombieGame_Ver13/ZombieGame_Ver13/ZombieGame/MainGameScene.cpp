@@ -101,7 +101,7 @@ void CMainGameScene::Late_Update()
 
 	if (m_ObjList[OBJ_PLAYER].front()->IsDead())
 	{
-		CSceneMgr::Change_Active_Scene(2);
+		CSceneMgr::Change_Active_Scene(SCENE_TYPE::GAME_OVER_SCENE);
 	}
 
 
