@@ -18,7 +18,7 @@ void CCollisionMgr::Collision_Sphere(list<CObj*> _Dst, list<CObj*> _Src)
 		for (auto& Src : _Src)
 		{
 			if (Check_Sphere(Dst, Src))
-			{
+			{ 
 				Dst->Set_Dead();
 				Src->Set_Dead();
 			}

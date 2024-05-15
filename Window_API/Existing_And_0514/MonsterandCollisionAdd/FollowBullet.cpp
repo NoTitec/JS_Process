@@ -17,6 +17,7 @@ void CFollowBullet::Initialize()
 
     m_fSpeed = 10.f;
 
+
 	//생성할때몬스터 리스트중 자기와 가장 가까운것 찾기
 	m_pTarget = CObjMgr::Get_Instance()->Get_Nearest_Object(OBJ_ZOMBIE, m_tInfo.fX, m_tInfo.fY);
 	float	fWidth(0.f), fHeight(0.f), fDiagonal(0.f), fRadian(0.f);
