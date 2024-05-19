@@ -7,11 +7,6 @@ class CPlayer : public CObj
 public:
 	CPlayer();
 	virtual ~CPlayer();
-
-public:
-	void		Set_Bullet(list<CObj*>* pBullet) { m_pBullet = pBullet; }
-	void		Set_Shield(list<CObj*>* pShield) { m_pShield = pShield; }
-
 public:
 	virtual void Initialize() override;
 	virtual int Update() override;
@@ -26,8 +21,6 @@ private:
 	CObj*		Create_Bullet();
 	CObj* Create_Shield(float _Angle);
 private:
-	list<CObj*>* m_pBullet;
-	list<CObj*>* m_pShield;
 	//포신 끝 위치
 	POINT m_tBarrel;
 };

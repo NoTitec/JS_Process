@@ -43,6 +43,21 @@
     <Filter Include="01.Obj\04.Shield">
       <UniqueIdentifier>{7279ff95-f4de-40b1-91c6-38789ee78d94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="99.Design\ObjMgr">
+      <UniqueIdentifier>{3489ac14-9aff-40a4-9762-37d5c25e472e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Obj\05.Box">
+      <UniqueIdentifier>{6ae98330-2fe0-4da7-be81-50fcf12b970d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design\KeyMgr">
+      <UniqueIdentifier>{ccacb34b-2231-4101-8c04-64727b0726df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design\LineMgr">
+      <UniqueIdentifier>{67012a69-6d5b-4043-b8df-136c6691a9a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design\LineMgr\Line">
+      <UniqueIdentifier>{b8808539-d58c-427e-bd00-540771ace89b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -93,6 +108,24 @@
     <ClInclude Include="Shield.h">
       <Filter>01.Obj\04.Shield</Filter>
     </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>99.Design\ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>01.Obj\05.Box</Filter>
+    </ClInclude>
+    <ClInclude Include="GuideBullet.h">
+      <Filter>01.Obj\01.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>99.Design\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMgr.h">
+      <Filter>99.Design\LineMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>99.Design\LineMgr\Line</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="5_18_project.cpp">
@@ -127,6 +160,24 @@
     </ClCompile>
     <ClCompile Include="Shield.cpp">
       <Filter>01.Obj\04.Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>99.Design\ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>01.Obj\05.Box</Filter>
+    </ClCompile>
+    <ClCompile Include="GuideBullet.cpp">
+      <Filter>01.Obj\01.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>99.Design\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMgr.cpp">
+      <Filter>99.Design\LineMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>99.Design\LineMgr\Line</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

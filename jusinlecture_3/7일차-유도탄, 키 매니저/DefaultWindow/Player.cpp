@@ -8,7 +8,7 @@
 #include "GuideBullet.h"
 #include "KeyMgr.h"
 
-CPlayer::CPlayer() : m_cur_line(nullptr), m_LineList(nullptr), is_Jumping(false),t(0.f),g(0.9f)
+CPlayer::CPlayer() : m_cur_line(nullptr), m_LineList(nullptr), is_Jumping(false),t(0.f),g(1.1f)
 {
 	ZeroMemory(&m_tPosin, sizeof(POINT));
 }
@@ -39,13 +39,32 @@ int CPlayer::Update()
 	// Y = (V0 * sin(angle) * t) - ((1 / 2) * g * t * t);
 	if (is_Jumping)
 	{
-		t += 0.05f;
-		m_tInfo.fY -= (sin(90.f/180.f*PI) * t)-(0.5f)*g*t*t;
-		if (t == 1.f)
+		//첫상승은 무조건 상승
+		if (m_fJumpStartfY == m_tInfo.fY)
 		{
-			t = 0.f;
-			is_Jumping = false;
+			t += 0.05f;
+			m_tInfo.fY -= 3.f*(sin(90.f / 180.f * PI) * t) - (0.5f) * g * t * t;
 		}
+		else
+		{
+			//점프중 시작점위치가 현재 물체 위치보다 작거나 같으면 점프 시작한 위치까지 떨어졌다는 뜻
+			if (m_fJumpStartfY <= m_tInfo.fY)
+			{
+				is_Jumping = false;
+				t = 0.f;
+				m_tInfo.fY = m_fJumpStartfY;
+			}
+			else
+			{
+				t += 0.05f;
+				m_tInfo.fY -= 3.f*(sin(90.f / 180.f * PI) * t) - (0.5f) * g * t * t;
+			}
+		}
+		/*if (t == 1.f)
+		{
+			
+			is_Jumping = false;
+		}*/
 	}
 	__super::Update_Rect();
 
@@ -171,6 +190,7 @@ void CPlayer::Key_Input()
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down('J'))
 	{
+		m_fJumpStartfY = m_tInfo.fY;
 		is_Jumping = true;
 	}
 	//if (GetAsyncKeyState('S'))

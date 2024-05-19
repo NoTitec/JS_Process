@@ -25,9 +25,12 @@ public:
 	void		Set_Angle(float _fAngle) { m_fAngle = _fAngle; }
 	void		Set_Target(CObj* pTarget) { m_pTarget = pTarget; }
 	void		Set_Dead() { m_bDead = true; }
+	void		Set_X(float _fX) { m_tInfo.fX += _fX; }
+	void		Set_Y(float _fY) { m_tInfo.fY += _fY; }
 	//자기 중점, 크기 정보구조체 반환
 	INFO		Get_Info() { return m_tInfo; }
 	RECT		Get_Rect() { return m_tRect; }
+	bool		Get_Dead() { return m_bDead; }
 protected:
 	void		Update_Rect();
 

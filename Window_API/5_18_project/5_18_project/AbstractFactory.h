@@ -21,6 +21,7 @@ public:
 		CObj* pObj = new T;
 		pObj->Initialize();
 		pObj->Set_Angle(fAngle);
+
 		return pObj;
 	}
 	static CObj* Create(float fX, float fY)

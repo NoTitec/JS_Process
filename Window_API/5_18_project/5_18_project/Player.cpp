@@ -1,9 +1,13 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "ScrewBullet.h"
+#include "GuideBullet.h"
 #include "Shield.h"
 #include "AbstractFactory.h"
-CPlayer::CPlayer() :m_pBullet(nullptr)
+#include "ObjMgr.h"
+#include "KeyMgr.h"
+
+CPlayer::CPlayer()
 {
 	ZeroMemory(&m_tBarrel, sizeof(POINT));
 }
@@ -85,19 +89,25 @@ void CPlayer::Key_Input()
 	}
 		
 
-	if (GetAsyncKeyState(VK_SPACE))
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_SPACE))
 	{
-		m_pBullet->push_back(Create_Bullet<CBullet>());
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, Create_Bullet<CBullet>());
 	}
-	if (GetAsyncKeyState('R'))
+	if (CKeyMgr::Get_Instance()->Key_Down('R'))
 	{
-		m_pBullet->push_back(Create_Bullet<CScrewBullet>());
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, Create_Bullet<CScrewBullet>());
 	}
-	if (GetAsyncKeyState('S'))
+	if (CKeyMgr::Get_Instance()->Key_Down('G'))
 	{
-		m_pShield->push_back(Create_Shield(0.f));
-		m_pShield->push_back(Create_Shield(90.f));
-		m_pShield->push_back(Create_Shield(180.f));
-		m_pShield->push_back(Create_Shield(270.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, Create_Bullet<CGuideBullet>());
 	}
+	if (CKeyMgr::Get_Instance()->Key_Down('S'))
+	{
+		CObjMgr::Get_Instance()->Add_Object(OBJ_SHIELD, Create_Shield(0.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_SHIELD, Create_Shield(90.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_SHIELD, Create_Shield(180.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_SHIELD, Create_Shield(270.f));
+
+	}
+
 }
