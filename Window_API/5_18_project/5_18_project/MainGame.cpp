@@ -1,13 +1,10 @@
-#include "stdafx.h"
 #include "MainGame.h"
-#include "AbstractFactory.h"
-#include "CollisionMgr.h"
-
-CMainGame::CMainGame() :m_dwTime(GetTickCount()), m_iFps(0)
+#include "Monster.h"
+#include "Mouse.h"
+CMainGame::CMainGame() : m_dwTime(GetTickCount()), m_iFps(0)
 {
 	ZeroMemory(m_szFPS, sizeof(m_szFPS));
 }
-
 
 CMainGame::~CMainGame()
 {
@@ -16,43 +13,26 @@ CMainGame::~CMainGame()
 
 void CMainGame::Initialize()
 {
-
 	m_DC = GetDC(g_hWnd);
 
-#pragma region 복습
-	/*if (!m_pPlayer)
-	{
-	m_pPlayer = new CPlayer;
-	m_pPlayer->Initialize();
-	}*/
-	// m_pPlayer = CAbstractFactory<CPlayer>::Create();
-	// 
-	// dynamic_cast<CPlayer*>(m_pPlayer)->Set_Bullet(&m_BulletList);
-#pragma endregion 복습
-
 	m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
+	//플레이어의 m_pBullet 리스트에 maingame이 관리하는 m_ObjList[OBJ_PLAYER] 주소 set하기
+	//선 매니저도 아마도?
 	dynamic_cast<CPlayer*>(m_ObjList[OBJ_PLAYER].front())->Set_Bullet(&m_ObjList[OBJ_BULLET]);
+	dynamic_cast<CPlayer*>(m_ObjList[OBJ_PLAYER].front())->Set_Shield(&m_ObjList[OBJ_SHIELD]);
 
+	// 몬스터
+	for (int i = 0; i < 5; ++i)
+	{
+		m_ObjList[OBJ_MONSTER].push_back(CAbstractFactory<CMonster>::Create(float(rand() % WINCX), float(rand() % WINCY)));
+	}
+	// 마우스
+	m_ObjList[OBJ_MOUSE].push_back(CAbstractFactory<CMouse>::Create());
 }
 
 void CMainGame::Update()
 {
-	// m_pPlayer->Update();
-	// 
-	// for (auto iter = m_BulletList.begin(); iter != m_BulletList.end(); )
-	// {
-	// 	int iResult = (*iter)->Update();
-	// 
-	// 	if (OBJ_DEAD == iResult)
-	// 	{
-	// 		Safe_Delete<CObj*>(*iter);
-	// 		iter = m_BulletList.erase(iter);
-	// 	}
-	// 	else
-	// 		++iter;
-	// }
-
-	for (size_t i = 0; i < OBJ_END; ++i)
+	for (size_t i = 0; i < OBJ_END; i++)
 	{
 		for (auto iter = m_ObjList[i].begin(); iter != m_ObjList[i].end(); )
 		{
@@ -67,16 +47,10 @@ void CMainGame::Update()
 				++iter;
 		}
 	}
-		
 }
 
-void CMainGame::Late_Update()
+void CMainGame::LateUpdate()
 {
-	/*m_pPlayer->Late_Update();
-
-	for (auto& pBullet : m_BulletList)
-		pBullet->Late_Update();*/
-
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
 		for (auto iter = m_ObjList[i].begin(); iter != m_ObjList[i].end(); ++iter)
@@ -84,8 +58,9 @@ void CMainGame::Late_Update()
 			(*iter)->Late_Update();
 		}
 	}
-	//몬스터가 있다면 late업데이트시 충돌결과에따른 각 객체 상태 변경
-	//CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_MONSTER]);
+
+	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_MONSTER]);
+	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_SHIELD], m_ObjList[OBJ_MONSTER]);
 }
 
 void CMainGame::Render()
@@ -93,12 +68,7 @@ void CMainGame::Render()
 	++m_iFps;
 
 	Rectangle(m_DC, 0, 0, WINCX, WINCY);
-	Rectangle(m_DC, 100, 100, WINCX - 100, WINCY - 100);
-
-	/*m_pPlayer->Render(m_DC);
-
-	for (auto& pBullet : m_BulletList)
-		pBullet->Render(m_DC);*/
+	//Rectangle(m_DC, 100, 100, WINCX - 100, WINCY - 100);
 
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
@@ -108,29 +78,16 @@ void CMainGame::Render()
 		}
 	}
 
-
 	// 폰트 출력
 
 	TCHAR	szBuf[32] = L"";
 
 	// wsprintf : 소수점 자릿수의 출력 불가능, winapi 라이브러리에서 제공
-	wsprintf(szBuf, L"Bullet : %d", m_ObjList[OBJ_BULLET].size());
-	
+	 wsprintf(szBuf, L"Bullet : %d", m_ObjList[OBJ_BULLET].size());
+//
 	//swprintf_s(szBuf, L"Bullet : %f", 3.14f);	// visual c++ 라이브러리에서 제공(모든 서식 문자를 지원)
 	TextOut(m_DC, 50, 50, szBuf, lstrlen(szBuf));
-
-
-	// 1. dc 
-	// 2-3. x,y 좌표
-	// 4. 문자열 버퍼의 첫 주소
-	// 5. 문자열 버퍼의 크기
-
-	// RECT	rc{ 100, 100, 200, 200 };
-	// lstrcpy(szBuf, L"Jusin");
-	// DrawText(m_DC, szBuf, lstrlen(szBuf), &rc, DT_CENTER);
-
-	// fps 출력
-
+	//FPS 출력
 	if (m_dwTime + 1000 < GetTickCount())
 	{
 		swprintf_s(m_szFPS, L"FPS : %d", m_iFps);
@@ -143,19 +100,11 @@ void CMainGame::Render()
 
 void CMainGame::Release()
 {
-	// Safe_Delete<CObj*>(m_pPlayer);
-	// 
-	// for_each(m_BulletList.begin(), m_BulletList.end(), Safe_Delete<CObj*>);
-	// m_BulletList.clear();
-
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
 		for_each(m_ObjList[i].begin(), m_ObjList[i].end(), Safe_Delete<CObj*>);
 		m_ObjList[i].clear();
 	}
 
-
 	ReleaseDC(g_hWnd, m_DC);
-
-	
 }
