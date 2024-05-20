@@ -16,12 +16,15 @@ public:
 
 private:
 	void		Key_Input();
-
+	void		Jump();
 	template<typename T>
 	CObj*		Create_Bullet();
 	CObj* Create_Shield(float _Angle);
 private:
 	//포신 끝 위치
 	POINT m_tBarrel;
+	bool				m_bJump;
+	float				m_fPower;
+	float				m_fTime;
 };
 

@@ -1,8 +1,8 @@
 #pragma once
-#include "stdafx.h"
+
 #include "Line.h"
 
-class CLineMgr
+class CLineMgr 
 {
 private:
 	CLineMgr();
@@ -14,11 +14,10 @@ public:
 	void		Release();
 
 public:
-	//X좌표를 인자로 받아서 플레이어의 Y좌표를 선의 y좌표로 설정해주는 함수
-	bool Collision_Line(float fX, float* pY);
-public:
+	bool		Collision_Line(float fX, float* pY);
 
-	static CLineMgr* Get_Instance()
+public:
+	static CLineMgr*		Get_Instance()
 	{
 		if (!m_pInstance)
 			m_pInstance = new CLineMgr;
@@ -36,7 +35,7 @@ public:
 	}
 
 private:
-	static CLineMgr* m_pInstance;
+	static CLineMgr*	m_pInstance;
 	list<CLine*>		m_LineList;
 };
 
