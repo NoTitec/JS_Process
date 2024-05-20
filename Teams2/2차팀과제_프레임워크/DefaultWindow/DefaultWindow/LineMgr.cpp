@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LineMgr.h"
+#include "RenderMgr.h"
 
 CLineMgr*	CLineMgr::m_pInstance = nullptr;
 CLineMgr::CLineMgr()

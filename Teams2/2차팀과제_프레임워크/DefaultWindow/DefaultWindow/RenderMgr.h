@@ -22,7 +22,7 @@ public:
     void DrawEllipse(const RECT& _tRect) { Ellipse(m_hMemDC, _tRect.left, _tRect.top, _tRect.right, _tRect.bottom); }
     void DrawTxt(const int& _x, const int& _y, wstring _wstring) { TextOut(m_hMemDC, _x, _y, _wstring.c_str(), _wstring.length()); }
     void DrawLine(const Line2F& _tLine) { MoveToEx(m_hMemDC, (int)_tLine.p1.x, (int)_tLine.p1.y, NULL); LineTo(m_hMemDC, (int)_tLine.p2.x, (int)_tLine.p2.y); }
-
+    void DrawLine(const LINE& _tLine) { MoveToEx(m_hMemDC, (int)_tLine.tLeft.fX, (int)_tLine.tLeft.fY, NULL); LineTo(m_hMemDC, (int)_tLine.tRight.fX, (int)_tLine.tRight.fY); }
 private:
     HDC m_hDC{};
     HDC m_hMemDC{};

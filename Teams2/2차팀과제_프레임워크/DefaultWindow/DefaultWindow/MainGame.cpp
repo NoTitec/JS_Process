@@ -39,6 +39,7 @@ void CMainGame::Update()
 
 void CMainGame::Late_Update()
 {
+	OBJ.Late_Update();
 	SCENE.Late_Update();
 	KEY.Key_Update();
 }
