@@ -24,7 +24,7 @@ void CPlayer::Initialize()
 	m_tInfo = { WINCX / 2.f, WINCY / 2.f, 100.f, 100.f };
 	m_fSpeed = 10.f;
 	m_fDistance = 100.f;
-	m_fPower = 20.f;
+	m_fPower = 17.f;
 }
 
 int CPlayer::Update()
@@ -59,8 +59,7 @@ void CPlayer::Jump()
 {
 	//선의 y좌표저장용
 	float fY(0.f);
-	bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, &fY);
-
+	bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, m_tInfo.fY,&fY);
 	//점프중이면
 	if (m_bJump)
 	{
@@ -68,8 +67,6 @@ void CPlayer::Jump()
 		m_fTime += 0.2f;
 		m_tInfo.fY -= (m_fPower * m_fTime) - ((9.8f * m_fTime * m_fTime) * 0.5f);
 
-		
-		
 		//만약 바닥에 선이있고 지형의 y좌표보다 플레이어 좌표가 아래면 플레이어 점프상태 false로 만들고 플레이어좌표 선y좌표로 대입
 		if (bLineCol && (fY < m_tInfo.fY))
 		{
@@ -78,7 +75,18 @@ void CPlayer::Jump()
 			m_tInfo.fY = fY;
 		}
 	}
-	//점프중아니고 선에 충돌한상태면
+	
+	//점프중 아니고 선충돌한것도 아니면 항상 떨어지는중
+	else if (!m_bJump&&!bLineCol)
+	{
+		{
+			//플레이어 y좌표 포물선 갱신
+			
+			m_tInfo.fY += ((9.8f * m_fTime * m_fTime) * 0.5f);
+			m_fTime += 0.2f;
+		}
+	}
+	//선에 충돌한상태면
 	else if (bLineCol)
 	{
 		m_tInfo.fY = fY;
@@ -109,14 +117,14 @@ void CPlayer::Key_Input()
 		m_tInfo.fX -= m_fSpeed;
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		m_tInfo.fX -= m_fSpeed * cos(m_fAngle * (PI / 180.f));
-		m_tInfo.fY += m_fSpeed * sin(m_fAngle * (PI / 180.f));
+		//m_tInfo.fX -= m_fSpeed * cos(m_fAngle * (PI / 180.f));
+		//m_tInfo.fY += m_fSpeed * sin(m_fAngle * (PI / 180.f));
 	}
 
 	if (GetAsyncKeyState(VK_UP))
 	{
-		m_tInfo.fX += m_fSpeed * cos(m_fAngle * (PI / 180.f));
-		m_tInfo.fY -= m_fSpeed * sin(m_fAngle * (PI / 180.f));
+		//m_tInfo.fX += m_fSpeed * cos(m_fAngle * (PI / 180.f));
+		//m_tInfo.fY -= m_fSpeed * sin(m_fAngle * (PI / 180.f));
 	}
 		
 

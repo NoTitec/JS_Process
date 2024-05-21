@@ -14,8 +14,8 @@ public:
 	void		Release();
 
 public:
-	//X좌표를 인자로 받아서 플레이어의 Y좌표를 선의 y좌표로 설정해주는 함수
-	bool Collision_Line(float fX, float* pY);
+	//플레이어 X,Y좌표를 인자로 받아서 플레이어의 Y좌표를 선의 y좌표로 설정해주는 함수
+	bool Collision_Line(float fX, float fY,float* pY);
 public:
 
 	static CLineMgr* Get_Instance()

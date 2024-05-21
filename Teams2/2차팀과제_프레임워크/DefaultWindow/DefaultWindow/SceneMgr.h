@@ -5,21 +5,25 @@
 
 class CSceneMgr : public CSingleton<CSceneMgr>
 {
-friend CSingleton<CSceneMgr>;
+	friend CSingleton<CSceneMgr>;
 
 private:
 	CSceneMgr();
 	~CSceneMgr();
 
 public:
-	void		Initialize();
-	void		Update();
-	void		Late_Update();
-	void		Render(HDC _hdc);
-	void		Release();
+	void      Initialize();
+	void      Update();
+	void      Late_Update();
+	void      Render(HDC _hdc);
+	void      Release();
+
+	void      Change_Scene(SCENE_TYPE _eSceneType);
+
 private:
 	vector<CScene*> m_vecScene;
-	int m_iCurScene;
+	CScene* m_pCurScene;
 };
 
 #define SCENE CSceneMgr::Get_Instance()
+//씬매니저 헤더에 추가할 코드

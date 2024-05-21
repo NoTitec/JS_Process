@@ -4,6 +4,15 @@
 #include "ObjMgr.h"
 
 
+enum SCENE_TYPE
+{
+	HGH_SCENE,
+	KRH_SCENE,
+	KJW_SCENE,
+	KSH_SCENE,
+	PHJ_SCENE,
+	END
+};
 
 class CScene
 {
@@ -18,10 +27,10 @@ public:
 	virtual void	Render(HDC hDC)PURE;
 	virtual void	Release()PURE;
 
-	virtual SCENE_STATE		CheckCurrentState()PURE;
+	//virtual SCENE_STATE		CheckCurrentState()PURE;
 
-protected:
-	SCENE_STATE m_eState = SCENE_STATE::STOP;
+//protected:
+//	SCENE_STATE m_eState = SCENE_STATE::STOP;
 };
 
 

@@ -9,7 +9,7 @@ public:
 
 	int	 Update() override;
 
-	SCENE_STATE CheckCurrentState() override;
+	//SCENE_STATE CheckCurrentState() override;
 
 	// CScene을(를) 통해 상속됨
 	void Initialize() override;

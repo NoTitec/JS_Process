@@ -17,13 +17,13 @@ void CScene1::Initialize()
 void CScene1::Start()
 {
 
-    m_eState = SCENE_STATE::RUN;
+    //m_eState = SCENE_STATE::RUN;
 }
 
 int CScene1::Update()
 {
 
-    return (int)m_eState;
+    return (int)END;
 }
 void CScene1::Late_Update()
 {
@@ -41,8 +41,8 @@ void CScene1::Release()
 }
 
 
-SCENE_STATE CScene1::CheckCurrentState()
-{
-
-    return SCENE_STATE::RUN;
-}
+//SCENE_STATE CScene1::CheckCurrentState()
+//{
+//
+//    return SCENE_STATE::RUN;
+//}
