@@ -81,6 +81,7 @@ bool CLineMgr::Collision_Line(float fX, float fY,float* pY)
 	float y2 = pTarget->Get_Info().RightPoint.fY;
 
 	*pY = ((y2 - y1) / (x2 - x1)) * (fX - x1) + y1;
-
 	return true;
+	
+	
 }

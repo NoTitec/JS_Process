@@ -8,7 +8,7 @@
 #include "KeyMgr.h"
 #include "LineMgr.h"
 
-CPlayer::CPlayer() : m_bJump(false), m_fTime(0.f), m_fPower(0.f)
+CPlayer::CPlayer() : m_bJump(false), m_fTime(0.f), m_fPower(0.f),m_isFalling(false)//, m_Past_fX(0.f)
 {
 	ZeroMemory(&m_tBarrel, sizeof(POINT));
 }
@@ -25,6 +25,7 @@ void CPlayer::Initialize()
 	m_fSpeed = 10.f;
 	m_fDistance = 100.f;
 	m_fPower = 17.f;
+	//m_Past_fX = m_tInfo.fX;
 }
 
 int CPlayer::Update()
@@ -59,38 +60,48 @@ void CPlayer::Jump()
 {
 	//선의 y좌표저장용
 	float fY(0.f);
-	bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, m_tInfo.fY,&fY);
+	bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, m_tInfo.fY, &fY);
 	//점프중이면
 	if (m_bJump)
 	{
-		//플레이어 y좌표 포물선 갱신
-		m_fTime += 0.2f;
-		m_tInfo.fY -= (m_fPower * m_fTime) - ((9.8f * m_fTime * m_fTime) * 0.5f);
+			//플레이어 y좌표 포물선 갱신
+			m_fTime += 0.2f;
+			m_tInfo.fY -= (m_fPower * m_fTime) - ((9.8f * m_fTime * m_fTime) * 0.5f);
+			
+	}
 
-		//만약 바닥에 선이있고 지형의 y좌표보다 플레이어 좌표가 아래면 플레이어 점프상태 false로 만들고 플레이어좌표 선y좌표로 대입
-		if (bLineCol && (fY < m_tInfo.fY))
+	//만약 바닥에 선이있고 지형의 y좌표보다 플레이어 좌표가 아래면 플레이어 점프상태 false로 만들고 플레이어좌표 선y좌표로 대입
+	if (bLineCol && (fY <= m_tInfo.fY))
 		{
 			m_bJump = false;
 			m_fTime = 0.f;
 			m_tInfo.fY = fY;
 		}
+	//점프중 아니면 항상 떨어지는중
+	if (!m_bJump)
+	{
+		if (m_isFalling)
+		{
+			m_fTime += 0.2f;
+			m_tInfo.fY += ((9.8f * m_fTime * m_fTime) * 0.5f);
+		}
+		if (fY > m_tInfo.fY)
+		{
+			m_isFalling = true;
+		}
+		if (bLineCol && (fY <= m_tInfo.fY))
+		{
+			m_isFalling = false;
+			m_fTime = 0.f;
+			m_tInfo.fY = fY;
+		}
+		if (!bLineCol)
+		{
+			m_isFalling = true;
+		}
+
 	}
 	
-	//점프중 아니고 선충돌한것도 아니면 항상 떨어지는중
-	else if (!m_bJump&&!bLineCol)
-	{
-		{
-			//플레이어 y좌표 포물선 갱신
-			
-			m_tInfo.fY += ((9.8f * m_fTime * m_fTime) * 0.5f);
-			m_fTime += 0.2f;
-		}
-	}
-	//선에 충돌한상태면
-	else if (bLineCol)
-	{
-		m_tInfo.fY = fY;
-	}
 }
 
 template<typename T>
@@ -112,8 +123,10 @@ void CPlayer::Key_Input()
 	// GetKeyState()
 
 	if (GetAsyncKeyState(VK_RIGHT))
+		//m_Past_fX = m_tInfo.fX;
 		m_tInfo.fX += m_fSpeed;
 	if (GetAsyncKeyState(VK_LEFT))
+		//m_Past_fX = m_tInfo.fX;
 		m_tInfo.fX -= m_fSpeed;
 	if (GetAsyncKeyState(VK_DOWN))
 	{

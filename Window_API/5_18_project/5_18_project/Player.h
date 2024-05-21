@@ -24,7 +24,9 @@ private:
 	//포신 끝 위치
 	POINT m_tBarrel;
 	bool				m_bJump;
+	bool				m_isFalling;
 	float				m_fPower;
 	float				m_fTime;
+	//float				m_Past_fX;
 };
 
