@@ -12,7 +12,7 @@ public:
 	void		Release();
 
 public:
-	bool		Collision_Line(float fX, float* pY);
+	bool		Collision_Line(float fX, float fY, float* pY);
 	void		Load_Line();
 
 public:

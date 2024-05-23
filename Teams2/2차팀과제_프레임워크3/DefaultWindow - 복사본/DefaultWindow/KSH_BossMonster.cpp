@@ -2,7 +2,9 @@
 #include "KSH_BossMonster.h"
 #include "ScrollMgr.h"
 #include "BmpMgr.h"
-
+#include "ObjMgr.h"
+#include "AbstractFactory.h"
+#include "KSH_MonsterBullet.h"
 CKSH_BossMonster::CKSH_BossMonster()
 {
 }
@@ -40,7 +42,7 @@ int CKSH_BossMonster::Update()
     if (m_bDead)
         return OBJ_DEAD;
     //패턴상태때 다른패턴공격방지도들어가야함
-    if (GetTickCount() - m_fSaveTime > m_fCoolTime  && boss_state==IDLE)
+    if ((GetTickCount() - m_fSaveTime > m_fCoolTime ) && boss_state==IDLE)
     {
         //내상태를 패턴상태로 전환하는함수
         Change_State();
@@ -81,7 +83,8 @@ void CKSH_BossMonster::Change_State()
     //enum PATTERN { ONEPATTERN, TWOPATTERN, BOSS_PATTERN_END };
     boss_state = ATTACK;
 
-    int irandomnumber = rand() % 2;
+    //int irandomnumber = rand() % 2;
+    int irandomnumber = 0;
     switch (irandomnumber)
     {
     case ONEPATTERN:
@@ -98,6 +101,11 @@ void CKSH_BossMonster::Change_State()
 
 void CKSH_BossMonster::Pattern1()
 {
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX,m_tInfo.fY,DIR_UP));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_DOWN));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_LEFT));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RIGHT));
+
 
     boss_state = IDLE;
 }

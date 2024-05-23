@@ -184,6 +184,7 @@
     <ClInclude Include="KSHPlayer.h" />
     <ClInclude Include="KSH_BossMonster.h" />
     <ClInclude Include="KSH_LineMgr.h" />
+    <ClInclude Include="KSH_MonsterBullet.h" />
     <ClInclude Include="KSH_Scene.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineBuilder.h" />
@@ -266,6 +267,7 @@
     <ClCompile Include="KSHPlayer.cpp" />
     <ClCompile Include="KSH_BossMonster.cpp" />
     <ClCompile Include="KSH_LineMgr.cpp" />
+    <ClCompile Include="KSH_MonsterBullet.cpp" />
     <ClCompile Include="KSH_Scene.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineBuilder.cpp" />

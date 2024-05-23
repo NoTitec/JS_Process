@@ -26,32 +26,44 @@ void CKSH_LineMgr::Release()
 	m_LineList.clear();
 }
 
-bool CKSH_LineMgr::Collision_Line(float fX, float* pY)
+bool CKSH_LineMgr::Collision_Line(float fX, float fY, float* pY)
 {
 	if (m_LineList.empty())
 		return false;
 
 	CLine* pTarget = nullptr;
-
+	float f_closestY = FLT_MAX;
 	for (auto& pLine : m_LineList)
 	{
+		//플레이어 x 좌표가 선 x좌표 사이인경우
 		if (fX >= pLine->Get_Info().tLeft.fX &&
 			fX <= pLine->Get_Info().tRight.fX)
 		{
-			pTarget = pLine;
+			//자기현재 y 보다 선 y가 더 아래에 있는선인경우
+			float x1t = pLine->Get_Info().tLeft.fX;
+			float y1t = pLine->Get_Info().tLeft.fY;
+			float x2t = pLine->Get_Info().tRight.fX;
+			float y2t = pLine->Get_Info().tRight.fY;
+			float tmpfY = ((y2t - y1t) / (x2t - x1t)) * (fX - x1t) + y1t;
+			//플레이어 x대응 선의 y가 플레이어y보다 크고 플레이어 x대응 선의 y가 선 거리보다 작은경우
+			//if (tmpfY >= fY&&tmpfY<=f_closestY)
+			if (tmpfY >= fY - 10.f && tmpfY <= f_closestY)
+			{
+				pTarget = pLine;
+				f_closestY = tmpfY;
+			}
+
 		}
 	}
-
 	if (!pTarget)
 		return false;
 
-	float		x1 = pTarget->Get_Info().tLeft.fX;
-	float		y1 = pTarget->Get_Info().tLeft.fY;
-	float		x2 = pTarget->Get_Info().tRight.fX;
-	float		y2 = pTarget->Get_Info().tRight.fY;
+	float x1 = pTarget->Get_Info().tLeft.fX;
+	float y1 = pTarget->Get_Info().tLeft.fY;
+	float x2 = pTarget->Get_Info().tRight.fX;
+	float y2 = pTarget->Get_Info().tRight.fY;
 
 	*pY = ((y2 - y1) / (x2 - x1)) * (fX - x1) + y1;
-
 	return true;
 }
 
