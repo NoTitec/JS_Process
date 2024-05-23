@@ -64,7 +64,8 @@ bool CLineMgr::Collision_Line(float fX, float fY,float* pY)
 			float y2t = pLine->Get_Info().RightPoint.fY;
 			float tmpfY = ((y2t - y1t) / (x2t - x1t)) * (fX - x1t) + y1t;
 			//플레이어 x대응 선의 y가 플레이어y보다 크고 플레이어 x대응 선의 y가 선 거리보다 작은경우
-			if (tmpfY >= fY&&tmpfY<=f_closestY)
+			//if (tmpfY >= fY&&tmpfY<=f_closestY)
+			if(tmpfY>=fY-10.f&& tmpfY <= f_closestY)
 			{
 				pTarget = pLine;
 				f_closestY = tmpfY;

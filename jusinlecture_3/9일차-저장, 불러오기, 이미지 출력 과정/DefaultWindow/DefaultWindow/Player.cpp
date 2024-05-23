@@ -52,11 +52,11 @@ void CPlayer::Render(HDC hDC)
 {
 	int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
 
-	// Rectangle(hDC,
-	// 	m_tRect.left + iScrollX,
-	// 	m_tRect.top, 
-	// 	m_tRect.right + iScrollX,
-	// 	m_tRect.bottom);
+	 Rectangle(hDC,
+	 	m_tRect.left + iScrollX,
+	 	m_tRect.top, 
+	 	m_tRect.right + iScrollX,
+	 	m_tRect.bottom);
 
 	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Img(L"Player");
 

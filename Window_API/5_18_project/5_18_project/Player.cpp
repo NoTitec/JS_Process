@@ -7,6 +7,8 @@
 #include "ObjMgr.h"
 #include "KeyMgr.h"
 #include "LineMgr.h"
+#include "ScrollMgr.h"
+#include "BmpMgr.h"
 
 CPlayer::CPlayer() : m_bJump(false), m_fTime(0.f), m_fPower(0.f),m_isFalling(false)//, m_Past_fX(0.f)
 {
@@ -26,6 +28,8 @@ void CPlayer::Initialize()
 	m_fDistance = 100.f;
 	m_fPower = 17.f;
 	//m_Past_fX = m_tInfo.fX;
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/maja2.bmp", L"Player");
+
 }
 
 int CPlayer::Update()
@@ -41,15 +45,30 @@ void CPlayer::Late_Update()
 	Jump();
 	m_tBarrel.x = LONG(m_tInfo.fX + m_fDistance * cos(m_fAngle/180.f*PI));
 	m_tBarrel.y = LONG(m_tInfo.fY - m_fDistance * sin(m_fAngle * (PI / 180.f)));
+	Offset();
 
 }
 
 void CPlayer::Render(HDC hDC)
 {
-	Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
+	int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+
+	//Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
 	// 포신 그리기
-	MoveToEx(hDC, (int)m_tInfo.fX, (int)m_tInfo.fY, NULL);
-	LineTo(hDC, m_tBarrel.x, m_tBarrel.y);
+	MoveToEx(hDC, (int)m_tInfo.fX+iScrollX, (int)m_tInfo.fY, NULL);
+	LineTo(hDC, m_tBarrel.x+iScrollX, m_tBarrel.y);
+
+	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Img(L"Player");
+	GdiTransparentBlt(hDC,
+		m_tRect.left + iScrollX,
+		m_tRect.top,
+		(int)m_tInfo.fCX,
+		(int)m_tInfo.fCY,
+		hMemDC,
+		0, 0,
+		(int)m_tInfo.fCX,
+		(int)m_tInfo.fCY,
+		RGB(255, 255, 255));
 }
 
 void CPlayer::Release()
@@ -89,7 +108,7 @@ void CPlayer::Jump()
 		{
 			m_isFalling = true;
 		}
-		if (bLineCol && (fY <= m_tInfo.fY))
+		if (bLineCol && (fY-30.f <= m_tInfo.fY))
 		{
 			m_isFalling = false;
 			m_fTime = 0.f;
@@ -102,6 +121,20 @@ void CPlayer::Jump()
 
 	}
 	
+}
+
+void CPlayer::Offset()
+{
+	int	iOffSetminX = 100;
+	int	iOffSetmaxX = 700;
+
+	int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+
+	if (iOffSetminX > m_tInfo.fX + iScrollX)
+		CScrollMgr::Get_Instance()->Set_ScrollX(m_fSpeed);
+
+	if (iOffSetmaxX < m_tInfo.fX + iScrollX)
+		CScrollMgr::Get_Instance()->Set_ScrollX(-m_fSpeed);
 }
 
 template<typename T>
@@ -121,18 +154,32 @@ CObj* CPlayer::Create_Shield(float _Angle)
 void CPlayer::Key_Input()
 {
 	// GetKeyState()
-
-	if (GetAsyncKeyState(VK_RIGHT))
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_SPACE))
+	{
+		//왼이나 오른쪽이 눌려있었던상태면 얘를 
+		//점프
+		m_bJump = true;
+	}
+	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_RIGHT))
 		//m_Past_fX = m_tInfo.fX;
 		m_tInfo.fX += m_fSpeed;
-	if (GetAsyncKeyState(VK_LEFT))
+	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_LEFT))
+	{
 		//m_Past_fX = m_tInfo.fX;
 		m_tInfo.fX -= m_fSpeed;
-	if (GetAsyncKeyState(VK_DOWN))
-	{
-		//m_tInfo.fX -= m_fSpeed * cos(m_fAngle * (PI / 180.f));
-		//m_tInfo.fY += m_fSpeed * sin(m_fAngle * (PI / 180.f));
+		/*float fY(0.f);
+		bool bLineCol = CLineMgr::Get_Instance()->Collision_Line(m_tInfo.fX, m_tInfo.fY, &fY);
+		if (fY - m_tInfo.fY > 50.f)
+		{
+			m_isFalling = true;
+		}*/
 	}
+
+	//if (GetAsyncKeyState(VK_DOWN))
+	//{
+	//	//m_tInfo.fX -= m_fSpeed * cos(m_fAngle * (PI / 180.f));
+	//	//m_tInfo.fY += m_fSpeed * sin(m_fAngle * (PI / 180.f));
+	//}
 
 	if (GetAsyncKeyState(VK_UP))
 	{
@@ -140,11 +187,9 @@ void CPlayer::Key_Input()
 		//m_tInfo.fY -= m_fSpeed * sin(m_fAngle * (PI / 180.f));
 	}
 		
-
-	if (CKeyMgr::Get_Instance()->Key_Down(VK_SPACE))
+	if (CKeyMgr::Get_Instance()->Key_Down(VK_DOWN))
 	{
-		//점프
-		m_bJump = true;
+		m_tInfo.fY += 10.1f; m_isFalling = true;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing('A'))
 	{

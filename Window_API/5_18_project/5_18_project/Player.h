@@ -17,6 +17,8 @@ public:
 private:
 	void		Key_Input();
 	void		Jump();
+	void		Offset();
+
 	template<typename T>
 	CObj*		Create_Bullet();
 	CObj* Create_Shield(float _Angle);

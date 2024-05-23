@@ -58,6 +58,15 @@
     <Filter Include="99.Design\LineMgr\Line">
       <UniqueIdentifier>{b8808539-d58c-427e-bd00-540771ace89b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="99.Design\ScrollMgr">
+      <UniqueIdentifier>{fd6ca2d8-8887-4323-8897-46927001c0c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design\BmpMgr">
+      <UniqueIdentifier>{e266716e-22e1-4545-9907-4ea00d108173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design\BmpMgr\MyBmp">
+      <UniqueIdentifier>{dfbe47a3-f669-45f2-a61a-c566e8a5ee19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -126,6 +135,15 @@
     <ClInclude Include="Line.h">
       <Filter>99.Design\LineMgr\Line</Filter>
     </ClInclude>
+    <ClInclude Include="ScrollMgr.h">
+      <Filter>99.Design\ScrollMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>99.Design\BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBmp.h">
+      <Filter>99.Design\BmpMgr\MyBmp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="5_18_project.cpp">
@@ -178,6 +196,15 @@
     </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>99.Design\LineMgr\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollMgr.cpp">
+      <Filter>99.Design\ScrollMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>99.Design\BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBmp.cpp">
+      <Filter>99.Design\BmpMgr\MyBmp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

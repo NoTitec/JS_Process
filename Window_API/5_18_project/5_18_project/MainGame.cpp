@@ -5,6 +5,9 @@
 #include "Mouse.h"
 #include "Box.h"
 #include "KeyMgr.h"
+#include "ScrollMgr.h"
+#include "BmpMgr.h"
+
 CMainGame::CMainGame() : m_dwTime(GetTickCount()), m_iFps(0)
 {
 	ZeroMemory(m_szFPS, sizeof(m_szFPS));
@@ -24,6 +27,9 @@ void CMainGame::Initialize()
 	CLineMgr::Get_Instance()->Initialize();
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
+
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
+	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Ground.bmp", L"Ground");
 
 	//m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
 	//플레이어의 m_pBullet 리스트에 maingame이 관리하는 m_ObjList[OBJ_PLAYER] 주소 set하기
@@ -68,11 +74,13 @@ void CMainGame::Render()
 
 	Rectangle(m_DC, 0, 0, WINCX, WINCY);
 	//Rectangle(m_DC, 100, 100, WINCX - 100, WINCY - 100);
+	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Img(L"Back");
+	HDC hGroundDC = CBmpMgr::Get_Instance()->Find_Img(L"Ground");
+	BitBlt(hMemDC, 0, 0, WINCX, WINCY, hGroundDC, 0, 0, SRCCOPY);
 
 	CLineMgr::Get_Instance()->Render(m_DC);
-
-	//랜더를 빼먹어서 그리기 동작이 수행안되고 있었음 ㅅㅂ
 	CObjMgr::Get_Instance()->Render(m_DC);
+	BitBlt(m_DC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
 
 	//// 폰트 출력
 
@@ -99,6 +107,8 @@ void CMainGame::Release()
 	CLineMgr::Destroy_Instance();
 	CKeyMgr::Destroy_Instance();
 	CObjMgr::Destroy_Instance();
+	CBmpMgr::Destroy_Instance();
+	CScrollMgr::Destroy_Instance();
 
 	ReleaseDC(g_hWnd, m_DC);
 }
