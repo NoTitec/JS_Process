@@ -27,13 +27,19 @@ void CKSH_Scene::Start()
 
 int CKSH_Scene::Update()
 {
-    return (int)KSH_SCENE;
 
     //씬종료조건시 다음씬 전환
     if (OBJ.Check_ID_Empty(OBJ_MONSTER))
     {
         SCENE.Change_Scene(KJW_SCENE);
+        return (int)KJW_SCENE;
     }
+
+
+    return (int)KSH_SCENE;
+
+    
+
 }
 
 void CKSH_Scene::Late_Update()

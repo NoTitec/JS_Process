@@ -83,8 +83,8 @@ void CKSH_BossMonster::Change_State()
     //enum PATTERN { ONEPATTERN, TWOPATTERN, BOSS_PATTERN_END };
     boss_state = ATTACK;
 
-    //int irandomnumber = rand() % 2;
-    int irandomnumber = 0;
+    int irandomnumber = rand() % 2;
+    
     switch (irandomnumber)
     {
     case ONEPATTERN:
@@ -112,6 +112,12 @@ void CKSH_BossMonster::Pattern1()
 
 void CKSH_BossMonster::Pattern2()
 {
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_UP));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_DOWN));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_LEFT));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RIGHT));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RU));
+    OBJ.Add_Object(OBJ_MONSTER_BULLET, CAbstractFactory<CKSH_MonsterBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_LU));
 
     boss_state = IDLE;
 }

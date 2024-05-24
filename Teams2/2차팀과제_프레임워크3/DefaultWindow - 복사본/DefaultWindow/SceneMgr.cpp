@@ -20,8 +20,8 @@ void CSceneMgr::Initialize()
 {
     //m_vecScene.push_back(new CHGH_Scene);
     //m_vecScene.push_back(new CKHR_Scene);
-    //m_vecScene.push_back(new CKJW_Scene);
     m_vecScene.push_back(new CKSH_Scene);
+    m_vecScene.push_back(new CKJW_Scene);
     //m_vecScene.push_back(new CPHJ_Scene);
 
     for (auto scene : m_vecScene)

@@ -131,11 +131,12 @@ void CObjMgr::RemoveObjects()
 
 void CObjMgr::On_Collision()
 {
-	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_PLAYER_BULLET], m_ObjList[OBJ_MONSTER]);
-	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_MONSTER_BULLET], m_ObjList[OBJ_PLAYER]);
-	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER_BULLET], m_ObjList[OBJ_MONSTER]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_MONSTER_BULLET], m_ObjList[OBJ_PLAYER]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
 
-	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_MONSTER]);
-	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_PLAYER]);
+	//CCollisionMgr::Collision_Rect
+	//CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_MONSTER]);
+	//CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_BULLET], m_ObjList[OBJ_PLAYER]);
 }
 

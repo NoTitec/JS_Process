@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "KSH_MonsterBullet.h"
 #include "KSH.h"
+#include "ScrollMgr.h"
+
 CKSH_MonsterBullet::CKSH_MonsterBullet()
 {
+	m_bDead = false;
 }
 
 CKSH_MonsterBullet::~CKSH_MonsterBullet()
@@ -39,6 +42,14 @@ int CKSH_MonsterBullet::Update()
 	case DIR_DOWN:
 		m_tInfo.fY += m_fSpeed;
 		break;
+	case DIR_RU:
+		m_tInfo.fY += m_fSpeed;
+		m_tInfo.fX += m_fSpeed;
+		break;
+	case DIR_LU:
+		m_tInfo.fY += m_fSpeed;
+		m_tInfo.fX -= m_fSpeed;
+		break;
 	default:
 		break;
 	
@@ -54,8 +65,8 @@ int CKSH_MonsterBullet::Update()
 
 void CKSH_MonsterBullet::Late_Update()
 {
-	if (MAPSIZEXMIN >= m_tRect.left || MAPSIZEXMAX <= m_tRect.right ||
-		0 >= m_tRect.top || WINCY <= m_tRect.bottom)
+	if (MAPSIZEXMIN >= m_tInfo.fX - (m_tInfo.fCX * 0.5f) || MAPSIZEXMAX <= m_tInfo.fX + (m_tInfo.fCX * 0.5f) ||
+		0 >= m_tInfo.fY - (m_tInfo.fCY * 0.5f) || WINCY <= m_tInfo.fY + (m_tInfo.fCY * 0.5f))
 	{
 		Set_Dead();
 	}
@@ -63,7 +74,10 @@ void CKSH_MonsterBullet::Late_Update()
 
 void CKSH_MonsterBullet::Render(HDC hDC)
 {
-	Ellipse(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
+	int iScrollX = SCROLL.Get_ScrollX();
+	int iScrollY = SCROLL.Get_ScrollY();
+
+	Ellipse(hDC, m_tRect.left + iScrollX, m_tRect.top + iScrollY, m_tRect.right + iScrollX, m_tRect.bottom + iScrollY);
 
 }
 
