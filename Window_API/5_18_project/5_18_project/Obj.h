@@ -31,8 +31,12 @@ public:
 	INFO		Get_Info() { return m_tInfo; }
 	RECT		Get_Rect() { return m_tRect; }
 	bool		Get_Dead() { return m_bDead; }
+	//스프라이트 이미지 키설정
+	void		Set_FrameKey(TCHAR* pFrameKey) { m_pFrameKey = pFrameKey; }
+
 protected:
 	void		Update_Rect();
+	void		Move_Frame();
 
 protected:
 	//사각형 window헤더 정의자료형$
@@ -46,5 +50,11 @@ protected:
 	bool		m_bDead;
 	//포신 길이나 총알의 회전 위한 길이 등등
 	float		m_fDistance;
+
+	//스프라이트위한변수
+	//기준 bmp 파일저장변수
+	TCHAR* m_pFrameKey;
+	FRAME		m_tFrame;
+
 };
 

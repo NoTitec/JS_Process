@@ -70,6 +70,7 @@ void CPlayer::Render(HDC hDC)
 	// 	SRCCOPY);					// 그대로 출력
 
 	GdiTransparentBlt(hDC,
+		//캐릭터 그려줄때 스크롤값보정들어가야 화면안벗어남
 						m_tRect.left + iScrollX, 
 						m_tRect.top, 
 						(int)m_tInfo.fCX, 
@@ -162,12 +163,18 @@ void CPlayer::Offset()
 	int	iOffSetminX = 100;
 	int	iOffSetmaxX = 700;
 
+	//지금 스크롤 값가져오기
 	int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
 
+	//오프셋최소기준 좌표보다 캐릭터 좌표+스크롤 현재값이 작으면
 	if (iOffSetminX > m_tInfo.fX + iScrollX)
 		CScrollMgr::Get_Instance()->Set_ScrollX(m_fSpeed);
-
+	//오프셋최고기준 좌표보다 캐릭터 좌표+스크롤 현재값이 크면
+	//ex 캐릭터 오른쪽 입력
+	//update 서 자기좌표 증가
+	//지금 오프셋값 가져와서 지금자기좌표랑 오프셋값가져왔는데 그게 기준 오프셋최대값보다크면
 	if (iOffSetmaxX < m_tInfo.fX + iScrollX)
+		//오프셋값을 줄임
 		CScrollMgr::Get_Instance()->Set_ScrollX(-m_fSpeed);
 
 

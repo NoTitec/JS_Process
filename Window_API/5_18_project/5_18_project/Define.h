@@ -50,6 +50,17 @@ typedef struct tagLine
 	tagLine() { ZeroMemory(this, sizeof(tagLine)); }
 	tagLine(LINEPOINT& _LeftPoint, LINEPOINT& _RightPoint) : LeftPoint(_LeftPoint), RightPoint(_RightPoint) {}
 }LINE;
+
+typedef struct tagFrame
+{
+	int		iFrameStart;		// 어디에서부터 시작(인덱스)
+	int		iFrameEnd;			// 어디까지(끝 인덱스)
+	int		iMotion;			// 어떤 모션
+	DWORD	dwSpeed;			// 스프라이트 속도
+	DWORD	dwTime;				// 스프라이트 전환 시간
+
+}FRAME;
+
 //열거체
 //==============
 enum DIRECTION
@@ -71,6 +82,7 @@ enum OBJ_ID
 	OBJ_MOUSE,
 	OBJ_SHIELD,
 	OBJ_BOX,
+	OBJ_UI,
 	OBJ_END
 };
 //==============

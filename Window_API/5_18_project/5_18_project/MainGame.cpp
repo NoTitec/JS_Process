@@ -1,4 +1,5 @@
 #include "MainGame.h"
+#include "SceneMgr.h"
 #include "ObjMgr.h"
 #include "LineMgr.h"
 #include "Monster.h"
@@ -24,12 +25,11 @@ void CMainGame::Initialize()
 
 	m_DC = GetDC(g_hWnd);
 
-	CLineMgr::Get_Instance()->Initialize();
-
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
-
+	CSceneMgr::Get_Instance()->Scene_Change(CSceneMgr::SC_LOGO);
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
-	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Ground.bmp", L"Ground");
+	//CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Ground.bmp", L"Ground");
+	//CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/maja2.bmp", L"Player");
+
 
 	//m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
 	//플레이어의 m_pBullet 리스트에 maingame이 관리하는 m_ObjList[OBJ_PLAYER] 주소 set하기
@@ -57,14 +57,15 @@ void CMainGame::Initialize()
 
 void CMainGame::Update()
 {
-	CObjMgr::Get_Instance()->Update();
+	CSceneMgr::Get_Instance()->Update();
 	
 }
 
 void CMainGame::LateUpdate()
 {
-	CObjMgr::Get_Instance()->Late_Update();
+	CSceneMgr::Get_Instance()->Late_Update();
 	CKeyMgr::Get_Instance()->Key_Update();
+	CScrollMgr::Get_Instance()->Scroll_Lock();
 
 }
 
@@ -72,14 +73,11 @@ void CMainGame::Render()
 {
 	++m_iFps;
 
-	Rectangle(m_DC, 0, 0, WINCX, WINCY);
+	//Rectangle(m_DC, 0, 0, WINCX, WINCY);
 	//Rectangle(m_DC, 100, 100, WINCX - 100, WINCY - 100);
 	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Img(L"Back");
-	HDC hGroundDC = CBmpMgr::Get_Instance()->Find_Img(L"Ground");
-	BitBlt(hMemDC, 0, 0, WINCX, WINCY, hGroundDC, 0, 0, SRCCOPY);
+	CSceneMgr::Get_Instance()->Render(hMemDC);
 
-	CLineMgr::Get_Instance()->Render(m_DC);
-	CObjMgr::Get_Instance()->Render(m_DC);
 	BitBlt(m_DC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
 
 	//// 폰트 출력
@@ -109,6 +107,7 @@ void CMainGame::Release()
 	CObjMgr::Destroy_Instance();
 	CBmpMgr::Destroy_Instance();
 	CScrollMgr::Destroy_Instance();
+	CSceneMgr::Destroy_Instance();
 
 	ReleaseDC(g_hWnd, m_DC);
 }

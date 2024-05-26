@@ -67,6 +67,30 @@
     <Filter Include="99.Design\BmpMgr\MyBmp">
       <UniqueIdentifier>{dfbe47a3-f669-45f2-a61a-c566e8a5ee19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Scene">
+      <UniqueIdentifier>{dd4fde6c-5c68-44d6-8b93-c6c7f9d24fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design\SceneMgr">
+      <UniqueIdentifier>{84bee5a7-83f9-4919-9f64-0bc7dd4c3358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Obj\UI">
+      <UniqueIdentifier>{de2901dd-1daf-4219-9f81-394a255bdf61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Obj\UI\Button">
+      <UniqueIdentifier>{19908865-d4f2-4042-a6df-1b0a1eac59ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Scene\Stage">
+      <UniqueIdentifier>{9e0d3e5c-6456-4767-814f-3eca242e254b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Scene\Logo">
+      <UniqueIdentifier>{91532aa2-1648-4f5d-8857-1f2ee2fafee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Scene\Menu">
+      <UniqueIdentifier>{6ac8f5cd-bfb4-46f6-8a8b-e4ce7b928559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Scene\Edit">
+      <UniqueIdentifier>{5175f34a-2166-492f-ac21-c140066bae91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -144,6 +168,24 @@
     <ClInclude Include="MyBmp.h">
       <Filter>99.Design\BmpMgr\MyBmp</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>03.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>03.Scene\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>99.Design\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>03.Scene\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>03.Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuButton.h">
+      <Filter>01.Obj\UI\Button</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="5_18_project.cpp">
@@ -205,6 +247,24 @@
     </ClCompile>
     <ClCompile Include="MyBmp.cpp">
       <Filter>99.Design\BmpMgr\MyBmp</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>03.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>03.Scene\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>99.Design\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>03.Scene\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>03.Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuButton.cpp">
+      <Filter>01.Obj\UI\Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
