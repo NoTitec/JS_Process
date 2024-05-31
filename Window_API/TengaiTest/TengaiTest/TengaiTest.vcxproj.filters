@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="00. MainGame">
+      <UniqueIdentifier>{d05c29b0-846d-44dd-9498-45dd4e92b83f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager">
+      <UniqueIdentifier>{02bedb44-8960-4c35-b5b9-6461f16cd88d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\00.AbstractFactory">
+      <UniqueIdentifier>{4ecca99a-8e50-42da-8868-debf27d90153}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\01.CollisionMgr">
+      <UniqueIdentifier>{891b6c31-9c34-4482-8bff-a4c2670d8922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\02.ObjMgr">
+      <UniqueIdentifier>{9f2bd609-62f5-4916-974f-8d3af7d3d183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\03.KeyMgr">
+      <UniqueIdentifier>{e7267f8c-662d-46d5-bc21-fb9abdd66a9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\04.ScrollMgr">
+      <UniqueIdentifier>{492f483c-6c04-4a75-8e00-54647d73fb71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\05.BmpMgr">
+      <UniqueIdentifier>{529c2dfb-6bba-4732-bd72-2c115198f431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\06. SceneMgr">
+      <UniqueIdentifier>{7a19c94f-43b9-4113-a343-beb1333a9c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\05.BmpMgr\MyBmp">
+      <UniqueIdentifier>{f62ceb20-7402-4db4-b164-e53d78c71224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Scene">
+      <UniqueIdentifier>{6b59d3c6-8485-4bc4-8e9d-ee0893e50528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Obj">
+      <UniqueIdentifier>{18e48471-20a3-4060-89f4-7dda1541f47f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. UI">
+      <UniqueIdentifier>{df82a430-7906-4aa6-ab0f-49ec7f05164e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Obj\00.Player">
+      <UniqueIdentifier>{021e75bd-3da1-44e8-aa6e-7876c741a7eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Scene\Logo">
+      <UniqueIdentifier>{8e1b3b0b-efa5-416e-b1ce-3825f74fdba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Scene\Stage">
+      <UniqueIdentifier>{aa45c047-c8d0-4c3e-8b28-e5f7e23d723f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Obj\01.Bullet">
+      <UniqueIdentifier>{9ca29f5a-a8cf-4f9a-9e82-a06027319f4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Obj\02. Monster">
+      <UniqueIdentifier>{3c58d6b2-a1d4-475c-85d3-606f770bfd78}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TengaiTest.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemDefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="enumDefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="structDefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBmp.h">
+      <Filter>01. Manager\05.BmpMgr\MyBmp</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>01. Manager\05.BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>02.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>01. Manager\06. SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>01. Manager\03.KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>03. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>01. Manager\02.ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>01. Manager\00.AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>03. Obj\00.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>02.Scene\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1.h">
+      <Filter>02.Scene\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="MikoBasicBullet.h">
+      <Filter>03. Obj\01.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollMgr.h">
+      <Filter>01. Manager\04.ScrollMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenBoss.h">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TengaiTest.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBmp.cpp">
+      <Filter>01. Manager\05.BmpMgr\MyBmp</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>01. Manager\05.BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>02.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>01. Manager\06. SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>01. Manager\03.KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>03. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>01. Manager\02.ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>03. Obj\00.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>02.Scene\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1.cpp">
+      <Filter>02.Scene\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="MikoBasicBullet.cpp">
+      <Filter>03. Obj\01.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollMgr.cpp">
+      <Filter>01. Manager\04.ScrollMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenBoss.cpp">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TengaiTest.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="TengaiTest.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
