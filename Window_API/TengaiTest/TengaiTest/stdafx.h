@@ -18,6 +18,9 @@
 #include <ctime>
 #include <map>
 
+#include <io.h>
+#include <iostream>
+
 #ifdef _DEBUG
 
 #define _CRTDBG_MAP_ALLOC

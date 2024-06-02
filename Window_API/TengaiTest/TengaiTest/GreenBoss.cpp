@@ -25,7 +25,7 @@ void CGreenBoss::Initialize()
     m_eCurState = IDLE;
     m_ePattern = BOSS_PATTERN_END;
     //비트이미지 가로
-    m_tFrame.iFrameStart = 0;
+    m_tFrame.iFrameStart = -1;
     //비트이미지 최대 개수
     m_tFrame.iFrameEnd = 3;
     //비트이미지 세로
@@ -78,6 +78,10 @@ void CGreenBoss::Render(HDC hDC)
 }
 
 void CGreenBoss::Release()
+{
+}
+
+void CGreenBoss::OnHit(CObj* _pObj)
 {
 }
 

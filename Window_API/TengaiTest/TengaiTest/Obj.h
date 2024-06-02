@@ -15,6 +15,7 @@ protected:
 	TCHAR* m_pFrameKey;
 	FRAME m_tFrame;
 	DIRECTION m_eDir;
+	RENDERID	m_eRender;
 	float m_fSpeed;
 	float m_fAngle;
 	//포신같은 자기위치서 떨어진 물체거리위한 변수
@@ -40,7 +41,8 @@ public:
 	INFO		Get_Info() { return m_tInfo; }
 	RECT		Get_Rect() { return m_tRect; }
 	bool		Get_Dead() { return m_bDead; }
-
+	bool		Get_HeadUIShow() { return m_HeadUIShow; }
+	void		Set_HeadUIShow(bool show) { m_HeadUIShow = show; }
 protected:
 	void		Update_Rect();
 	void		Move_Frame();
@@ -51,5 +53,13 @@ public:
 	virtual void	Late_Update()PURE;
 	virtual void	Render(HDC hDC)PURE;
 	virtual void	Release()PURE;
+public:
+	//충돌을 위해서 추가한 것들
+	virtual void	OnHit(CObj* _pObj)PURE;
+	OBJ_ID      m_eID;
+	void      Set_ID(OBJ_ID _eID) { m_eID = _eID; }
+	OBJ_ID      Get_ID() { return m_eID; }
+
+	bool				m_HeadUIShow;
 };
 

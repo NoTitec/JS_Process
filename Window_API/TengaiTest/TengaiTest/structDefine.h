@@ -20,15 +20,15 @@ typedef	struct tagLinePoint
 
 }LINEPOINT;
 
-typedef	struct tagLine
-{
-	tagLinePoint		tLeft;
-	tagLinePoint		tRight;
-
-	tagLine() { ZeroMemory(this, sizeof(tagLine)); }
-	tagLine(tagLinePoint& _tLeft, tagLinePoint& _tRight) : tLeft(_tLeft), tRight(_tRight) {}
-
-}LINE;
+//typedef	struct tagLine
+//{
+//	tagLinePoint		tLeft;
+//	tagLinePoint		tRight;
+//
+//	tagLine() { ZeroMemory(this, sizeof(tagLine)); }
+//	tagLine(tagLinePoint& _tLeft, tagLinePoint& _tRight) : tLeft(_tLeft), tRight(_tRight) {}
+//
+//}LINE;
 
 typedef struct tagFrame
 {

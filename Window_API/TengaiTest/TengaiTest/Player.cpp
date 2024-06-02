@@ -22,11 +22,14 @@ CPlayer::~CPlayer()
 
 void CPlayer::Initialize()
 {
+	m_eID = OBJ_PLAYER;
     m_tInfo = { 100.f, WINCY / 2.f, 32.f, 32.f };
+	m_tPetPoint.x = m_tInfo.fX - 16.f;
+	m_tPetPoint.y = m_tInfo.fY - 16.f;
     m_fSpeed = 8.f;
-	
+	m_dwDebugMassageTime = GetTickCount();
 	//비트이미지 가로
-	m_tFrame.iFrameStart = 0;
+	m_tFrame.iFrameStart = -1;
 	//비트이미지 최대 개수
 	m_tFrame.iFrameEnd = 2;
 	//비트이미지 세로
@@ -44,7 +47,8 @@ int CPlayer::Update()
 	Key_Input();
 	Create_Basic_Bullet();
 	__super::Update_Rect();
-
+	m_tPetPoint.x = m_tInfo.fX - 16.f;
+	m_tPetPoint.y = m_tInfo.fY - 16.f;
 	return OBJ_NOEVENT;
 }
 
@@ -53,6 +57,18 @@ void CPlayer::Late_Update()
 	Motion_Change();
 	Offset();
 	__super::Move_Frame();
+#ifdef _DEBUG
+
+	if (m_dwDebugMassageTime + 1000 < GetTickCount())
+	{
+		cout << "플레이어 좌표 : " << m_tInfo.fX << "\t" << m_tInfo.fY << endl;
+		cout << "플레이어 파워 : " << m_iPower << endl;
+		m_dwDebugMassageTime = GetTickCount();
+	}
+
+
+
+#endif // _DEBUG
 }
 
 void CPlayer::Render(HDC hDC)
@@ -77,6 +93,18 @@ void CPlayer::Render(HDC hDC)
 
 void CPlayer::Release()
 {
+}
+
+void CPlayer::OnHit(CObj* _pObj)
+{
+	OBJ_ID pObj_ID = _pObj->Get_ID();
+	switch (pObj_ID)
+	{
+	case OBJ_ITEM:
+		++m_iPower;
+		m_HeadUIShow = true;
+		break;
+	}
 }
 
 void CPlayer::Key_Input()

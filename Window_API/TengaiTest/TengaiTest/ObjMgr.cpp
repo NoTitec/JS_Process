@@ -1,4 +1,5 @@
 #include "ObjMgr.h"
+#include "CollisionMgr.h"
 #include "stdafx.h"
 #include "EventDefine.h"
 CObjMgr* CObjMgr::m_pInstance = nullptr;
@@ -92,11 +93,22 @@ void CObjMgr::Late_Update()
 				break;
 		}
 	}
-
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER],m_ObjList[OBJ_ITEM]);
 }
 
 void CObjMgr::Render(HDC hDC)
 {
+	/*for (size_t i = 0; i < RENDER_END; ++i)
+	{
+		m_RenderList[i].sort([](CObj* Dst, CObj* Src)->bool
+			{
+				return Dst->Get_Info().fY < Src->Get_Info().fY;
+			});
+		for (auto& pObj : m_RenderList[i])
+			pObj->Render(hDC);
+		m_RenderList[i].clear();
+	}*/
+
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
 		for (auto iter = m_ObjList[i].begin(); iter != m_ObjList[i].end(); ++iter)

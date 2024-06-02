@@ -15,6 +15,7 @@ public:
 	virtual void Late_Update() override;
 	virtual void Render(HDC hDC) override;
 	virtual void Release() override;
+	virtual void OnHit(CObj* _pObj) override;
 
 private:
 	void		Key_Input();
@@ -32,6 +33,7 @@ private:
 	float				m_fTime;
 	DWORD				m_dwBulletGenarateSpeed;
 	DWORD				m_dwBulletGenarateTime;
+	DWORD				m_dwDebugMassageTime;
 	STATE				m_ePreState;
 	STATE				m_eCurState;
 };

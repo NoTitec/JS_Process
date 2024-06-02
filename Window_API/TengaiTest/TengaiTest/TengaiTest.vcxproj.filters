@@ -67,6 +67,21 @@
     <Filter Include="03. Obj\02. Monster">
       <UniqueIdentifier>{3c58d6b2-a1d4-475c-85d3-606f770bfd78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Obj\03.Item">
+      <UniqueIdentifier>{32542409-3b11-4318-83b6-47768d2abc7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Manager\07.UIMgr">
+      <UniqueIdentifier>{1dc0d676-ff8c-4659-a8c6-ee2ebb593d4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. UI\00.StartButton">
+      <UniqueIdentifier>{64da765e-b476-4136-8e74-272bff5f39f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. UI\01.PlayerHeadUI">
+      <UniqueIdentifier>{ffcc8715-2d41-462b-8e24-1deb7323c700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Obj\04.Pet">
+      <UniqueIdentifier>{6b6904df-ffef-42ed-afb6-53f05c9a1d1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -141,6 +156,27 @@
     <ClInclude Include="GreenBoss.h">
       <Filter>03. Obj\02. Monster</Filter>
     </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>04. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerItem.h">
+      <Filter>03. Obj\03.Item</Filter>
+    </ClInclude>
+    <ClInclude Include="UIMgr.h">
+      <Filter>01. Manager\07.UIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="StartButton.h">
+      <Filter>04. UI\00.StartButton</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHeadUI.h">
+      <Filter>04. UI\01.PlayerHeadUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MikoPet.h">
+      <Filter>03. Obj\04.Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>01. Manager\01.CollisionMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -187,6 +223,27 @@
     </ClCompile>
     <ClCompile Include="GreenBoss.cpp">
       <Filter>03. Obj\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>04. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerItem.cpp">
+      <Filter>03. Obj\03.Item</Filter>
+    </ClCompile>
+    <ClCompile Include="UIMgr.cpp">
+      <Filter>01. Manager\07.UIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="StartButton.cpp">
+      <Filter>04. UI\00.StartButton</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHeadUI.cpp">
+      <Filter>04. UI\01.PlayerHeadUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MikoPet.cpp">
+      <Filter>03. Obj\04.Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>01. Manager\01.CollisionMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,10 @@ private:
 
 public:
 	CObj*		Get_Target(OBJ_ID eID, CObj* pObj);
+	CObj* Get_Player_Pointer()
+	{
+		return m_ObjList[OBJ_PLAYER].front();
+	}
 	void		Delete_ID(OBJ_ID eID);
 
 public:
@@ -39,6 +43,7 @@ public:
 
 private:
 	list<CObj*>		m_ObjList[OBJ_END];
+	//list<CObj*>		m_RenderList[RENDER_END];
 	static CObjMgr* m_pInstance;
 
 };

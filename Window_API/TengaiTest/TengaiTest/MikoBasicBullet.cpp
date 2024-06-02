@@ -18,7 +18,7 @@ void CMikoBasicBullet::Initialize()
     m_fSpeed = 12.f;
 
 	//비트이미지 가로
-	m_tFrame.iFrameStart = 0;
+	m_tFrame.iFrameStart = -1;
 	//비트이미지 최대 개수
 	m_tFrame.iFrameEnd = 9;
 	//비트이미지 세로
@@ -91,5 +91,9 @@ void CMikoBasicBullet::Render(HDC hDC)
 }
 
 void CMikoBasicBullet::Release()
+{
+}
+
+void CMikoBasicBullet::OnHit(CObj* _pObj)
 {
 }

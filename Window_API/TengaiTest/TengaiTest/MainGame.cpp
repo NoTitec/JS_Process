@@ -20,6 +20,19 @@ void CMainGame::Initialize()
 {
 	srand(unsigned(time(NULL)));
 
+#ifdef _DEBUG
+
+	if (::AllocConsole() == TRUE)
+	{
+		FILE* nfp[3];
+		freopen_s(nfp + 0, "CONOUT$", "rb", stdin);
+		freopen_s(nfp + 1, "CONOUT$", "wb", stdout);
+		freopen_s(nfp + 2, "CONOUT$", "wb", stderr);
+		std::ios::sync_with_stdio();
+	}
+
+#endif // _DEBUG
+
 	m_DC = GetDC(g_hWnd);
 	SceneMgr->Scene_Change(CSceneMgr::SC_LOGO);
 
@@ -30,6 +43,9 @@ void CMainGame::Initialize()
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBasicAttack.bmp",L"MikoBasicAttack");
 
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss/GreenBoss_Idle.bmp",L"GreenBoss_Idle");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Item/PowerItem.bmp",L"PowerItem");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/GameStartButton/StartButton.bmp", L"StartButton");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/PowerGetAndLose/PowerUp.bmp",L"PowerUp");
 #pragma endregion
 }
 
@@ -67,6 +83,11 @@ void CMainGame::Render()
 
 void CMainGame::Release()
 {
+#ifdef _DEBUG
+
+	FreeConsole();
+
+#endif // _DEBUG
 	CBmpMgr::Destroy_Instance();
 	CKeyMgr::Destroy_Instance();
 	CSceneMgr::Destroy_Instance();

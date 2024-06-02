@@ -17,6 +17,7 @@ public:
 	virtual void Late_Update() override;
 	virtual void Render(HDC hDC) override;
 	virtual void Release() override;
+	virtual void OnHit(CObj* _pObj) override;
 public:
 
 	void Change_State();
