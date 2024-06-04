@@ -82,6 +82,12 @@
     <Filter Include="03. Obj\04.Pet">
       <UniqueIdentifier>{6b6904df-ffef-42ed-afb6-53f05c9a1d1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. Obj\05.Bomb">
+      <UniqueIdentifier>{1e047590-d7fc-4e47-969f-177e86a19a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. UI\02.PlayerLife">
+      <UniqueIdentifier>{e2a7df8f-d5bd-4547-be95-9974b335d5d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -177,6 +183,15 @@
     <ClInclude Include="CollisionMgr.h">
       <Filter>01. Manager\01.CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="MikoBomb.h">
+      <Filter>03. Obj\05.Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerLife.h">
+      <Filter>04. UI\02.PlayerLife</Filter>
+    </ClInclude>
+    <ClInclude Include="MikoPetBasicBullet.h">
+      <Filter>03. Obj\01.Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -244,6 +259,15 @@
     </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>01. Manager\01.CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MikoBomb.cpp">
+      <Filter>03. Obj\05.Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerLife.cpp">
+      <Filter>04. UI\02.PlayerLife</Filter>
+    </ClCompile>
+    <ClCompile Include="MikoPetBasicBullet.cpp">
+      <Filter>03. Obj\01.Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

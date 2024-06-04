@@ -17,11 +17,14 @@ public:
 	virtual void Release() override;
 	virtual void OnHit(CObj* _pObj) override;
 
+	POINT Get_PetPoint() { return m_tPetPoint; }
+	int Get_Power() { return m_iPower; }
 private:
 	void		Key_Input();
 	void		Offset();
 	void		Motion_Change();
 	void		Create_Basic_Bullet();
+	void		Create_Bomb();
 public:
 	template<typename T>
 	CObj* Create_Bullet();
@@ -30,9 +33,14 @@ private:
 	POINT				m_tPetPoint;
 
 	int					m_iPower;
+
 	float				m_fTime;
 	DWORD				m_dwBulletGenarateSpeed;
 	DWORD				m_dwBulletGenarateTime;
+	DWORD				m_dwBombGenarateDelay;
+	DWORD				m_dwBombGenarateTime;
+	POINT				m_tBombGenaratePoint;
+	bool				m_bBombKeyOn;
 	DWORD				m_dwDebugMassageTime;
 	STATE				m_ePreState;
 	STATE				m_eCurState;

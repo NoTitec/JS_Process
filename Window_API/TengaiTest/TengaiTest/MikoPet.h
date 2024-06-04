@@ -35,6 +35,7 @@ private:
 	DWORD				m_dwBulletGenarateSpeed;
 	DWORD				m_dwBulletGenarateTime;
 	MIKOPETLEVEL		m_eLevel;
+	void		Create_Basic_Bullet();
 };
 
 template<typename T>

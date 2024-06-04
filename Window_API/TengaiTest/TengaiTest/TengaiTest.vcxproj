@@ -134,8 +134,11 @@
     <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="CollisionMgr.h" />
+    <ClInclude Include="MikoBomb.h" />
     <ClInclude Include="MikoPet.h" />
+    <ClInclude Include="MikoPetBasicBullet.h" />
     <ClInclude Include="PlayerHeadUI.h" />
+    <ClInclude Include="PlayerLife.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="enumDefine.h" />
@@ -166,8 +169,11 @@
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
+    <ClCompile Include="MikoBomb.cpp" />
     <ClCompile Include="MikoPet.cpp" />
+    <ClCompile Include="MikoPetBasicBullet.cpp" />
     <ClCompile Include="PlayerHeadUI.cpp" />
+    <ClCompile Include="PlayerLife.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="GreenBoss.cpp" />

@@ -19,7 +19,9 @@ public:
 	virtual void Release() override;
 	virtual void OnHit(CObj* _pObj) override;
 public:
-
+	void Set_State_Idle() {
+		m_fSpeed=4.f; m_eCurState = IDLE; m_tInfo.fCX = 82.f; m_tInfo.fCY = 72.f; m_pFrameKey = L"GreenBoss_Idle";
+	}
 	void Change_State();
 	void Pattern1();
 	void Pattern2();
@@ -33,15 +35,18 @@ private:
 	BOSSSTATE				m_ePreState;
 	BOSSSTATE				m_eCurState;
 	PATTERN					m_ePattern;
+	POINT					m_Pattern1StartPoint;
+	POINT					m_Pattern1EndPoint;
+	bool					m_bMoveForward;
+	void Move_Frame_once_and_Return_Idle_State();
 };
 
 template<typename T>
 inline CObj* CGreenBoss::Create_Bullet()
 {
-	int	iScrollX = (int)ScrollMgr->Get_ScrollX();
 	int iScrollY = (int)ScrollMgr->Get_ScrollY();
-	CObj* pBullet = CAbstractFactory<T>::Create(m_tInfo.fX + iScrollX, m_tInfo.fY+iScrollY);
-	//pBullet->Set_ID(OBJ_BOSSMONSTERBULLET);
+	CObj* pBullet = CAbstractFactory<T>::Create(m_tInfo.fX, m_tInfo.fY);
+	pBullet->Set_ID(OBJ_BOSSMONSTERBULLET);
 	return pBullet;
 }
 

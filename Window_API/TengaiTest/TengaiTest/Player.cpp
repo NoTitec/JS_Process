@@ -1,14 +1,16 @@
 #include "Player.h"
+#include "MikoPet.h"
 #include "EventDefine.h"
 #include "stdafx.h"
 #include "AbstractFactory.h"
 #include "MikoBasicBullet.h"
+#include "MikoBomb.h"
 #include "ObjMgr.h"
 #include "KeyMgr.h"
 #include "BmpMgr.h"
 #include "ScrollMgr.h"
 CPlayer::CPlayer(): m_fTime(0.f), m_iPower(0)
-, m_eCurState(FORWARDMOVE), m_ePreState(ST_END)
+, m_eCurState(FORWARDMOVE), m_ePreState(ST_END),m_bBombKeyOn(false)
 {
     ZeroMemory(&m_tPetPoint, sizeof(POINT));
 
@@ -23,6 +25,7 @@ CPlayer::~CPlayer()
 void CPlayer::Initialize()
 {
 	m_eID = OBJ_PLAYER;
+	m_LifeCount = 4;
     m_tInfo = { 100.f, WINCY / 2.f, 32.f, 32.f };
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
 	m_tPetPoint.y = m_tInfo.fY - 16.f;
@@ -38,6 +41,7 @@ void CPlayer::Initialize()
 	m_tFrame.dwSpeed = 100;
 	m_dwBulletGenarateTime = GetTickCount();
 	m_dwBulletGenarateSpeed = 150;
+	m_dwBombGenarateDelay = 1000;
 	m_pFrameKey = L"Miko_Fly_Forward";
 	m_eCurState = FORWARDMOVE;
 }
@@ -45,10 +49,11 @@ void CPlayer::Initialize()
 int CPlayer::Update()
 {
 	Key_Input();
-	Create_Basic_Bullet();
 	__super::Update_Rect();
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
 	m_tPetPoint.y = m_tInfo.fY - 16.f;
+	Create_Basic_Bullet();
+	Create_Bomb();
 	return OBJ_NOEVENT;
 }
 
@@ -63,6 +68,7 @@ void CPlayer::Late_Update()
 	{
 		cout << "플레이어 좌표 : " << m_tInfo.fX << "\t" << m_tInfo.fY << endl;
 		cout << "플레이어 파워 : " << m_iPower << endl;
+		cout << "플레이어 라이프 : " << m_LifeCount << endl;
 		m_dwDebugMassageTime = GetTickCount();
 	}
 
@@ -101,14 +107,30 @@ void CPlayer::OnHit(CObj* _pObj)
 	switch (pObj_ID)
 	{
 	case OBJ_ITEM:
+		if (m_iPower == 0)
+		{
+			ObjMgr->Add_Object(OBJ_PET, CAbstractFactory<CMikoPet>::Create(m_tInfo.fX - 16.f, m_tInfo.fY - 16.f,this));
+		}
 		++m_iPower;
 		m_HeadUIShow = true;
+		break;
+	case OBJ_BOSSMONSTER:
+		cout << "보스몬스터에게 피격" << endl;
 		break;
 	}
 }
 
 void CPlayer::Key_Input()
 {
+	//폭탄 생성
+	if (KeyMgr->Key_Down(VK_SPACE))
+	{
+		m_dwBombGenarateTime = GetTickCount();
+		m_bBombKeyOn = true;
+		m_tBombGenaratePoint.x = m_tInfo.fX;
+		m_tBombGenaratePoint.y = m_tInfo.fY;
+	}
+	////////////////////
 	if (KeyMgr->Key_Pressing(VK_UP))
 	{
 		int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
@@ -196,9 +218,21 @@ void CPlayer::Create_Basic_Bullet()
 {
 	if (m_dwBulletGenarateTime + m_dwBulletGenarateSpeed < GetTickCount())
 	{
-		int iScrollX = ScrollMgr->Get_ScrollX();
-		int iScrollY = ScrollMgr->Get_ScrollY();
-		ObjMgr->Add_Object(OBJ_PLAYERBULLET, CAbstractFactory<CMikoBasicBullet>::Create(m_tInfo.fX+iScrollX,m_tInfo.fY+iScrollY,DIR_RIGHT));
+		ObjMgr->Add_Object(OBJ_PLAYERBULLET, CAbstractFactory<CMikoBasicBullet>::Create(m_tInfo.fX,m_tInfo.fY,DIR_RIGHT));
 		m_dwBulletGenarateTime = GetTickCount();
 	}
 }
+
+void CPlayer::Create_Bomb()
+{
+	if (m_bBombKeyOn)
+	{
+		if (m_dwBombGenarateTime + m_dwBombGenarateDelay < GetTickCount())
+		{
+			ObjMgr->Add_Object(OBJ_PLAYERBOMB, CAbstractFactory<CMikoBomb>::Create(m_tBombGenaratePoint.x + 150.f, m_tBombGenaratePoint.y));
+			m_bBombKeyOn = false;
+		}
+
+	}
+}
+

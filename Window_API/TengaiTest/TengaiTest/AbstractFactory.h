@@ -32,7 +32,15 @@ public:
 		pObj->Initialize();
 		pObj->Set_Pos(fX, fY);
 		pObj->Set_Angle(Angle);
-		return CObj;
+		return pObj;
+	}
+	static CObj* Create(float fX, float fY, CObj* target)
+	{
+		CObj* pObj = new T;
+		pObj->Initialize();
+		pObj->Set_Pos(fX, fY);
+		pObj->Set_Target(target);
+		return pObj;
 	}
 	static CUI* Create_UI()
 	{

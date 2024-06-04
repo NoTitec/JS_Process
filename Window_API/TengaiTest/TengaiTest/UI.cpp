@@ -47,6 +47,7 @@ void CUI::Move_Frame_one_cycle()
 			{
 				m_bShow = false;
 				m_pOwnerObject->Set_HeadUIShow(false);
+				m_tFrame.iFrameStart = 0;
 			}
 				
 

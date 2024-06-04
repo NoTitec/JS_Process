@@ -36,3 +36,16 @@ void CObj::Move_Frame()
 	}
 
 }
+
+void CObj::Move_Frame_once_and_Destroy_self()
+{
+	if (m_tFrame.dwTime + m_tFrame.dwSpeed < GetTickCount())
+	{
+		++m_tFrame.iFrameStart;
+
+		if (m_tFrame.iFrameStart > m_tFrame.iFrameEnd)
+			Set_Dead();
+
+		m_tFrame.dwTime = GetTickCount();
+	}
+}

@@ -43,10 +43,11 @@ public:
 	bool		Get_Dead() { return m_bDead; }
 	bool		Get_HeadUIShow() { return m_HeadUIShow; }
 	void		Set_HeadUIShow(bool show) { m_HeadUIShow = show; }
+	int			Get_LifeCount() { return m_LifeCount; }
 protected:
 	void		Update_Rect();
 	void		Move_Frame();
-
+	void		Move_Frame_once_and_Destroy_self();
 public:
 	virtual void	Initialize()PURE;
 	virtual int		Update()PURE;
@@ -61,5 +62,7 @@ public:
 	OBJ_ID      Get_ID() { return m_eID; }
 
 	bool				m_HeadUIShow;
+	//라이프카운트
+	int m_LifeCount;
 };
 

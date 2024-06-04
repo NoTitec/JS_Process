@@ -4,6 +4,7 @@
 #include "ObjMgr.h"
 #include "UIMgr.h"
 #include "PlayerHeadUI.h"
+#include "PlayerLife.h"
 #include "BmpMgr.h"
 #include "ScrollMgr.h"
 #include "Player.h"
@@ -25,6 +26,9 @@ void CStage1::Initialize()
     CUI* pPlayerHeadUI = CAbstractFactory<CPlayerHeadUI>::Create_UI(ObjMgr->Get_Player_Pointer()->Get_Info().fX,ObjMgr->Get_Player_Pointer()->Get_Info().fY-32.f,ObjMgr->Get_Player_Pointer());
     pPlayerHeadUI->Set_FrameKey(L"PowerUp");
     UIMgr->Add_UI(UI_PLAYER_HEAD_MASSAGE, pPlayerHeadUI);
+    CUI* pPlayerLifeUI = CAbstractFactory<CPlayerLife>::Create_UI(100.f,30.f, ObjMgr->Get_Player_Pointer());
+    pPlayerLifeUI->Set_FrameKey(L"MikoLife");
+    UIMgr->Add_UI(UI_PLAYER_LIFE,pPlayerLifeUI);
     ObjMgr->Add_Object(OBJ_BOSSMONSTER,CAbstractFactory<CGreenBoss>::Create());
     ObjMgr->Add_Object(OBJ_ITEM,CAbstractFactory<CPowerItem>::Create());
     BmpMgr->Insert_Bmp(L"../ResourceImage/Map/forest.bmp", L"forest");

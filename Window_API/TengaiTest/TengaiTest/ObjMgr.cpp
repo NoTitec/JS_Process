@@ -6,6 +6,7 @@ CObjMgr* CObjMgr::m_pInstance = nullptr;
 
 CObjMgr::CObjMgr()
 {
+	dwSaveTime = GetTickCount();
 }
 
 CObjMgr::~CObjMgr()
@@ -94,6 +95,15 @@ void CObjMgr::Late_Update()
 		}
 	}
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER],m_ObjList[OBJ_ITEM]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBULLET], m_ObjList[OBJ_BOSSMONSTER]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PETBULLET], m_ObjList[OBJ_BOSSMONSTER]);
+	if (dwSaveTime+300<GetTickCount())
+	{
+		if(!m_ObjList[OBJ_PLAYERBOMB].empty())
+			CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBOMB], m_ObjList[OBJ_BOSSMONSTER]);
+		dwSaveTime = GetTickCount();
+	}
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOSSMONSTER]);
 }
 
 void CObjMgr::Render(HDC hDC)
