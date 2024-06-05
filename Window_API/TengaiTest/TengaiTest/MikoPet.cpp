@@ -6,6 +6,7 @@
 #include "ObjMgr.h"
 #include "AbstractFactory.h"
 #include "MikoPetBasicBullet.h"
+#include "MikoPetGuideBullet.h"
 CMikoPet::CMikoPet()
 {
 }
@@ -40,7 +41,14 @@ int CMikoPet::Update()
     m_tInfo.fX = dynamic_cast<CPlayer*>(m_pTarget)->Get_PetPoint().x;
     m_tInfo.fY = dynamic_cast<CPlayer*>(m_pTarget)->Get_PetPoint().y;
     __super::Update_Rect();
-    Create_Basic_Bullet();
+    if (m_eLevel == LEVEL_ONE)
+        Create_one_Bullet<CMikoPetBasicBullet>(DIR_RIGHT);
+    if (m_eLevel == LEVEL_TWO)
+    {
+        Create_three_Bullet<CMikoPetGuideBullet>();
+    }
+        
+    //Create_Basic_Bullet();
     return OBJ_NOEVENT;
 }
 
@@ -77,11 +85,31 @@ void CMikoPet::Release()
 {
 }
 
-void CMikoPet::Create_Basic_Bullet()
+template<typename T>
+inline void CMikoPet::Create_one_Bullet(DIRECTION e_Dir)
 {
     if (m_dwBulletGenarateTime + m_dwBulletGenarateSpeed < GetTickCount())
     {
-        ObjMgr->Add_Object(OBJ_PETBULLET, CAbstractFactory<CMikoPetBasicBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RIGHT));
+        ObjMgr->Add_Object(OBJ_PETBULLET, CAbstractFactory<T>::Create(m_tInfo.fX, m_tInfo.fY, e_Dir));
         m_dwBulletGenarateTime = GetTickCount();
     }
 }
+template<typename T>
+inline void CMikoPet::Create_three_Bullet()
+{
+    if (m_dwBulletGenarateTime + m_dwBulletGenarateSpeed < GetTickCount())
+    {
+        ObjMgr->Add_Object(OBJ_PETBULLET, CAbstractFactory<T>::Create(m_tInfo.fX + 16.f, m_tInfo.fY,DIR_RIGHT));
+        ObjMgr->Add_Object(OBJ_PETBULLET, CAbstractFactory<T>::Create(m_tInfo.fX + 16.f, m_tInfo.fY-20.f,DIR_RD));
+        ObjMgr->Add_Object(OBJ_PETBULLET, CAbstractFactory<T>::Create(m_tInfo.fX + 16.f, m_tInfo.fY+20.f,DIR_RU));
+        m_dwBulletGenarateTime = GetTickCount();
+    }
+}
+//void CMikoPet::Create_Basic_Bullet()
+//{
+//    if (m_dwBulletGenarateTime + m_dwBulletGenarateSpeed < GetTickCount())
+//    {
+//        ObjMgr->Add_Object(OBJ_PETBULLET, CAbstractFactory<CMikoPetBasicBullet>::Create(m_tInfo.fX, m_tInfo.fY, DIR_RIGHT));
+//        m_dwBulletGenarateTime = GetTickCount();
+//    }
+//}

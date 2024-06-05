@@ -38,7 +38,7 @@ void CPlayerLife::Render(HDC hDC)
 	GdiTransparentBlt(hDC,
 		m_tInfo.fX,
 		m_tInfo.fY,
-		(int)m_tInfo.fCX*5,
+		(int)m_tInfo.fCX* m_iPlayerLifeCount,
 		(int)m_tInfo.fCY,
 		hMemDC,
 		0,

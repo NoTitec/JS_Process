@@ -2,6 +2,7 @@
 #include "EventDefine.h"
 #include "BmpMgr.h"
 #include "ScrollMgr.h"
+#include "SoundMgr.h"
 CMikoBasicBullet::CMikoBasicBullet()
 {
 }

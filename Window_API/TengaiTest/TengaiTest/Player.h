@@ -19,12 +19,14 @@ public:
 
 	POINT Get_PetPoint() { return m_tPetPoint; }
 	int Get_Power() { return m_iPower; }
+	int Get_BombCount() { return m_iBombCount; }
 private:
 	void		Key_Input();
 	void		Offset();
 	void		Motion_Change();
 	void		Create_Basic_Bullet();
 	void		Create_Bomb();
+	void		Bullet_Sound_Control();
 public:
 	template<typename T>
 	CObj* Create_Bullet();
@@ -33,10 +35,14 @@ private:
 	POINT				m_tPetPoint;
 
 	int					m_iPower;
-
+	int					m_iBombCount;
 	float				m_fTime;
 	DWORD				m_dwBulletGenarateSpeed;
 	DWORD				m_dwBulletGenarateTime;
+	DWORD				m_dwBulletSoundSpeed;
+	DWORD				m_dwBulletSoundTime;
+	DWORD				m_dwBulletSoundSpeed2;
+	DWORD				m_dwBulletSoundTime2;
 	DWORD				m_dwBombGenarateDelay;
 	DWORD				m_dwBombGenarateTime;
 	POINT				m_tBombGenaratePoint;

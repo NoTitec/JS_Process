@@ -5,10 +5,13 @@
 #include "UIMgr.h"
 #include "PlayerHeadUI.h"
 #include "PlayerLife.h"
+#include "PlayerBombCount.h"
 #include "BmpMgr.h"
 #include "ScrollMgr.h"
+#include "SoundMgr.h"
 #include "Player.h"
 #include "PowerItem.h"
+#include "BombItem.h"
 #include "GreenBoss.h"
 CStage1::CStage1(): m_iScrollXSpeed(3),m_iScrollX(0)
 {
@@ -22,6 +25,7 @@ CStage1::~CStage1()
 
 void CStage1::Initialize()
 {
+    SoundMgr->PlayBGM(L"03_Sky_dance.ogg",0.2f);
     ObjMgr->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
     CUI* pPlayerHeadUI = CAbstractFactory<CPlayerHeadUI>::Create_UI(ObjMgr->Get_Player_Pointer()->Get_Info().fX,ObjMgr->Get_Player_Pointer()->Get_Info().fY-32.f,ObjMgr->Get_Player_Pointer());
     pPlayerHeadUI->Set_FrameKey(L"PowerUp");
@@ -29,8 +33,13 @@ void CStage1::Initialize()
     CUI* pPlayerLifeUI = CAbstractFactory<CPlayerLife>::Create_UI(100.f,30.f, ObjMgr->Get_Player_Pointer());
     pPlayerLifeUI->Set_FrameKey(L"MikoLife");
     UIMgr->Add_UI(UI_PLAYER_LIFE,pPlayerLifeUI);
+    CUI* pPlayerBombUI = CAbstractFactory<CPlayerBombCount>::Create_UI(100.f,60.f, ObjMgr->Get_Player_Pointer());
+    pPlayerBombUI->Set_FrameKey(L"BombCount");
+    UIMgr->Add_UI(UI_PLAYER_BOMB, pPlayerBombUI);
     ObjMgr->Add_Object(OBJ_BOSSMONSTER,CAbstractFactory<CGreenBoss>::Create());
     ObjMgr->Add_Object(OBJ_ITEM,CAbstractFactory<CPowerItem>::Create());
+    ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create());
+
     BmpMgr->Insert_Bmp(L"../ResourceImage/Map/forest.bmp", L"forest");
 }
 

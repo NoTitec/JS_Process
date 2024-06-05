@@ -2,6 +2,9 @@
 #include "EventDefine.h"
 #include "BmpMgr.h"
 #include "ObjMgr.h"
+#include "AbstractFactory.h"
+#include "PowerItem.h"
+#include "BombItem.h"
 CGreenBoss::CGreenBoss()
 {
 }
@@ -126,6 +129,9 @@ void CGreenBoss::Render(HDC hDC)
 
 void CGreenBoss::Release()
 {
+    ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
+    ObjMgr->Add_Object(OBJ_BOMB_ITEM, CAbstractFactory<CBombItem>::Create(m_tInfo.fX, m_tInfo.fY));
+
 }
 
 void CGreenBoss::OnHit(CObj* _pObj)
@@ -135,6 +141,7 @@ void CGreenBoss::OnHit(CObj* _pObj)
     {
     case OBJ_PLAYERBOMB:
         cout << "bombattacked"<<endl;
+        Set_Dead();
         break;
     }
 }

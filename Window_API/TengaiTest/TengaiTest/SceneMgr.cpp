@@ -1,5 +1,6 @@
 #include "SceneMgr.h"
 #include "stdafx.h"
+#include "SoundMgr.h"
 #include "Logo.h"
 #include "Stage1.h"
 CSceneMgr* CSceneMgr::m_pInstance = nullptr;
@@ -21,7 +22,6 @@ void CSceneMgr::Scene_Change(SCENEID eScene)
 	if (m_ePreScene != m_eCurScene)
 	{
 		Safe_Delete(m_pScene);
-
 		switch (m_eCurScene)
 		{
 		case SC_LOGO:

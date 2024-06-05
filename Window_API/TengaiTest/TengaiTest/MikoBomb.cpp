@@ -2,6 +2,7 @@
 #include "BmpMgr.h"
 #include "ScrollMgr.h"
 #include "EventDefine.h"
+#include "SoundMgr.h"
 CMikoBomb::CMikoBomb()
 {
 }
@@ -13,6 +14,8 @@ CMikoBomb::~CMikoBomb()
 
 void CMikoBomb::Initialize()
 {
+    SoundMgr->StopSound(SOUND_PLAYER_BOMB);
+    SoundMgr->PlaySoundW(L"koyorialt2.wav", SOUND_PLAYER_BOMB, 0.5f);
     m_eID = OBJ_PLAYERBOMB;
     m_tInfo.fCX = 160.f;
     m_tInfo.fCY = 160.f;

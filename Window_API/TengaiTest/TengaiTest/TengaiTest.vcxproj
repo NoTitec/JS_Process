@@ -133,10 +133,13 @@
   <ItemGroup>
     <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="BmpMgr.h" />
+    <ClInclude Include="BombItem.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="MikoBomb.h" />
     <ClInclude Include="MikoPet.h" />
     <ClInclude Include="MikoPetBasicBullet.h" />
+    <ClInclude Include="MikoPetGuideBullet.h" />
+    <ClInclude Include="PlayerBombCount.h" />
     <ClInclude Include="PlayerHeadUI.h" />
     <ClInclude Include="PlayerLife.h" />
     <ClInclude Include="SoundMgr.h" />
@@ -169,10 +172,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpMgr.cpp" />
+    <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="MikoBomb.cpp" />
     <ClCompile Include="MikoPet.cpp" />
     <ClCompile Include="MikoPetBasicBullet.cpp" />
+    <ClCompile Include="MikoPetGuideBullet.cpp" />
+    <ClCompile Include="PlayerBombCount.cpp" />
     <ClCompile Include="PlayerHeadUI.cpp" />
     <ClCompile Include="PlayerLife.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
@@ -201,6 +207,13 @@
   <ItemGroup>
     <Image Include="small.ico" />
     <Image Include="TengaiTest.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fmodex.dll" />
+    <None Include="fmodexL.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="fmodex_vc.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

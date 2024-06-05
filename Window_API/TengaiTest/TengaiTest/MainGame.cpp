@@ -4,6 +4,7 @@
 #include "SceneMgr.h"
 #include "KeyMgr.h"
 #include "ScrollMgr.h"
+#include "SoundMgr.h"
 CMainGame::CMainGame() :m_dwTime(GetTickCount()), m_iFps(0)
 {
 	ZeroMemory(m_szFPS, sizeof(m_szFPS));
@@ -19,7 +20,7 @@ CMainGame::~CMainGame()
 void CMainGame::Initialize()
 {
 	srand(unsigned(time(NULL)));
-
+	CSoundMgr::Get_Instance()->Initialize();
 #ifdef _DEBUG
 
 	if (::AllocConsole() == TRUE)
@@ -45,11 +46,14 @@ void CMainGame::Initialize()
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss/GreenBoss_Idle.bmp",L"GreenBoss_Idle");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BossAttack/Boss_Attack_Pattern1.bmp", L"Boss_Attack_Pattern1");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Item/PowerItem.bmp",L"PowerItem");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/BombItem/BombItem.bmp", L"BombItem");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/GameStartButton/StartButton.bmp", L"StartButton");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/PowerGetAndLose/PowerUp.bmp",L"PowerUp");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Pet/MikoPet.bmp", L"MikoPet");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PetAttack/PetLevel_oneAttack.bmp", L"PetLevel_oneAttack");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/PetAttack/PetLevel_twoAttack.bmp", L"PetLevel_twoAttack");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/PlayerLife/MikoLife.bmp", L"MikoLife");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/BombCount/BombCount.bmp", L"BombCount");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBomb/BigCircle_kangi/BigCircleKangiNoBolt.bmp", L"BigCircleKangiNoBolt");
 #pragma endregion
 }

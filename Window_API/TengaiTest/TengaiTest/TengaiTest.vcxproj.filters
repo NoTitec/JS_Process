@@ -91,6 +91,9 @@
     <Filter Include="01. Manager\08.SoundMgr">
       <UniqueIdentifier>{4ad236cf-353e-47a5-b65c-d40eb8e2856d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. UI\03.PlayerBombUI">
+      <UniqueIdentifier>{eed6eb6b-dffe-45d6-8768-0bd4a1d364cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -198,6 +201,15 @@
     <ClInclude Include="SoundMgr.h">
       <Filter>01. Manager\08.SoundMgr</Filter>
     </ClInclude>
+    <ClInclude Include="MikoPetGuideBullet.h">
+      <Filter>03. Obj\01.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BombItem.h">
+      <Filter>03. Obj\03.Item</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBombCount.h">
+      <Filter>04. UI\03.PlayerBombUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -278,6 +290,15 @@
     <ClCompile Include="SoundMgr.cpp">
       <Filter>01. Manager\08.SoundMgr</Filter>
     </ClCompile>
+    <ClCompile Include="MikoPetGuideBullet.cpp">
+      <Filter>03. Obj\01.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BombItem.cpp">
+      <Filter>03. Obj\03.Item</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBombCount.cpp">
+      <Filter>04. UI\03.PlayerBombUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TengaiTest.rc">
@@ -291,5 +312,12 @@
     <Image Include="TengaiTest.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fmodex.dll" />
+    <None Include="fmodexL.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="fmodex_vc.lib" />
   </ItemGroup>
 </Project>

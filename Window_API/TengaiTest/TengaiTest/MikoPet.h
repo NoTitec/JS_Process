@@ -29,17 +29,12 @@ public:
 	}
 public:
 	template<typename T>
-	CObj* Create_Bullet();
-
+	void Create_one_Bullet(DIRECTION e_Dir);
+	template<typename T>
+	void Create_three_Bullet();
 private:
 	DWORD				m_dwBulletGenarateSpeed;
 	DWORD				m_dwBulletGenarateTime;
 	MIKOPETLEVEL		m_eLevel;
-	void		Create_Basic_Bullet();
+	//void		Create_Basic_Bullet();
 };
-
-template<typename T>
-inline CObj* CMikoPet::Create_Bullet()
-{
-	return nullptr;
-}

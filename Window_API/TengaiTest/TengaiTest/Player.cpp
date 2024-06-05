@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "MikoPet.h"
 #include "EventDefine.h"
+#include "enumDefine.h"
 #include "stdafx.h"
 #include "AbstractFactory.h"
 #include "MikoBasicBullet.h"
@@ -9,8 +10,8 @@
 #include "KeyMgr.h"
 #include "BmpMgr.h"
 #include "ScrollMgr.h"
-CPlayer::CPlayer(): m_fTime(0.f), m_iPower(0)
-, m_eCurState(FORWARDMOVE), m_ePreState(ST_END),m_bBombKeyOn(false)
+#include "SoundMgr.h"
+CPlayer::CPlayer() : m_fTime(0.f), m_iPower(0), m_eCurState(FORWARDMOVE), m_ePreState(ST_END),m_bBombKeyOn(false)
 {
     ZeroMemory(&m_tPetPoint, sizeof(POINT));
 
@@ -25,7 +26,8 @@ CPlayer::~CPlayer()
 void CPlayer::Initialize()
 {
 	m_eID = OBJ_PLAYER;
-	m_LifeCount = 3;
+	m_LifeCount = 2;
+	m_iBombCount = 4;
     m_tInfo = { 100.f, WINCY / 2.f, 32.f, 32.f };
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
 	m_tPetPoint.y = m_tInfo.fY - 16.f;
@@ -41,6 +43,10 @@ void CPlayer::Initialize()
 	m_tFrame.dwSpeed = 100;
 	m_dwBulletGenarateTime = GetTickCount();
 	m_dwBulletGenarateSpeed = 150;
+	m_dwBulletSoundTime = GetTickCount();
+	m_dwBulletSoundSpeed = 300;
+	m_dwBulletSoundTime2 = GetTickCount()+150;
+	m_dwBulletSoundSpeed2 = 300;
 	m_dwBombGenarateDelay = 1000;
 	m_pFrameKey = L"Miko_Fly_Forward";
 	m_eCurState = FORWARDMOVE;
@@ -53,6 +59,7 @@ int CPlayer::Update()
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
 	m_tPetPoint.y = m_tInfo.fY - 16.f;
 	Create_Basic_Bullet();
+	Bullet_Sound_Control();
 	Create_Bomb();
 	return OBJ_NOEVENT;
 }
@@ -107,12 +114,31 @@ void CPlayer::OnHit(CObj* _pObj)
 	switch (pObj_ID)
 	{
 	case OBJ_ITEM:
+		SoundMgr->PlaySound(L"tengai-161 miko power up voice.wav", SOUND_GET_ITEM,0.5f);
 		if (m_iPower == 0)
 		{
 			ObjMgr->Add_Object(OBJ_PET, CAbstractFactory<CMikoPet>::Create(m_tInfo.fX - 16.f, m_tInfo.fY - 16.f,this));
+			CObj* petpoint = ObjMgr->Get_Pet_Pointer();
+			dynamic_cast<CMikoPet*>(petpoint)->Set_Level(CMikoPet::LEVEL_ONE);
+			++m_iPower;
+			m_HeadUIShow = true;
 		}
-		++m_iPower;
-		m_HeadUIShow = true;
+		else if (m_iPower == 1)
+		{
+			SoundMgr->StopSound(SOUND_GET_ITEM);
+			SoundMgr->PlaySound(L"tengai-161 miko power up voice.wav", SOUND_GET_ITEM, 0.5f);
+
+			CObj* petpoint = ObjMgr->Get_Pet_Pointer();
+			dynamic_cast<CMikoPet*>(petpoint)->Set_Level(CMikoPet::LEVEL_TWO);
+			++m_iPower;
+			m_HeadUIShow = true;
+		}
+		break;
+	case OBJ_BOMB_ITEM:
+		if (m_iBombCount < 5)
+		{
+			++m_iBombCount;
+		}
 		break;
 	case OBJ_BOSSMONSTER:
 		cout << "보스몬스터에게 피격" << endl;
@@ -125,10 +151,16 @@ void CPlayer::Key_Input()
 	//폭탄 생성
 	if (KeyMgr->Key_Down(VK_SPACE))
 	{
-		m_dwBombGenarateTime = GetTickCount();
-		m_bBombKeyOn = true;
-		m_tBombGenaratePoint.x = m_tInfo.fX;
-		m_tBombGenaratePoint.y = m_tInfo.fY;
+		if (ObjMgr->Check_ID_Empty(OBJ_PLAYERBOMB)&&(m_iBombCount>0))
+		{
+			--m_iBombCount;
+			SoundMgr->StopSound(SOUND_PLAYER_BOMB);
+			SoundMgr->PlaySoundW(L"principi ulti koyori.wav", SOUND_PLAYER_BOMB, 0.5f);
+			m_dwBombGenarateTime = GetTickCount();
+			m_bBombKeyOn = true;
+			m_tBombGenaratePoint.x = m_tInfo.fX;
+			m_tBombGenaratePoint.y = m_tInfo.fY;
+		}
 	}
 	////////////////////
 	if (KeyMgr->Key_Pressing(VK_UP))
@@ -218,6 +250,7 @@ void CPlayer::Create_Basic_Bullet()
 {
 	if (m_dwBulletGenarateTime + m_dwBulletGenarateSpeed < GetTickCount())
 	{
+		
 		ObjMgr->Add_Object(OBJ_PLAYERBULLET, CAbstractFactory<CMikoBasicBullet>::Create(m_tInfo.fX,m_tInfo.fY,DIR_RIGHT));
 		m_dwBulletGenarateTime = GetTickCount();
 	}
@@ -229,10 +262,26 @@ void CPlayer::Create_Bomb()
 	{
 		if (m_dwBombGenarateTime + m_dwBombGenarateDelay < GetTickCount())
 		{
-			ObjMgr->Add_Object(OBJ_PLAYERBOMB, CAbstractFactory<CMikoBomb>::Create(m_tBombGenaratePoint.x + 150.f, m_tBombGenaratePoint.y));
+			ObjMgr->Add_Object(OBJ_PLAYERBOMB, CAbstractFactory<CMikoBomb>::Create(m_tBombGenaratePoint.x + 180.f, m_tBombGenaratePoint.y));
 			m_bBombKeyOn = false;
 		}
 
+	}
+}
+
+void CPlayer::Bullet_Sound_Control()
+{
+	if (m_dwBulletSoundTime + m_dwBulletSoundSpeed < GetTickCount())
+	{
+		SoundMgr->StopSound(SOUND_PLAYER_FIRE);
+		SoundMgr->PlaySoundW(L"Bullet_effect 2.wav", SOUND_PLAYER_FIRE, 0.5f);
+		m_dwBulletSoundTime = GetTickCount();
+	}
+	if (m_dwBulletSoundTime2 + m_dwBulletSoundSpeed2 < GetTickCount())
+	{
+		SoundMgr->StopSound(SOUND_PLAYER_FIRE2);
+		SoundMgr->PlaySoundW(L"Bullet_effect 2.wav", SOUND_PLAYER_FIRE2, 0.5f);
+		m_dwBulletSoundTime2 = GetTickCount();
 	}
 }
 

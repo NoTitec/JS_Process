@@ -10,12 +10,23 @@ private:
 
 public:
 	CObj*		Get_Target(OBJ_ID eID, CObj* pObj);
+	CObj* Get_Near_Target_BossMonster_Monster(OBJ_ID eID, OBJ_ID eID2, CObj* pObj);
 	CObj* Get_Player_Pointer()
 	{
 		return m_ObjList[OBJ_PLAYER].front();
 	}
+	CObj* Get_Pet_Pointer()
+	{
+		return m_ObjList[OBJ_PET].front();
+	}
 	void		Delete_ID(OBJ_ID eID);
-
+	bool		Check_ID_Empty(OBJ_ID eID)
+	{
+		if (m_ObjList[eID].empty())
+			return true;
+		else
+			return false;
+	};
 public:
 	void		Add_Object(OBJ_ID eID, CObj* pObj);
 	void		Update();

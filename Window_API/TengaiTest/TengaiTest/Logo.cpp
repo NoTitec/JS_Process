@@ -24,10 +24,7 @@ void CLogo::Initialize()
 	CUI* pStartButton = CAbstractFactory<CStartButton>::Create_UI(650.f,50.f);
 	pStartButton->Set_FrameKey(L"StartButton");
 	UIMgr->Add_UI(UI_MENU, pStartButton);
-	//CSoundMgr::Get_Instance()->PlayBGM(L"free-bird-solo.wav",1.f);
-	CSoundMgr::Get_Instance()->Initialize();
-	//CSoundMgr::Get_Instance()->PlaySound(L"Success.wav", SOUND_EFFECT, 1.f);
-	CSoundMgr::Get_Instance()->PlayBGM(L"freebirdsolo.mp3", 1.f);
+	SoundMgr->PlayBGM(L"freebirdsolo.mp3", 1.f);
 }
 
 int CLogo::Update()
@@ -56,4 +53,5 @@ void CLogo::Render(HDC hDC)
 void CLogo::Release()
 {
 	UIMgr->Delete_ID(UI_MENU);
+	SoundMgr->StopSound(SOUND_BGM);
 }
