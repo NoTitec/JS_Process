@@ -33,12 +33,11 @@ void CPlayerLife::Late_Update()
 
 void CPlayerLife::Render(HDC hDC)
 {
-	int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
 	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Img(m_pFrameKey);
 
 	GdiTransparentBlt(hDC,
 		m_tInfo.fX,
-		m_tInfo.fY+iScrollY,
+		m_tInfo.fY,
 		(int)m_tInfo.fCX*5,
 		(int)m_tInfo.fCY,
 		hMemDC,

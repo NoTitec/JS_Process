@@ -6,6 +6,7 @@
 #include "UIMgr.h"
 #include "StartButton.h"
 #include "SceneMgr.h"
+#include "SoundMgr.h"
 
 CLogo::CLogo()
 {
@@ -19,10 +20,14 @@ CLogo::~CLogo()
 
 void CLogo::Initialize()
 {
-    CBmpMgr::Get_Instance()->Insert_Bmp(L"../ResourceImage/Loby/title.bmp", L"Logo");
+    CBmpMgr::Get_Instance()->Insert_Bmp(L"../ResourceImage/Loby/FreeBirdMain.bmp", L"Logo");
 	CUI* pStartButton = CAbstractFactory<CStartButton>::Create_UI(650.f,50.f);
 	pStartButton->Set_FrameKey(L"StartButton");
 	UIMgr->Add_UI(UI_MENU, pStartButton);
+	//CSoundMgr::Get_Instance()->PlayBGM(L"free-bird-solo.wav",1.f);
+	CSoundMgr::Get_Instance()->Initialize();
+	//CSoundMgr::Get_Instance()->PlaySound(L"Success.wav", SOUND_EFFECT, 1.f);
+	CSoundMgr::Get_Instance()->PlayBGM(L"freebirdsolo.mp3", 1.f);
 }
 
 int CLogo::Update()

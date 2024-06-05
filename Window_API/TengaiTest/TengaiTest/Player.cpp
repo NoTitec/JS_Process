@@ -25,7 +25,7 @@ CPlayer::~CPlayer()
 void CPlayer::Initialize()
 {
 	m_eID = OBJ_PLAYER;
-	m_LifeCount = 4;
+	m_LifeCount = 3;
     m_tInfo = { 100.f, WINCY / 2.f, 32.f, 32.f };
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
 	m_tPetPoint.y = m_tInfo.fY - 16.f;

@@ -19,7 +19,16 @@
 #include <map>
 
 #include <io.h>
+
+#include "fmod.h"
+#include "fmod.hpp"
+
+#pragma comment(lib, "fmodex_vc.lib")
+
 #include <iostream>
+
+#include <vfw.h>
+#pragma comment(lib, "vfw32.lib")
 
 #ifdef _DEBUG
 
