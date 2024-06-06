@@ -38,9 +38,16 @@ void CMikoPet::Initialize()
 
 int CMikoPet::Update()
 {
+    if (m_bDead)
+        return OBJ_DEAD;
+
     m_tInfo.fX = dynamic_cast<CPlayer*>(m_pTarget)->Get_PetPoint().x;
     m_tInfo.fY = dynamic_cast<CPlayer*>(m_pTarget)->Get_PetPoint().y;
     __super::Update_Rect();
+    if (m_eLevel == LEVEL_ZERO)
+    {
+        Set_Dead();
+    }
     if (m_eLevel == LEVEL_ONE)
         Create_one_Bullet<CMikoPetBasicBullet>(DIR_RIGHT);
     if (m_eLevel == LEVEL_TWO)

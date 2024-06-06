@@ -6,6 +6,7 @@
 #include "AbstractFactory.h"
 #include "MikoBasicBullet.h"
 #include "MikoBomb.h"
+#include "PlayerDeadEffect.h"
 #include "ObjMgr.h"
 #include "KeyMgr.h"
 #include "BmpMgr.h"
@@ -27,6 +28,7 @@ void CPlayer::Initialize()
 {
 	m_eID = OBJ_PLAYER;
 	m_LifeCount = 2;
+	m_dwHitCoolTime = GetTickCount();
 	m_iBombCount = 4;
     m_tInfo = { 100.f, WINCY / 2.f, 32.f, 32.f };
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
@@ -41,12 +43,15 @@ void CPlayer::Initialize()
 	m_tFrame.iMotion = 0;
 	m_tFrame.dwTime = GetTickCount();
 	m_tFrame.dwSpeed = 100;
+	//총알로직
 	m_dwBulletGenarateTime = GetTickCount();
 	m_dwBulletGenarateSpeed = 150;
+	//사운드
 	m_dwBulletSoundTime = GetTickCount();
-	m_dwBulletSoundSpeed = 300;
+	m_dwBulletSoundSpeed = 310;
 	m_dwBulletSoundTime2 = GetTickCount()+150;
-	m_dwBulletSoundSpeed2 = 300;
+	m_dwBulletSoundSpeed2 = 310;
+	//폭탄
 	m_dwBombGenarateDelay = 1000;
 	m_pFrameKey = L"Miko_Fly_Forward";
 	m_eCurState = FORWARDMOVE;
@@ -54,6 +59,8 @@ void CPlayer::Initialize()
 
 int CPlayer::Update()
 {
+	if (m_bDead)
+		return OBJ_DEAD;
 	Key_Input();
 	__super::Update_Rect();
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
@@ -61,6 +68,11 @@ int CPlayer::Update()
 	Create_Basic_Bullet();
 	Bullet_Sound_Control();
 	Create_Bomb();
+	if ((m_dwHitCoolTime + 1000 < GetTickCount()) && !m_bCanHit)
+	{
+		m_bCanHit = true;
+		m_dwHitCoolTime = GetTickCount();
+	}
 	return OBJ_NOEVENT;
 }
 
@@ -69,6 +81,16 @@ void CPlayer::Late_Update()
 	Motion_Change();
 	Offset();
 	__super::Move_Frame();
+	//원리 이해 안되지만 lateupdate들어가야함
+	switch (m_eCurState)
+	{
+	case HITED:
+		if (m_tFrame.iFrameStart + 1 > m_tFrame.iFrameEnd)
+		{
+			Set_State_ForwardMove();
+		}
+		break;
+	}
 #ifdef _DEBUG
 
 	if (m_dwDebugMassageTime + 1000 < GetTickCount())
@@ -141,7 +163,28 @@ void CPlayer::OnHit(CObj* _pObj)
 		}
 		break;
 	case OBJ_BOSSMONSTER:
-		cout << "보스몬스터에게 피격" << endl;
+		if (m_bCanHit)
+		{
+			if (m_iPower == 0)
+			{
+				SoundMgr->StopSound(SOUND_PLAYER_DEAD);
+				SoundMgr->PlaySoundW(L"koyori getting hit.wav", SOUND_PLAYER_DEAD, 0.1f);
+				ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CPlayerDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
+			}
+			if (m_iPower > 0)
+			{
+				SoundMgr->StopSound(SOUND_PLAYER_HITED);
+				SoundMgr->PlaySoundW(L"koyori lvl down.wav", SOUND_PLAYER_HITED, 0.5f);
+				--m_iPower;
+				CObj* petpoint = ObjMgr->Get_Pet_Pointer();
+				dynamic_cast<CMikoPet*>(petpoint)->Set_Level((CMikoPet::MIKOPETLEVEL)m_iPower);
+				m_pFrameKey = L"MikoHited";
+				m_eCurState = HITED;
+			}
+			m_bCanHit = false;
+			m_dwHitCoolTime = GetTickCount();
+			cout << "보스몬스터에게 피격" << endl;
+		}
 		break;
 	}
 }
@@ -177,19 +220,26 @@ void CPlayer::Key_Input()
 	}
 	if (KeyMgr->Key_Pressing(VK_RIGHT))
 	{
-		if(m_tInfo.fX<=784)
+		if (m_tInfo.fX <= 784)
 			m_tInfo.fX += m_fSpeed;
-		m_pFrameKey = L"Miko_Fly_Forward";
-		m_eCurState = FORWARDMOVE;
+
+		if (m_eCurState != HITED)
+		{
+			m_pFrameKey = L"Miko_Fly_Forward";
+			m_eCurState = FORWARDMOVE;
+		}
 	}
 	else if (KeyMgr->Key_Pressing(VK_LEFT))
 	{
 		if(m_tInfo.fX>=16)
 			m_tInfo.fX -= m_fSpeed;
-		m_pFrameKey = L"Miko_Fly_Backward";
-		m_eCurState = BACKMOVE;
+		if (m_eCurState != HITED)
+		{
+			m_pFrameKey = L"Miko_Fly_Backward";
+			m_eCurState = BACKMOVE;
+		}
 	}
-	else
+	if(m_eCurState!=HITED)
 	{
 		m_eCurState = FORWARDMOVE;
 		m_pFrameKey = L"Miko_Fly_Forward";
@@ -240,6 +290,13 @@ void CPlayer::Motion_Change()
 			m_tFrame.dwTime = GetTickCount();
 			m_tFrame.dwSpeed = 100;
 			break;
+		case CPlayer::HITED:
+			m_tFrame.iFrameStart = -1;
+			m_tFrame.iFrameEnd = 5;
+			m_tFrame.iMotion = 0;
+			m_tFrame.dwTime = GetTickCount();
+			m_tFrame.dwSpeed = 200;
+			break;
 		}
 		m_ePreState = m_eCurState;
 
@@ -284,4 +341,5 @@ void CPlayer::Bullet_Sound_Control()
 		m_dwBulletSoundTime2 = GetTickCount();
 	}
 }
+
 

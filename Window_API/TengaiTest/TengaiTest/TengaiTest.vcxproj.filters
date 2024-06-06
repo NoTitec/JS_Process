@@ -210,6 +210,12 @@
     <ClInclude Include="PlayerBombCount.h">
       <Filter>04. UI\03.PlayerBombUI</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerDeadEffect.h">
+      <Filter>03. Obj\00.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenBossDeadEffect.h">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -298,6 +304,12 @@
     </ClCompile>
     <ClCompile Include="PlayerBombCount.cpp">
       <Filter>04. UI\03.PlayerBombUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeadEffect.cpp">
+      <Filter>03. Obj\00.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenBossDeadEffect.cpp">
+      <Filter>03. Obj\02. Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

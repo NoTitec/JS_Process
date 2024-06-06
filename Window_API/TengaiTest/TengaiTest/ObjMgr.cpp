@@ -140,15 +140,23 @@ void CObjMgr::Late_Update()
 	}
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBULLET], m_ObjList[OBJ_BOSSMONSTER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PETBULLET], m_ObjList[OBJ_BOSSMONSTER]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOMB_ITEM]);
+
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOSSMONSTER]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
 	if (dwSaveTime+300<GetTickCount())
 	{
 		if(!m_ObjList[OBJ_PLAYERBOMB].empty())
 			CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBOMB], m_ObjList[OBJ_BOSSMONSTER]);
 		dwSaveTime = GetTickCount();
 	}
-	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOSSMONSTER]);
-	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM]);
-	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOMB_ITEM]);
+	////오브젝트 bHit변수가 true일때만 플레이어 충돌검사
+	//if (m_ObjList[OBJ_PLAYER].front()->Get_m_bCanHit())
+	//{
+	//	m_ObjList[OBJ_PLAYER].front()->Set_m_bCanHit(false);
+	//	
+	//}
 }
 
 void CObjMgr::Render(HDC hDC)

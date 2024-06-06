@@ -5,6 +5,7 @@
 #include "AbstractFactory.h"
 #include "PowerItem.h"
 #include "BombItem.h"
+#include "GreenBossDeadEffect.h"
 CGreenBoss::CGreenBoss()
 {
 }
@@ -19,7 +20,7 @@ void CGreenBoss::Initialize()
 {
     m_eID = OBJ_BOSSMONSTER;
     m_tInfo = { 600.f, WINCY / 2.f, 82.f, 72.f };
-
+    m_iHp = 50;
     m_fSpeed = 4.f;
     //패턴시간제어
     m_fSaveTime = GetTickCount();
@@ -131,7 +132,7 @@ void CGreenBoss::Release()
 {
     ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
     ObjMgr->Add_Object(OBJ_BOMB_ITEM, CAbstractFactory<CBombItem>::Create(m_tInfo.fX, m_tInfo.fY));
-
+    ObjMgr->Add_Object(OBJ_EFFECT,CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX,m_tInfo.fY));
 }
 
 void CGreenBoss::OnHit(CObj* _pObj)
@@ -139,9 +140,16 @@ void CGreenBoss::OnHit(CObj* _pObj)
     OBJ_ID pObj_ID = _pObj->Get_ID();
     switch (pObj_ID)
     {
+    case OBJ_PLAYERBULLET:
+        --m_iHp;
+        if (m_iHp == 0)
+            Set_Dead();
+        break;
     case OBJ_PLAYERBOMB:
         cout << "bombattacked"<<endl;
-        Set_Dead();
+        --m_iHp;
+        if (m_iHp == 0)
+            Set_Dead();
         break;
     }
 }

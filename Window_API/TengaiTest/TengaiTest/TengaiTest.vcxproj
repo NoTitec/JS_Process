@@ -135,11 +135,13 @@
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="BombItem.h" />
     <ClInclude Include="CollisionMgr.h" />
+    <ClInclude Include="GreenBossDeadEffect.h" />
     <ClInclude Include="MikoBomb.h" />
     <ClInclude Include="MikoPet.h" />
     <ClInclude Include="MikoPetBasicBullet.h" />
     <ClInclude Include="MikoPetGuideBullet.h" />
     <ClInclude Include="PlayerBombCount.h" />
+    <ClInclude Include="PlayerDeadEffect.h" />
     <ClInclude Include="PlayerHeadUI.h" />
     <ClInclude Include="PlayerLife.h" />
     <ClInclude Include="SoundMgr.h" />
@@ -174,11 +176,13 @@
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
+    <ClCompile Include="GreenBossDeadEffect.cpp" />
     <ClCompile Include="MikoBomb.cpp" />
     <ClCompile Include="MikoPet.cpp" />
     <ClCompile Include="MikoPetBasicBullet.cpp" />
     <ClCompile Include="MikoPetGuideBullet.cpp" />
     <ClCompile Include="PlayerBombCount.cpp" />
+    <ClCompile Include="PlayerDeadEffect.cpp" />
     <ClCompile Include="PlayerHeadUI.cpp" />
     <ClCompile Include="PlayerLife.cpp" />
     <ClCompile Include="SoundMgr.cpp" />

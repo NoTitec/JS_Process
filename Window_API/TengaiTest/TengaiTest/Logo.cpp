@@ -24,7 +24,7 @@ void CLogo::Initialize()
 	CUI* pStartButton = CAbstractFactory<CStartButton>::Create_UI(650.f,50.f);
 	pStartButton->Set_FrameKey(L"StartButton");
 	UIMgr->Add_UI(UI_MENU, pStartButton);
-	SoundMgr->PlayBGM(L"freebirdsolo.mp3", 1.f);
+	SoundMgr->PlayBGM(L"freebirdsolo.mp3", 0.3f);
 }
 
 int CLogo::Update()

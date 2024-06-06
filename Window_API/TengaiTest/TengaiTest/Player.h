@@ -16,7 +16,9 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release() override;
 	virtual void OnHit(CObj* _pObj) override;
-
+	void Set_State_ForwardMove() {
+		m_eCurState = FORWARDMOVE; m_pFrameKey = L"Miko_Fly_Forward";
+	}
 	POINT Get_PetPoint() { return m_tPetPoint; }
 	int Get_Power() { return m_iPower; }
 	int Get_BombCount() { return m_iBombCount; }

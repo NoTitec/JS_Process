@@ -29,7 +29,7 @@ public:
 	template<typename T>
 	CObj* Create_Bullet();
 private:
-
+	int m_iHp;
 	float m_fSaveTime;
 	float m_fCoolTime;
 	BOSSSTATE				m_ePreState;

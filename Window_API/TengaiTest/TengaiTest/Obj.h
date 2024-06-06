@@ -23,6 +23,9 @@ protected:
 	bool m_bDead;
 
 	CObj* m_pTarget;
+
+	bool				m_bCanHit;
+	DWORD				m_dwHitCoolTime;
 public:
 	//Setter
 	void		Set_Pos(float _fX, float _fY)
@@ -44,6 +47,9 @@ public:
 	bool		Get_HeadUIShow() { return m_HeadUIShow; }
 	void		Set_HeadUIShow(bool show) { m_HeadUIShow = show; }
 	int			Get_LifeCount() { return m_LifeCount; }
+
+	void Set_m_bCanHit(bool Hitbool) { m_bCanHit = Hitbool; }
+	bool Get_m_bCanHit() { return m_bCanHit; }
 protected:
 	void		Update_Rect();
 	void		Move_Frame();

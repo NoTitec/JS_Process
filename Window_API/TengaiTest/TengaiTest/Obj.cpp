@@ -1,7 +1,7 @@
 #include "Obj.h"
 #include "stdafx.h"
 
-CObj::CObj() : m_fSpeed(0.f), m_eDir(DIR_END), m_bDead(false), m_fAngle(0.f), m_fDistance(0.f)
+CObj::CObj() : m_fSpeed(0.f), m_eDir(DIR_END), m_bDead(false), m_fAngle(0.f), m_fDistance(0.f), m_bCanHit(true)
 , m_pFrameKey(nullptr),m_pTarget(nullptr)
 {
 	ZeroMemory(&m_tInfo, sizeof(INFO));

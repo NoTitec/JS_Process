@@ -3,7 +3,7 @@
 class CMikoPet : public CObj
 {
 public:
-	enum MIKOPETLEVEL{LEVEL_ONE,LEVEL_TWO,LEVEL_END};
+	enum MIKOPETLEVEL{LEVEL_ZERO,LEVEL_ONE,LEVEL_TWO,LEVEL_END};
 
 public:
 	CMikoPet();

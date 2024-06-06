@@ -42,8 +42,10 @@ void CMainGame::Initialize()
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/ForwardMove/Miko_Fly_Forward.bmp",L"Miko_Fly_Forward");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/BackMove/Miko_Fly_Backward.bmp",L"Miko_Fly_Backward");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBasicAttack.bmp",L"MikoBasicAttack");
-
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/Hited/MikoHited.bmp", L"MikoHited");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/DeadEffect/DeadEffect.bmp",L"PlayerDeadEffect");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss/GreenBoss_Idle.bmp",L"GreenBoss_Idle");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/BossEffect/BossDead.bmp", L"GreenBossDeadEffect");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BossAttack/Boss_Attack_Pattern1.bmp", L"Boss_Attack_Pattern1");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Item/PowerItem.bmp",L"PowerItem");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BombItem/BombItem.bmp", L"BombItem");
@@ -101,6 +103,7 @@ void CMainGame::Release()
 	CKeyMgr::Destroy_Instance();
 	CSceneMgr::Destroy_Instance();
 	CScrollMgr::Destroy_Instance();
+	CSoundMgr::Destroy_Instance();
 	ReleaseDC(g_hWnd, m_DC);
 
 }
