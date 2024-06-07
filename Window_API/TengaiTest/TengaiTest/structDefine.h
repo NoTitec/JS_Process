@@ -37,5 +37,5 @@ typedef struct tagFrame
 	int		iMotion;			// 어떤 모션
 	DWORD	dwSpeed;			// 스프라이트 속도
 	DWORD	dwTime;				// 스프라이트 전환 시간
-
+	bool	bRepeat;			// 반복 애니메이션 확인 변수
 }FRAME;

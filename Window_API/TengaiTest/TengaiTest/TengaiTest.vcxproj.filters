@@ -94,6 +94,9 @@
     <Filter Include="04. UI\03.PlayerBombUI">
       <UniqueIdentifier>{eed6eb6b-dffe-45d6-8768-0bd4a1d364cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Manager\09.MonsterSpawnMgr">
+      <UniqueIdentifier>{2ed2394c-ad03-433b-9a39-64f35a3eafec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -216,6 +219,12 @@
     <ClInclude Include="GreenBossDeadEffect.h">
       <Filter>03. Obj\02. Monster</Filter>
     </ClInclude>
+    <ClInclude Include="BladeMonster.h">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterSpawnMgr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -310,6 +319,12 @@
     </ClCompile>
     <ClCompile Include="GreenBossDeadEffect.cpp">
       <Filter>03. Obj\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="BladeMonster.cpp">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterSpawnMgr.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

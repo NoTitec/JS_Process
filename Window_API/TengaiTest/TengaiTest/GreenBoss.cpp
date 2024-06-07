@@ -37,6 +37,7 @@ void CGreenBoss::Initialize()
     m_tFrame.dwTime = GetTickCount();
     m_tFrame.dwSpeed = 200;
     m_pFrameKey = L"GreenBoss_Idle";
+    m_tFrame.bRepeat = true;
 }
 
 int CGreenBoss::Update()
@@ -96,6 +97,17 @@ int CGreenBoss::Update()
 void CGreenBoss::Late_Update()
 {
     Motion_Change();
+    if ((m_HitFrameSaveTime + 200 < GetTickCount()))
+    {
+        switch (m_eCurState)
+        {
+        case IDLE:
+            m_pFrameKey = L"GreenBoss_Idle";
+            m_tFrame.bRepeat = true;
+            break;
+        }
+        
+    }
     __super::Move_Frame();
     /*if (m_eCurState == IDLE)
     {
@@ -140,17 +152,53 @@ void CGreenBoss::OnHit(CObj* _pObj)
     OBJ_ID pObj_ID = _pObj->Get_ID();
     switch (pObj_ID)
     {
-    case OBJ_PLAYERBULLET:
-        --m_iHp;
-        if (m_iHp == 0)
-            Set_Dead();
-        break;
     case OBJ_PLAYERBOMB:
-        cout << "bombattacked"<<endl;
+        cout << "bombattacked" << endl;
+    case OBJ_PLAYERBULLET:
+        m_HitFrameSaveTime = GetTickCount();
         --m_iHp;
+        switch (m_eCurState)
+        {
+        case IDLE:
+            m_pFrameKey = L"GreenBoss_Idle_White";
+            m_tFrame.bRepeat = false;
+            break;
+        }
         if (m_iHp == 0)
             Set_Dead();
         break;
+    case OBJ_PETBULLET:
+        m_HitFrameSaveTime = GetTickCount();
+        --m_iHp;
+        switch (m_eCurState)
+        {
+        case IDLE:
+            m_pFrameKey = L"GreenBoss_Idle_White";
+            m_tFrame.bRepeat = false;
+            break;
+        }
+        if (m_iHp == 0)
+            Set_Dead();
+        break;
+    }
+}
+
+void CGreenBoss::On_Motion_End()
+{
+    if (m_tFrame.bRepeat != true)
+    {
+        switch (m_eCurState)
+        {
+        case IDLE:
+            m_pFrameKey = L"GreenBoss_Idle";
+            m_tFrame.iFrameStart = 0;
+            m_tFrame.iFrameEnd = 3;
+            m_tFrame.iMotion = 0;
+            m_tFrame.dwTime = GetTickCount();
+            m_tFrame.dwSpeed = 200;
+            m_tFrame.bRepeat = true;
+            break;
+        }
     }
 }
 

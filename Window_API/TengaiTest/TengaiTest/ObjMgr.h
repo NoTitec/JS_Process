@@ -10,6 +10,7 @@ private:
 
 public:
 	CObj*		Get_Target(OBJ_ID eID, CObj* pObj);
+	CObj* Get_Target_Within_Certain_Distance(OBJ_ID eID, CObj* pObj,float distance);
 	CObj* Get_Near_Target_BossMonster_Monster(OBJ_ID eID, OBJ_ID eID2, CObj* pObj);
 	CObj* Get_Player_Pointer()
 	{
@@ -27,6 +28,8 @@ public:
 		else
 			return false;
 	};
+
+	list<CObj*> Get_All_List(OBJ_ID _eObjId) { return m_ObjList[_eObjId]; }
 public:
 	void		Add_Object(OBJ_ID eID, CObj* pObj);
 	void		Update();

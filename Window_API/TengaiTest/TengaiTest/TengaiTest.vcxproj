@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactory.h" />
+    <ClInclude Include="BladeMonster.h" />
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="BombItem.h" />
     <ClInclude Include="CollisionMgr.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="MikoPet.h" />
     <ClInclude Include="MikoPetBasicBullet.h" />
     <ClInclude Include="MikoPetGuideBullet.h" />
+    <ClInclude Include="MonsterSpawnMgr.h" />
     <ClInclude Include="PlayerBombCount.h" />
     <ClInclude Include="PlayerDeadEffect.h" />
     <ClInclude Include="PlayerHeadUI.h" />
@@ -173,6 +175,7 @@
     <ClInclude Include="UIMgr.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BladeMonster.cpp" />
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
@@ -181,6 +184,7 @@
     <ClCompile Include="MikoPet.cpp" />
     <ClCompile Include="MikoPetBasicBullet.cpp" />
     <ClCompile Include="MikoPetGuideBullet.cpp" />
+    <ClCompile Include="MonsterSpawnMgr.cpp" />
     <ClCompile Include="PlayerBombCount.cpp" />
     <ClCompile Include="PlayerDeadEffect.cpp" />
     <ClCompile Include="PlayerHeadUI.cpp" />

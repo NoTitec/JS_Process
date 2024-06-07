@@ -170,6 +170,8 @@ void CPlayer::OnHit(CObj* _pObj)
 				SoundMgr->StopSound(SOUND_PLAYER_DEAD);
 				SoundMgr->PlaySoundW(L"koyori getting hit.wav", SOUND_PLAYER_DEAD, 0.1f);
 				ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CPlayerDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
+				Set_Dead();
+				return;
 			}
 			if (m_iPower > 0)
 			{

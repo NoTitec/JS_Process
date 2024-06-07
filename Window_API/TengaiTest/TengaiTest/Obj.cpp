@@ -30,7 +30,10 @@ void CObj::Move_Frame()
 		++m_tFrame.iFrameStart;
 
 		if (m_tFrame.iFrameStart > m_tFrame.iFrameEnd)
+		{
+			On_Motion_End();
 			m_tFrame.iFrameStart = 0;
+		}
 
 		m_tFrame.dwTime = GetTickCount();
 	}
@@ -48,4 +51,9 @@ void CObj::Move_Frame_once_and_Destroy_self()
 
 		m_tFrame.dwTime = GetTickCount();
 	}
+}
+
+void CObj::On_Motion_End()
+{
+	
 }

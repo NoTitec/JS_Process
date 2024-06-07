@@ -60,6 +60,7 @@ public:
 	virtual void	Late_Update()PURE;
 	virtual void	Render(HDC hDC)PURE;
 	virtual void	Release()PURE;
+	virtual void	On_Motion_End();
 public:
 	//충돌을 위해서 추가한 것들
 	virtual void	OnHit(CObj* _pObj)PURE;

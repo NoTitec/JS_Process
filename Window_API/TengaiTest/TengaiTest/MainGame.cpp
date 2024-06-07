@@ -39,24 +39,34 @@ void CMainGame::Initialize()
 
 #pragma region 이미지 삽입구문들
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Back.bmp", L"Back");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/ForwardMove/Miko_Fly_Forward.bmp",L"Miko_Fly_Forward");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/BackMove/Miko_Fly_Backward.bmp",L"Miko_Fly_Backward");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBasicAttack.bmp",L"MikoBasicAttack");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/Hited/MikoHited.bmp", L"MikoHited");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/DeadEffect/DeadEffect.bmp",L"PlayerDeadEffect");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss/GreenBoss_Idle.bmp",L"GreenBoss_Idle");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss/GreenBoss_Idle_White.bmp",L"GreenBoss_Idle_White");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BossEffect/BossDead.bmp", L"GreenBossDeadEffect");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BossAttack/Boss_Attack_Pattern1.bmp", L"Boss_Attack_Pattern1");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Item/PowerItem.bmp",L"PowerItem");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BombItem/BombItem.bmp", L"BombItem");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/GameStartButton/StartButton.bmp", L"StartButton");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/PowerGetAndLose/PowerUp.bmp",L"PowerUp");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Pet/MikoPet.bmp", L"MikoPet");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PetAttack/PetLevel_oneAttack.bmp", L"PetLevel_oneAttack");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PetAttack/PetLevel_twoAttack.bmp", L"PetLevel_twoAttack");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/PlayerLife/MikoLife.bmp", L"MikoLife");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/BombCount/BombCount.bmp", L"BombCount");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBomb/BigCircle_kangi/BigCircleKangiNoBolt.bmp", L"BigCircleKangiNoBolt");
+
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_1/BladeMonster.bmp",L"BladeMonster");
 #pragma endregion
 }
 

@@ -18,6 +18,7 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release() override;
 	virtual void OnHit(CObj* _pObj) override;
+	virtual void	On_Motion_End() override;
 public:
 	void Set_State_Idle() {
 		m_fSpeed=4.f; m_eCurState = IDLE; m_tInfo.fCX = 82.f; m_tInfo.fCY = 72.f; m_pFrameKey = L"GreenBoss_Idle";
@@ -39,6 +40,7 @@ private:
 	POINT					m_Pattern1EndPoint;
 	bool					m_bMoveForward;
 	void Move_Frame_once_and_Return_Idle_State();
+	DWORD					m_HitFrameSaveTime;
 };
 
 template<typename T>

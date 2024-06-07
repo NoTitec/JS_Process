@@ -45,6 +45,41 @@ CObj* CObjMgr::Get_Target(OBJ_ID eID, CObj* pObj)
 	return pTarget;
 
 }
+CObj* CObjMgr::Get_Target_Within_Certain_Distance(OBJ_ID eID, CObj* pObj, float distance)
+{
+	if (m_ObjList[eID].empty())
+		return nullptr;
+
+	CObj* pTarget = nullptr;
+
+	float	fDistance(0.f);
+
+	for (auto& Src : m_ObjList[eID])
+	{
+		if (Src->Get_Dead())
+			break;
+
+		float		fWidth = pObj->Get_Info().fX - Src->Get_Info().fX;
+		float		fHeight = pObj->Get_Info().fY - Src->Get_Info().fY;
+
+		float		fDiagonal = sqrt(fWidth * fWidth + fHeight * fHeight);
+
+		if (fDiagonal < distance&&(pObj->Get_Info().fX > Src->Get_Info().fX))
+		{
+			if ((!pTarget) || (fDistance > fDiagonal))
+			{
+				pTarget = Src;
+				fDistance = fDiagonal;
+			}
+		}
+		else
+		{
+			return nullptr;
+		}
+	}
+
+	return pTarget;
+}
 CObj* CObjMgr::Get_Near_Target_BossMonster_Monster(OBJ_ID eID, OBJ_ID eID2, CObj* pObj)
 {
 	if (m_ObjList[eID].empty()&&m_ObjList[eID2].empty())
@@ -138,6 +173,8 @@ void CObjMgr::Late_Update()
 				break;
 		}
 	}
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBULLET], m_ObjList[OBJ_MONSTER]);
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PETBULLET], m_ObjList[OBJ_MONSTER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBULLET], m_ObjList[OBJ_BOSSMONSTER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PETBULLET], m_ObjList[OBJ_BOSSMONSTER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM]);
