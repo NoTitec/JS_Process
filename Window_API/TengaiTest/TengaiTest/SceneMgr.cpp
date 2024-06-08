@@ -2,7 +2,9 @@
 #include "stdafx.h"
 #include "SoundMgr.h"
 #include "Logo.h"
+#include "Select.h"
 #include "Stage1.h"
+#include "Stage2.h"
 CSceneMgr* CSceneMgr::m_pInstance = nullptr;
 
 CSceneMgr::CSceneMgr() : m_pScene(nullptr), m_ePreScene(SC_END), m_eCurScene(SC_LOGO)
@@ -27,17 +29,20 @@ void CSceneMgr::Scene_Change(SCENEID eScene)
 		case SC_LOGO:
 			m_pScene = new CLogo;
 			break;
-		/*
+		
 		case SC_MENU:
-			m_pScene = new CMyMenu;
+			m_pScene = new CSelect;
 			break;
-
+			/*
 		case SC_EDIT:
 			m_pScene = new CMyEdit;
 			break;
 			*/
 		case SC_STAGE_1:
 			m_pScene = new CStage1;
+			break;
+		case SC_STAGE_2:
+			m_pScene = new CStage2;
 			break;
 		}
 		m_pScene->Initialize();

@@ -29,7 +29,7 @@ public:
 			return false;
 	};
 
-	list<CObj*> Get_All_List(OBJ_ID _eObjId) { return m_ObjList[_eObjId]; }
+	list<CObj*> Get_ID_List(OBJ_ID _eObjId) { return m_ObjList[_eObjId]; }
 public:
 	void		Add_Object(OBJ_ID eID, CObj* pObj);
 	void		Update();

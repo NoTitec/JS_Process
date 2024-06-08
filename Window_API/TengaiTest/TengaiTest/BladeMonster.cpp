@@ -3,6 +3,7 @@
 #include "BmpMgr.h"
 #include "ObjMgr.h"
 #include "ScrollMgr.h"
+#include "MonsterSpawnMgr.h"
 CBladeMonster::CBladeMonster()
 {
 
@@ -44,7 +45,7 @@ int CBladeMonster::Update()
     m_pTarget = ObjMgr->Get_Target_Within_Certain_Distance(OBJ_PLAYER,this,400.f);
     if (m_pTarget)
     {
-        m_fSpeed = 2.f;
+        m_fSpeed = 1.5f;
         float	fWidth(0.f), fHeight(0.f), fDiagonal(0.f), fRadian(0.f);
 
         fWidth = m_pTarget->Get_Info().fX - m_tInfo.fX;
@@ -89,11 +90,14 @@ void CBladeMonster::Late_Update()
 {
     int iScrollY = ScrollMgr->Get_ScrollY();
 
-    //if (-20 >= m_tRect.left || WINCX <= m_tRect.right ||
-    //    -20 >= m_tRect.top + iScrollY || WINCY <= m_tRect.bottom + iScrollY)
-    //{
-    //    m_bDead = true;
-    //}
+    /*if (-20 >= m_tRect.left || -20 <= m_tRect.right ||
+        -20 >= m_tRect.top + iScrollY || 620 <= m_tRect.bottom + iScrollY)
+    {
+        m_bDead = true;
+    }*/
+    if (m_tInfo.fX < -16) {
+        m_bDead = true;
+    }
     __super::Move_Frame();
 }
 
@@ -129,18 +133,29 @@ void CBladeMonster::OnHit(CObj* _pObj)
     case OBJ_PLAYERBULLET:
         --m_iHp;
         if (m_iHp == 0)
+        {
             Set_Dead();
+            MonsterSpawnMgr->KillCountUp();
+        }
         break;
     case OBJ_PLAYERBOMB:
         cout << "bombattacked" << endl;
         --m_iHp;
         if (m_iHp == 0)
+        {
             Set_Dead();
+            MonsterSpawnMgr->KillCountUp();
+
+        }
         break;
     case OBJ_PETBULLET:
         --m_iHp;
         if (m_iHp == 0)
+        {
             Set_Dead();
+            MonsterSpawnMgr->KillCountUp();
+
+        }
         break;
     }
 }

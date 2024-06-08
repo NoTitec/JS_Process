@@ -2,11 +2,11 @@
 #include "ObjMgr.h"
 #include "AbstractFactory.h"
 #include "BladeMonster.h"
-
+#include "GreenBoss.h"
 
 CMonsterSpawnMgr* CMonsterSpawnMgr::m_pInstance = nullptr;
 
-CMonsterSpawnMgr::CMonsterSpawnMgr()
+CMonsterSpawnMgr::CMonsterSpawnMgr() :m_iMonsterKillCount(0),m_BossMonsterSpawn(true),m_BossMonsterDead(false)
 {
 }
 
@@ -21,7 +21,7 @@ void CMonsterSpawnMgr::Initialize()
 
 void CMonsterSpawnMgr::Update()
 {
-	list<CObj*> monsterList = ObjMgr->Get_All_List(OBJ_ID::OBJ_MONSTER);
+	list<CObj*> monsterList = ObjMgr->Get_ID_List(OBJ_ID::OBJ_MONSTER);
 	int iMonsterSize = monsterList.size();
 
 
@@ -29,11 +29,19 @@ void CMonsterSpawnMgr::Update()
 	{
 		if (iMonsterSize <= m_iMaxSpawnMonster)
 		{
-			ObjMgr->Add_Object(OBJ_ID::OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create(spawnArea.x, spawnArea.y));
+			float randY = 100.f + rand() % 400;
+			ObjMgr->Add_Object(OBJ_ID::OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create(spawnX,randY));
 		}
 		m_dwSpawnSmallMonsterTime = GetTickCount();
 	}
-
+	if (m_iMonsterKillCount >= 5)
+	{
+		if (m_BossMonsterSpawn)
+		{
+			ObjMgr->Add_Object(OBJ_BOSSMONSTER, CAbstractFactory<CGreenBoss>::Create());
+			m_BossMonsterSpawn = false;
+		}
+	}
 
 }
 

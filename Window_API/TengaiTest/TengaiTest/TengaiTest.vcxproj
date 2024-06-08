@@ -146,7 +146,9 @@
     <ClInclude Include="PlayerDeadEffect.h" />
     <ClInclude Include="PlayerHeadUI.h" />
     <ClInclude Include="PlayerLife.h" />
+    <ClInclude Include="Select.h" />
     <ClInclude Include="SoundMgr.h" />
+    <ClInclude Include="Stage2.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="enumDefine.h" />
@@ -189,7 +191,9 @@
     <ClCompile Include="PlayerDeadEffect.cpp" />
     <ClCompile Include="PlayerHeadUI.cpp" />
     <ClCompile Include="PlayerLife.cpp" />
+    <ClCompile Include="Select.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
+    <ClCompile Include="Stage2.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="GreenBoss.cpp" />

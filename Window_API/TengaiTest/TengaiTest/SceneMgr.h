@@ -4,7 +4,7 @@
 class CSceneMgr
 {
 public:
-	enum SCENEID { SC_LOGO, SC_MENU, SC_STAGE_1, SC_END };
+	enum SCENEID { SC_LOGO, SC_MENU, SC_STAGE_1,SC_STAGE_2, SC_END };
 
 private:
 	CSceneMgr();

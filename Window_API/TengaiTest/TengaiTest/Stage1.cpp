@@ -9,13 +9,14 @@
 #include "BmpMgr.h"
 #include "ScrollMgr.h"
 #include "SoundMgr.h"
+#include "SceneMgr.h"
 #include "Player.h"
 #include "PowerItem.h"
 #include "BombItem.h"
 #include "GreenBoss.h"
 #include "BladeMonster.h"
 #include "MonsterSpawnMgr.h"
-CStage1::CStage1(): m_iScrollXSpeed(3),m_iScrollX(0)
+CStage1::CStage1(): m_iScrollXSpeed(3),m_iScrollX(0),SceneEnd(false)
 {
 }
 
@@ -39,8 +40,8 @@ void CStage1::Initialize()
     CUI* pPlayerBombUI = CAbstractFactory<CPlayerBombCount>::Create_UI(100.f,60.f, ObjMgr->Get_Player_Pointer());
     pPlayerBombUI->Set_FrameKey(L"BombCount");
     UIMgr->Add_UI(UI_PLAYER_BOMB, pPlayerBombUI);
-    ObjMgr->Add_Object(OBJ_BOSSMONSTER,CAbstractFactory<CGreenBoss>::Create());
-    ObjMgr->Add_Object(OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create());
+    //ObjMgr->Add_Object(OBJ_BOSSMONSTER,CAbstractFactory<CGreenBoss>::Create());
+    //ObjMgr->Add_Object(OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create());
     ObjMgr->Add_Object(OBJ_ITEM,CAbstractFactory<CPowerItem>::Create());
     ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create());
 
@@ -57,7 +58,11 @@ int CStage1::Update()
         UIMgr->Delete_ID(UI_PLAYER_BOMB);
     }
     UIMgr->Update();
-    CMonsterSpawnMgr::Get_Instance()->Update();
+    if (MonsterSpawnMgr->Get_BossMonsterDead())
+    {
+        SceneMgr->Scene_Change(CSceneMgr::SC_STAGE_2);
+    }
+    MonsterSpawnMgr->Update();
     return 0;
 }
 
@@ -68,7 +73,7 @@ void CStage1::Late_Update()
         m_iScrollX = 0;
     CObjMgr::Get_Instance()->Late_Update();
     UIMgr->Late_Update();
-    CMonsterSpawnMgr::Get_Instance()->Late_Update();
+    MonsterSpawnMgr->Late_Update();
 }
 
 void CStage1::Render(HDC hDC)
@@ -86,5 +91,12 @@ void CStage1::Render(HDC hDC)
 
 void CStage1::Release()
 {
+    SoundMgr->StopAll();
+    ObjMgr->Delete_ID(OBJ_PLAYER);
+    ObjMgr->Delete_ID(OBJ_PET);
+    UIMgr->Delete_ID(UI_PLAYER_BOMB);
+    UIMgr->Delete_ID(UI_PLAYER_LIFE);
+    UIMgr->Delete_ID(UI_PLAYER_HEAD_MASSAGE);
+
     CMonsterSpawnMgr::Destroy_Instance();
 }

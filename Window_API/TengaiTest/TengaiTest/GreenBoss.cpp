@@ -5,6 +5,7 @@
 #include "AbstractFactory.h"
 #include "PowerItem.h"
 #include "BombItem.h"
+#include "MonsterSpawnMgr.h"
 #include "GreenBossDeadEffect.h"
 CGreenBoss::CGreenBoss()
 {
@@ -145,6 +146,7 @@ void CGreenBoss::Release()
     ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
     ObjMgr->Add_Object(OBJ_BOMB_ITEM, CAbstractFactory<CBombItem>::Create(m_tInfo.fX, m_tInfo.fY));
     ObjMgr->Add_Object(OBJ_EFFECT,CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX,m_tInfo.fY));
+    MonsterSpawnMgr->Set_BossMonsterDead();
 }
 
 void CGreenBoss::OnHit(CObj* _pObj)

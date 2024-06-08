@@ -38,7 +38,7 @@ void CStartButton::Late_Update()
 		if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
 		{
 			if (!lstrcmp(L"StartButton", m_pFrameKey))
-				CSceneMgr::Get_Instance()->Scene_Change(CSceneMgr::SC_STAGE_1);
+				CSceneMgr::Get_Instance()->Scene_Change(CSceneMgr::SC_MENU);
 
 			return;
 		}

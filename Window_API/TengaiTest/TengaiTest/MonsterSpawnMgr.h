@@ -12,7 +12,9 @@ public:
 	void		Update();
 	void		Late_Update();
 	void		Release();
-
+	void		KillCountUp() { ++m_iMonsterKillCount; }
+	void		Set_BossMonsterDead() { m_BossMonsterDead = true; }
+	bool		Get_BossMonsterDead() { return m_BossMonsterDead; }
 public:
 	static CMonsterSpawnMgr* Get_Instance()
 	{
@@ -32,14 +34,15 @@ public:
 	}
 
 private:
-	//list<CUI*> m_UIList[UI_END];
 	static CMonsterSpawnMgr* m_pInstance;
 
-	DWORD m_LimitSpawnTime = 3000;
+	DWORD m_LimitSpawnTime = 2000;
 	DWORD m_dwSpawnSmallMonsterTime = GetTickCount();
-	int m_iMaxSpawnMonster = 3;
-
-	POINT spawnArea = { 900, 100 };
+	int m_iMaxSpawnMonster = 4;
+	float spawnX = 816.f;
+	int m_iMonsterKillCount;
+	bool m_BossMonsterSpawn;
+	bool m_BossMonsterDead;
 };
 
 #define MonsterSpawnMgr CMonsterSpawnMgr::Get_Instance()

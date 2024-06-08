@@ -97,6 +97,9 @@
     <Filter Include="01. Manager\09.MonsterSpawnMgr">
       <UniqueIdentifier>{2ed2394c-ad03-433b-9a39-64f35a3eafec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Scene\Select">
+      <UniqueIdentifier>{baf592d7-3f01-459c-9827-225e61488890}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -223,7 +226,13 @@
       <Filter>03. Obj\02. Monster</Filter>
     </ClInclude>
     <ClInclude Include="MonsterSpawnMgr.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>01. Manager\09.MonsterSpawnMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Select.h">
+      <Filter>02.Scene\Select</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage2.h">
+      <Filter>02.Scene\Stage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -324,7 +333,13 @@
       <Filter>03. Obj\02. Monster</Filter>
     </ClCompile>
     <ClCompile Include="MonsterSpawnMgr.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>01. Manager\09.MonsterSpawnMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Select.cpp">
+      <Filter>02.Scene\Select</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage2.cpp">
+      <Filter>02.Scene\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

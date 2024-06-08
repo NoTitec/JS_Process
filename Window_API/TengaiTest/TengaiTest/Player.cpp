@@ -167,11 +167,22 @@ void CPlayer::OnHit(CObj* _pObj)
 		{
 			if (m_iPower == 0)
 			{
-				SoundMgr->StopSound(SOUND_PLAYER_DEAD);
-				SoundMgr->PlaySoundW(L"koyori getting hit.wav", SOUND_PLAYER_DEAD, 0.1f);
-				ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CPlayerDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
-				Set_Dead();
-				return;
+				if (m_LifeCount == 0)
+				{
+					SoundMgr->StopSound(SOUND_PLAYER_DEAD);
+					SoundMgr->PlaySoundW(L"koyori getting hit.wav", SOUND_PLAYER_DEAD, 0.1f);
+					ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CPlayerDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
+					Set_Dead();
+					return;
+				}
+				else
+				{
+					--m_LifeCount;
+					SoundMgr->StopSound(SOUND_PLAYER_HITED);
+					SoundMgr->PlaySoundW(L"koyori lvl down.wav", SOUND_PLAYER_HITED, 0.5f);
+					m_pFrameKey = L"MikoHited";
+					m_eCurState = HITED;
+				}
 			}
 			if (m_iPower > 0)
 			{
