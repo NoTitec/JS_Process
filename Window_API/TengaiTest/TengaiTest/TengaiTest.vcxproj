@@ -147,7 +147,9 @@
     <ClInclude Include="PlayerHeadUI.h" />
     <ClInclude Include="PlayerLife.h" />
     <ClInclude Include="Select.h" />
+    <ClInclude Include="SG1MonsterSpawnMgr.h" />
     <ClInclude Include="SoundMgr.h" />
+    <ClInclude Include="SpinningMonster.h" />
     <ClInclude Include="Stage2.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="UI.h" />
@@ -192,7 +194,9 @@
     <ClCompile Include="PlayerHeadUI.cpp" />
     <ClCompile Include="PlayerLife.cpp" />
     <ClCompile Include="Select.cpp" />
+    <ClCompile Include="SG1MonsterSpawnMgr.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
+    <ClCompile Include="SpinningMonster.cpp" />
     <ClCompile Include="Stage2.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="UI.cpp" />

@@ -67,6 +67,14 @@ void CMainGame::Initialize()
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBomb/BigCircle_kangi/BigCircleKangiNoBolt.bmp", L"BigCircleKangiNoBolt");
 
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_1/BladeMonster.bmp",L"BladeMonster");
+
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_2/SpinningMonster.bmp",L"SpinningMonster");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_2/SpinningMonster_White.bmp", L"SpinningMonster_White");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_2_Attack/Spinning_Attack.bmp", L"Spinning_Attack");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_2_Attack/Spinning_Attack_White.bmp", L"Spinning_Attack_White");
+
+	BmpMgr->Insert_Bmp(L"../ResourceImage/MonsterBullet/MonsterBullet.bmp", L"MonsterBullet");
+
 #pragma endregion
 }
 

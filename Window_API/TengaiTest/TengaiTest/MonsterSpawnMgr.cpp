@@ -17,6 +17,7 @@ CMonsterSpawnMgr::~CMonsterSpawnMgr()
 
 void CMonsterSpawnMgr::Initialize()
 {
+	m_iMonsterKillCount = 0;
 }
 
 void CMonsterSpawnMgr::Update()

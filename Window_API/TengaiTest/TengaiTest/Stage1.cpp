@@ -15,6 +15,7 @@
 #include "BombItem.h"
 #include "GreenBoss.h"
 #include "BladeMonster.h"
+#include "SpinningMonster.h"
 #include "MonsterSpawnMgr.h"
 CStage1::CStage1(): m_iScrollXSpeed(3),m_iScrollX(0),SceneEnd(false)
 {
@@ -42,6 +43,7 @@ void CStage1::Initialize()
     UIMgr->Add_UI(UI_PLAYER_BOMB, pPlayerBombUI);
     //ObjMgr->Add_Object(OBJ_BOSSMONSTER,CAbstractFactory<CGreenBoss>::Create());
     //ObjMgr->Add_Object(OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create());
+    //ObjMgr->Add_Object(OBJ_MONSTER, CAbstractFactory<CSpinningMonster>::Create());
     ObjMgr->Add_Object(OBJ_ITEM,CAbstractFactory<CPowerItem>::Create());
     ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create());
 
@@ -60,7 +62,8 @@ int CStage1::Update()
     UIMgr->Update();
     if (MonsterSpawnMgr->Get_BossMonsterDead())
     {
-        SceneMgr->Scene_Change(CSceneMgr::SC_STAGE_2);
+        if(MonsterSpawnMgr->Get_BossMonsterDeadTime()+m_dwNextStageStartDelay<GetTickCount())
+            SceneMgr->Scene_Change(CSceneMgr::SC_STAGE_2);
     }
     MonsterSpawnMgr->Update();
     return 0;
@@ -92,11 +95,11 @@ void CStage1::Render(HDC hDC)
 void CStage1::Release()
 {
     SoundMgr->StopAll();
-    ObjMgr->Delete_ID(OBJ_PLAYER);
+    //ObjMgr->Delete_ID(OBJ_PLAYER);
     ObjMgr->Delete_ID(OBJ_PET);
-    UIMgr->Delete_ID(UI_PLAYER_BOMB);
-    UIMgr->Delete_ID(UI_PLAYER_LIFE);
-    UIMgr->Delete_ID(UI_PLAYER_HEAD_MASSAGE);
-
+    //UIMgr->Delete_ID(UI_PLAYER_BOMB);
+    //UIMgr->Delete_ID(UI_PLAYER_LIFE);
+    //UIMgr->Delete_ID(UI_PLAYER_HEAD_MASSAGE);
+    ObjMgr->Delete_ID(OBJ_MONSTER);
     CMonsterSpawnMgr::Destroy_Instance();
 }

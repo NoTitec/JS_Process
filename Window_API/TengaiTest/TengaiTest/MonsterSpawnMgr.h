@@ -13,8 +13,9 @@ public:
 	void		Late_Update();
 	void		Release();
 	void		KillCountUp() { ++m_iMonsterKillCount; }
-	void		Set_BossMonsterDead() { m_BossMonsterDead = true; }
+	void		Set_BossMonsterDead() { m_BossMonsterDead = true; m_dwBossDeadSaveTime = GetTickCount(); }
 	bool		Get_BossMonsterDead() { return m_BossMonsterDead; }
+	int			Get_BossMonsterDeadTime() { return m_dwBossDeadSaveTime; }
 public:
 	static CMonsterSpawnMgr* Get_Instance()
 	{
@@ -38,6 +39,7 @@ private:
 
 	DWORD m_LimitSpawnTime = 2000;
 	DWORD m_dwSpawnSmallMonsterTime = GetTickCount();
+	DWORD m_dwBossDeadSaveTime;
 	int m_iMaxSpawnMonster = 4;
 	float spawnX = 816.f;
 	int m_iMonsterKillCount;

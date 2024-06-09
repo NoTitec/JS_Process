@@ -17,5 +17,6 @@ private:
 	int m_iScrollXSpeed;
 	int m_iScrollX;
 	bool SceneEnd;
+	DWORD m_dwNextStageStartDelay=5000;
 };
 

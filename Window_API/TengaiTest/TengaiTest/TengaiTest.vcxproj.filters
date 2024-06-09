@@ -234,6 +234,12 @@
     <ClInclude Include="Stage2.h">
       <Filter>02.Scene\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="SG1MonsterSpawnMgr.h">
+      <Filter>01. Manager\09.MonsterSpawnMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SpinningMonster.h">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -340,6 +346,12 @@
     </ClCompile>
     <ClCompile Include="Stage2.cpp">
       <Filter>02.Scene\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="SG1MonsterSpawnMgr.cpp">
+      <Filter>01. Manager\09.MonsterSpawnMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SpinningMonster.cpp">
+      <Filter>03. Obj\02. Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

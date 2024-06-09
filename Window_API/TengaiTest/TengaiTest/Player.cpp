@@ -30,6 +30,7 @@ void CPlayer::Initialize()
 	m_LifeCount = 2;
 	m_dwHitCoolTime = GetTickCount();
 	m_iBombCount = 4;
+	m_iPower = 0;
     m_tInfo = { 100.f, WINCY / 2.f, 32.f, 32.f };
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
 	m_tPetPoint.y = m_tInfo.fY - 16.f;
