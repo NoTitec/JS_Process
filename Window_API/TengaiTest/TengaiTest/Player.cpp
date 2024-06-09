@@ -162,6 +162,7 @@ void CPlayer::OnHit(CObj* _pObj)
 			++m_iBombCount;
 		}
 		break;
+	case OBJ_MONSTER:
 	case OBJ_BOSSMONSTER:
 		if (m_bCanHit)
 		{
@@ -196,7 +197,7 @@ void CPlayer::OnHit(CObj* _pObj)
 			}
 			m_bCanHit = false;
 			m_dwHitCoolTime = GetTickCount();
-			cout << "보스몬스터에게 피격" << endl;
+			cout << "몬스터에게 피격" << endl;
 		}
 		break;
 	}
