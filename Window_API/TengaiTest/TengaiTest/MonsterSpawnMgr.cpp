@@ -35,7 +35,7 @@ void CMonsterSpawnMgr::Update()
 		}
 		m_dwSpawnSmallMonsterTime = GetTickCount();
 	}
-	if (m_iMonsterKillCount >= 5)
+	if (m_iMonsterKillCount >= 20)
 	{
 		if (m_BossMonsterSpawn)
 		{

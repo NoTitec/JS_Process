@@ -1,5 +1,7 @@
 #include "BladeMonster.h"
 #include "EventDefine.h"
+#include "AbstractFactory.h"
+#include "GreenBossDeadEffect.h"
 #include "BmpMgr.h"
 #include "ObjMgr.h"
 #include "ScrollMgr.h"
@@ -20,7 +22,7 @@ void CBladeMonster::Initialize()
     //m_tInfo = {750.f,50.f,32.f,29.f};
     m_tInfo.fCX=32.f;
     m_tInfo.fCY = 29.f;
-    m_iHp = 5;
+    m_iHp = 10;
     m_eDir = DIR_LEFT;
     m_fSpeed = 3.f;
     m_fmaxAngle = 0.1f;
@@ -123,6 +125,7 @@ void CBladeMonster::Render(HDC hDC)
 
 void CBladeMonster::Release()
 {
+
 }
 
 void CBladeMonster::OnHit(CObj* _pObj)
@@ -136,6 +139,7 @@ void CBladeMonster::OnHit(CObj* _pObj)
         {
             Set_Dead();
             MonsterSpawnMgr->KillCountUp();
+            ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
         }
         break;
     case OBJ_PLAYERBOMB:
@@ -145,7 +149,7 @@ void CBladeMonster::OnHit(CObj* _pObj)
         {
             Set_Dead();
             MonsterSpawnMgr->KillCountUp();
-
+            ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
         }
         break;
     case OBJ_PETBULLET:
@@ -154,7 +158,7 @@ void CBladeMonster::OnHit(CObj* _pObj)
         {
             Set_Dead();
             MonsterSpawnMgr->KillCountUp();
-
+            ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
         }
         break;
     }

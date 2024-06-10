@@ -2,6 +2,7 @@
 #include "EventDefine.h"
 #include "BmpMgr.h"
 #include "ObjMgr.h"
+#include "SoundMgr.h"
 #include "AbstractFactory.h"
 #include "PowerItem.h"
 #include "BombItem.h"
@@ -21,11 +22,11 @@ void CGreenBoss::Initialize()
 {
     m_eID = OBJ_BOSSMONSTER;
     m_tInfo = { 600.f, WINCY / 2.f, 82.f, 72.f };
-    m_iHp = 50;
+    m_iHp = 150;
     m_fSpeed = 1.f;
     //패턴시간제어
     m_fSaveTime = GetTickCount();
-    m_fCoolTime = 2000.f;
+    m_fCoolTime = 1500.f;
 
     m_eCurState = IDLE;
     m_ePattern = BOSS_PATTERN_END;
@@ -73,7 +74,7 @@ int CGreenBoss::Update()
                 //printf("(%f, %f) \n", m_tInfo.fX, m_tInfo.fY);
                 //printf("<%d, %d> \n", m_Pattern1EndPoint.x, m_Pattern1EndPoint.y);
                 //정밀도 문제로 정수형으로 형변환해야 오류 안생김
-                if(abs(m_Pattern1EndPoint.x-(int)m_tInfo.fX)<10&& abs(m_Pattern1EndPoint.y - (int)m_tInfo.fY))
+                if(abs(m_Pattern1EndPoint.x-(int)m_tInfo.fX)<20&& abs(m_Pattern1EndPoint.y - (int)m_tInfo.fY)<20)
                 //if ((int)m_tInfo.fX == m_Pattern1EndPoint.x && (int)m_tInfo.fY == m_Pattern1EndPoint.y)
                 {
                     m_bMoveForward = false;
@@ -83,10 +84,11 @@ int CGreenBoss::Update()
             {
                 m_tInfo.fX += cos(m_fAngle * PI / 180.f) * -m_fSpeed;
                 m_tInfo.fY -= sin(m_fAngle * PI / 180.f) * -m_fSpeed;
-                if (abs(m_Pattern1StartPoint.x - (int)m_tInfo.fX) < 10 && abs(m_Pattern1StartPoint.y - (int)m_tInfo.fY))
+                if (abs(m_Pattern1StartPoint.x - (int)m_tInfo.fX) < 20 && abs(m_Pattern1StartPoint.y - (int)m_tInfo.fY)<20)
                 //if ((int)m_tInfo.fX == m_Pattern1StartPoint.x && (int)m_tInfo.fY == m_Pattern1StartPoint.y)
                 {
                     //m_bMoveForward = true;
+                    SoundMgr->StopSound(SOUND_BOSS_PATTERN1SOUND);
                     Set_State_Idle();
                 }
             }
@@ -263,6 +265,7 @@ void CGreenBoss::Change_State()
 
 void CGreenBoss::Pattern1()
 {
+    SoundMgr->PlaySoundW(L"duende verde.wav",SOUND_BOSS_PATTERN1SOUND,0.2f);
     m_pFrameKey = L"Boss_Attack_Pattern1";
     m_eCurState = ATTACK;
     m_ePattern = ONEPATTERN;
@@ -289,8 +292,8 @@ void CGreenBoss::Pattern1()
 
         m_fAngle = fRadian * 180.f / PI;
     }
-    m_Pattern1EndPoint.x = (int)(m_Pattern1StartPoint.x + cos(m_fAngle * PI / 180.f) * 200.f);
-    m_Pattern1EndPoint.y = (int)(m_Pattern1StartPoint.y - sin(m_fAngle * PI / 180.f) * 200.f);
+    m_Pattern1EndPoint.x = (int)(m_Pattern1StartPoint.x + cos(m_fAngle * PI / 180.f) * 400.f);
+    m_Pattern1EndPoint.y = (int)(m_Pattern1StartPoint.y - sin(m_fAngle * PI / 180.f) * 400.f);
 
 }
 
