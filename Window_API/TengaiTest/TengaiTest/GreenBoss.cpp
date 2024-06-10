@@ -22,7 +22,7 @@ void CGreenBoss::Initialize()
     m_eID = OBJ_BOSSMONSTER;
     m_tInfo = { 600.f, WINCY / 2.f, 82.f, 72.f };
     m_iHp = 50;
-    m_fSpeed = 4.f;
+    m_fSpeed = 1.f;
     //패턴시간제어
     m_fSaveTime = GetTickCount();
     m_fCoolTime = 2000.f;
@@ -55,7 +55,11 @@ int CGreenBoss::Update()
             //내상태를 패턴상태로 전환하는함수
             Change_State();
             m_fSaveTime = GetTickCount();
+            //m_fAngle = rand() % 360;
         }
+        m_tInfo.fX += cos(m_fAngle * PI / 180.f) * m_fSpeed;
+        m_tInfo.fY -= sin(m_fAngle * PI / 180.f) * m_fSpeed;
+
         break;
     case ATTACK:
         switch (m_ePattern)
@@ -69,7 +73,8 @@ int CGreenBoss::Update()
                 //printf("(%f, %f) \n", m_tInfo.fX, m_tInfo.fY);
                 //printf("<%d, %d> \n", m_Pattern1EndPoint.x, m_Pattern1EndPoint.y);
                 //정밀도 문제로 정수형으로 형변환해야 오류 안생김
-                if ((int)m_tInfo.fX == m_Pattern1EndPoint.x && (int)m_tInfo.fY == m_Pattern1EndPoint.y)
+                if(abs(m_Pattern1EndPoint.x-(int)m_tInfo.fX)<10&& abs(m_Pattern1EndPoint.y - (int)m_tInfo.fY))
+                //if ((int)m_tInfo.fX == m_Pattern1EndPoint.x && (int)m_tInfo.fY == m_Pattern1EndPoint.y)
                 {
                     m_bMoveForward = false;
                 }
@@ -78,7 +83,8 @@ int CGreenBoss::Update()
             {
                 m_tInfo.fX += cos(m_fAngle * PI / 180.f) * -m_fSpeed;
                 m_tInfo.fY -= sin(m_fAngle * PI / 180.f) * -m_fSpeed;
-                if (m_tInfo.fX == m_Pattern1StartPoint.x && m_tInfo.fY == m_Pattern1StartPoint.y)
+                if (abs(m_Pattern1StartPoint.x - (int)m_tInfo.fX) < 10 && abs(m_Pattern1StartPoint.y - (int)m_tInfo.fY))
+                //if ((int)m_tInfo.fX == m_Pattern1StartPoint.x && (int)m_tInfo.fY == m_Pattern1StartPoint.y)
                 {
                     //m_bMoveForward = true;
                     Set_State_Idle();
@@ -118,7 +124,40 @@ void CGreenBoss::Late_Update()
     {
         Move_Frame_once_and_Return_Idle_State();
     }*/
-        
+    int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
+    //상충돌이면 angle 180~360
+    //하충돌이면 0~180
+    //좌충돌이면 0~90or 270~360
+    //우충돌이면 90~270
+    // 좌충돌
+    if (m_tInfo.fX < 18) {
+        int rand1 = rand() % 90;
+        int rand2 = 270 + (rand() % 90);
+        if (rand() % 2 == 0)
+        {
+            m_fAngle = rand1;
+        }
+        else
+        {
+            m_fAngle = rand2;
+        }
+        if (m_fAngle < 0) m_fAngle += 360;  // 정규화
+    }
+    // 우충돌
+    if (m_tInfo.fX > 782) {
+        m_fAngle = 90 + (rand() % 180);
+        if (m_fAngle >= 360) m_fAngle -= 360;  // 정규화
+    }
+    // 상충돌
+    if (m_tInfo.fY + iScrollY < 18) {
+        m_fAngle = 180 + (rand() % 180);
+        if (m_fAngle < 0) m_fAngle += 360;  // 정규화
+    }
+    // 하충돌
+    if (m_tInfo.fY + iScrollY > 582) {
+        m_fAngle = rand() % 180;
+        if (m_fAngle >= 360) m_fAngle -= 360;  // 정규화
+    }
 }
 
 void CGreenBoss::Render(HDC hDC)
@@ -250,8 +289,8 @@ void CGreenBoss::Pattern1()
 
         m_fAngle = fRadian * 180.f / PI;
     }
-    m_Pattern1EndPoint.x = m_Pattern1StartPoint.x + cos(m_fAngle * PI / 180.f) * 200.f;
-    m_Pattern1EndPoint.y = m_Pattern1StartPoint.y - sin(m_fAngle * PI / 180.f) * 200.f;
+    m_Pattern1EndPoint.x = (int)(m_Pattern1StartPoint.x + cos(m_fAngle * PI / 180.f) * 200.f);
+    m_Pattern1EndPoint.y = (int)(m_Pattern1StartPoint.y - sin(m_fAngle * PI / 180.f) * 200.f);
 
 }
 

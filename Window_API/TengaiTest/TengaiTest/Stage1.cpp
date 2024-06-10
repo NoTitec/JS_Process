@@ -58,6 +58,11 @@ int CStage1::Update()
         UIMgr->Delete_ID(UI_PLAYER_HEAD_MASSAGE);
         UIMgr->Delete_ID(UI_PLAYER_LIFE);
         UIMgr->Delete_ID(UI_PLAYER_BOMB);
+        if (ObjMgr->Get_Player_DeadTime() + m_dwNextStageStartDelay < GetTickCount())
+        {
+            ObjMgr->Delete_All();
+            SceneMgr->Scene_Change(CSceneMgr::SC_GAMEOVER);
+        }
     }
     UIMgr->Update();
     if (MonsterSpawnMgr->Get_BossMonsterDead())

@@ -100,6 +100,9 @@
     <Filter Include="02.Scene\Select">
       <UniqueIdentifier>{baf592d7-3f01-459c-9827-225e61488890}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Scene\GameOver">
+      <UniqueIdentifier>{d5dc5a6e-a3ba-4178-a707-3ff3600509be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -243,6 +246,9 @@
     <ClInclude Include="MonsterBullet1.h">
       <Filter>03. Obj\01.Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>02.Scene\GameOver</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -358,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="MonsterBullet1.cpp">
       <Filter>03. Obj\01.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>02.Scene\GameOver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
 class CSceneMgr
 {
 public:
-	enum SCENEID { SC_LOGO, SC_MENU, SC_STAGE_1,SC_STAGE_2, SC_END };
+	enum SCENEID { SC_LOGO, SC_MENU, SC_STAGE_1,SC_STAGE_2,SC_GAMEOVER, SC_END };
 
 private:
 	CSceneMgr();
@@ -16,6 +16,7 @@ public:
 	void	Late_Update();
 	void	Render(HDC hDC);
 	void	Release();
+	SCENEID		Get_SceneID() { return m_eCurScene; }
 
 public:
 	static CSceneMgr* Get_Instance()

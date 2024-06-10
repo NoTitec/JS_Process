@@ -21,7 +21,7 @@ public:
 	virtual void	On_Motion_End() override;
 public:
 	void Set_State_Idle() {
-		m_fSpeed=4.f; m_eCurState = IDLE; m_tInfo.fCX = 82.f; m_tInfo.fCY = 72.f; m_pFrameKey = L"GreenBoss_Idle";
+		m_fSpeed = 1.f; m_eCurState = IDLE; m_tInfo.fCX = 82.f; m_tInfo.fCY = 72.f; m_pFrameKey = L"GreenBoss_Idle"; m_fAngle = rand() % 360;
 	}
 	void Change_State();
 	void Pattern1();

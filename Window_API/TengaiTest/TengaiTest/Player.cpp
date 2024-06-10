@@ -130,6 +130,7 @@ void CPlayer::Render(HDC hDC)
 
 void CPlayer::Release()
 {
+	ObjMgr->Set_Player_DeadTime();
 }
 
 void CPlayer::OnHit(CObj* _pObj)

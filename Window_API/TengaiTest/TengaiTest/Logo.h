@@ -13,5 +13,7 @@ public:
 	void Late_Update() override;
 	void Render(HDC hDC) override;
 	void Release() override;
+private:
+	HWND m_hVideo;
 };
 

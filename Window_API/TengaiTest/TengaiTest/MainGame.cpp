@@ -39,7 +39,7 @@ void CMainGame::Initialize()
 
 #pragma region 이미지 삽입구문들
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Back.bmp", L"Back");
-
+	BmpMgr->Insert_Bmp(L"../ResourceImage/GameOver/GameOver.bmp",L"GameOver");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/ForwardMove/Miko_Fly_Forward.bmp",L"Miko_Fly_Forward");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/BackMove/Miko_Fly_Backward.bmp",L"Miko_Fly_Backward");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBasicAttack.bmp",L"MikoBasicAttack");
@@ -94,6 +94,8 @@ void CMainGame::Render()
 {
 	++m_iFps;
 
+	if (CSceneMgr::SC_LOGO == CSceneMgr::Get_Instance()->Get_SceneID())
+		return;
 	HDC hMemDC = CBmpMgr::Get_Instance()->Find_Img(L"Back");
 	SceneMgr->Render(hMemDC);
 
