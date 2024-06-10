@@ -31,6 +31,7 @@ void CPlayer::Initialize()
 	m_dwHitCoolTime = GetTickCount();
 	m_iBombCount = 4;
 	m_iPower = 0;
+	m_bBombKeyOn = false;
     m_tInfo = { 100.f, WINCY / 2.f, 32.f, 32.f };
 	m_tPetPoint.x = m_tInfo.fX - 16.f;
 	m_tPetPoint.y = m_tInfo.fY - 16.f;
@@ -163,6 +164,7 @@ void CPlayer::OnHit(CObj* _pObj)
 			++m_iBombCount;
 		}
 		break;
+	case OBJ_MONSTERBULLET:
 	case OBJ_MONSTER:
 	case OBJ_BOSSMONSTER:
 		if (m_bCanHit)
@@ -209,8 +211,9 @@ void CPlayer::Key_Input()
 	//ÆøÅº »ý¼º
 	if (KeyMgr->Key_Down(VK_SPACE))
 	{
-		if (ObjMgr->Check_ID_Empty(OBJ_PLAYERBOMB)&&(m_iBombCount>0))
+		if (ObjMgr->Check_ID_Empty(OBJ_PLAYERBOMB)&&(m_iBombCount>0)&&(!m_bBombKeyOn))
 		{
+			ObjMgr->Delete_ID(OBJ_MONSTERBULLET);
 			--m_iBombCount;
 			SoundMgr->StopSound(SOUND_PLAYER_BOMB);
 			SoundMgr->PlaySoundW(L"principi ulti koyori.wav", SOUND_PLAYER_BOMB, 0.5f);

@@ -240,6 +240,9 @@
     <ClInclude Include="SpinningMonster.h">
       <Filter>03. Obj\02. Monster</Filter>
     </ClInclude>
+    <ClInclude Include="MonsterBullet1.h">
+      <Filter>03. Obj\01.Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -352,6 +355,9 @@
     </ClCompile>
     <ClCompile Include="SpinningMonster.cpp">
       <Filter>03. Obj\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterBullet1.cpp">
+      <Filter>03. Obj\01.Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

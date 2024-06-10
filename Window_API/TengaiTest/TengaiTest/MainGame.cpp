@@ -73,7 +73,7 @@ void CMainGame::Initialize()
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_2_Attack/Spinning_Attack.bmp", L"Spinning_Attack");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_2_Attack/Spinning_Attack_White.bmp", L"Spinning_Attack_White");
 
-	BmpMgr->Insert_Bmp(L"../ResourceImage/MonsterBullet/MonsterBullet.bmp", L"MonsterBullet");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/MonsterBullet/MonsterBullet1.bmp", L"MonsterBullet1");
 
 #pragma endregion
 }

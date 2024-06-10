@@ -14,8 +14,8 @@ CGreenBossDeadEffect::~CGreenBossDeadEffect()
 
 void CGreenBossDeadEffect::Initialize()
 {
-    SoundMgr->StopSound(SOUND_PLAYER_BOMB);
-    SoundMgr->PlaySoundW(L"tengai-139 enemy death (3).wav", SOUND_PLAYER_BOMB, 0.5f);
+    SoundMgr->StopSound(SOUND_BOSS_DEAD);
+    SoundMgr->PlaySoundW(L"tengai-139 enemy death (3).wav", SOUND_BOSS_DEAD, 0.5f);
     m_eID = OBJ_EFFECT;
     m_tInfo.fCX = 128.f;
     m_tInfo.fCY = 128.f;

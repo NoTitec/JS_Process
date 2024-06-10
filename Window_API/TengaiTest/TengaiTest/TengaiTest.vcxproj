@@ -141,6 +141,7 @@
     <ClInclude Include="MikoPet.h" />
     <ClInclude Include="MikoPetBasicBullet.h" />
     <ClInclude Include="MikoPetGuideBullet.h" />
+    <ClInclude Include="MonsterBullet1.h" />
     <ClInclude Include="MonsterSpawnMgr.h" />
     <ClInclude Include="PlayerBombCount.h" />
     <ClInclude Include="PlayerDeadEffect.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="MikoPet.cpp" />
     <ClCompile Include="MikoPetBasicBullet.cpp" />
     <ClCompile Include="MikoPetGuideBullet.cpp" />
+    <ClCompile Include="MonsterBullet1.cpp" />
     <ClCompile Include="MonsterSpawnMgr.cpp" />
     <ClCompile Include="PlayerBombCount.cpp" />
     <ClCompile Include="PlayerDeadEffect.cpp" />

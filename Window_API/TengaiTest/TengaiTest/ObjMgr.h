@@ -21,6 +21,7 @@ public:
 		return m_ObjList[OBJ_PET].front();
 	}
 	void		Delete_ID(OBJ_ID eID);
+	void		Delete_All();
 	bool		Check_ID_Empty(OBJ_ID eID)
 	{
 		if (m_ObjList[eID].empty())

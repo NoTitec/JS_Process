@@ -133,6 +133,17 @@ void CObjMgr::Delete_ID(OBJ_ID eID)
 	m_ObjList[eID].clear();
 }
 
+void CObjMgr::Delete_All()
+{
+	for (size_t i = 0; i < OBJ_END; ++i)
+	{
+		for (auto& pObj : m_ObjList[i])
+			Safe_Delete(pObj);
+
+		m_ObjList[i].clear();
+	}
+}
+
 void CObjMgr::Add_Object(OBJ_ID eID, CObj* pObj)
 {
 	if (OBJ_END <= eID || nullptr == pObj)
@@ -179,13 +190,16 @@ void CObjMgr::Late_Update()
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PETBULLET], m_ObjList[OBJ_BOSSMONSTER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOMB_ITEM]);
-
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_MONSTERBULLET],m_ObjList[OBJ_PLAYER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOSSMONSTER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
 	if (dwSaveTime+300<GetTickCount())
 	{
-		if(!m_ObjList[OBJ_PLAYERBOMB].empty())
+		if (!m_ObjList[OBJ_PLAYERBOMB].empty())
+		{
 			CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBOMB], m_ObjList[OBJ_BOSSMONSTER]);
+			CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYERBOMB], m_ObjList[OBJ_MONSTER]);
+		}
 		dwSaveTime = GetTickCount();
 	}
 	////오브젝트 bHit변수가 true일때만 플레이어 충돌검사

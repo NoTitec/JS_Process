@@ -41,6 +41,8 @@ public:
 	void Motion_Change();
 	template<typename T>
 	CObj* Create_Bullet();
+	template<typename T>
+	void Create_three_Bullet();
 private:
 	int m_iHp;
 	float m_fSaveTime;

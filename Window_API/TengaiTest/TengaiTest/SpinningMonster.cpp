@@ -1,4 +1,5 @@
 #include "SpinningMonster.h"
+#include "MonsterBullet1.h"
 #include "GreenBossDeadEffect.h"
 #include "SG1MonsterSpawnMgr.h"
 CSpinningMonster::CSpinningMonster()
@@ -251,6 +252,7 @@ void CSpinningMonster::Pattern1()
     m_tFrame.bRepeat = false;
     //몬스터 총알 생성코드(총알 클래스 생성필요)
     cout << "콘솔 총알 생성 확인용" << endl;
+    Create_three_Bullet<CMonsterBullet1>();
 }
 
 void CSpinningMonster::Motion_Change()
@@ -293,4 +295,13 @@ void CSpinningMonster::Move_Frame_once_and_Return_Idle_State()
 
         m_tFrame.dwTime = GetTickCount();
     }
+}
+
+template<typename T>
+inline void CSpinningMonster::Create_three_Bullet()
+{
+        ObjMgr->Add_Object(OBJ_MONSTERBULLET, CAbstractFactory<T>::Create(m_tInfo.fX , m_tInfo.fY, DIR_LEFT));
+        ObjMgr->Add_Object(OBJ_MONSTERBULLET, CAbstractFactory<T>::Create(m_tInfo.fX , m_tInfo.fY - 20.f, DIR_LD));
+        ObjMgr->Add_Object(OBJ_MONSTERBULLET, CAbstractFactory<T>::Create(m_tInfo.fX , m_tInfo.fY + 20.f, DIR_LU));
+        
 }

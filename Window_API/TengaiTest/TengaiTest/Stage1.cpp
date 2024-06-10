@@ -101,5 +101,6 @@ void CStage1::Release()
     //UIMgr->Delete_ID(UI_PLAYER_LIFE);
     //UIMgr->Delete_ID(UI_PLAYER_HEAD_MASSAGE);
     ObjMgr->Delete_ID(OBJ_MONSTER);
+    ObjMgr->Delete_ID(OBJ_PLAYERBOMB);
     CMonsterSpawnMgr::Destroy_Instance();
 }

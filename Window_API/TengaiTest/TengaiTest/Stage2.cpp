@@ -96,11 +96,12 @@ void CStage2::Render(HDC hDC)
 void CStage2::Release()
 {
     SoundMgr->StopAll();
-    ObjMgr->Delete_ID(OBJ_PLAYER);
-    ObjMgr->Delete_ID(OBJ_PET);
+    ObjMgr->Delete_All();
+    /*ObjMgr->Delete_ID(OBJ_PLAYER);
+    ObjMgr->Delete_ID(OBJ_PET);*/
     UIMgr->Delete_ID(UI_PLAYER_BOMB);
     UIMgr->Delete_ID(UI_PLAYER_LIFE);
     UIMgr->Delete_ID(UI_PLAYER_HEAD_MASSAGE);
-    ObjMgr->Delete_ID(OBJ_MONSTER);
+    //ObjMgr->Delete_ID(OBJ_MONSTER);
     CSG1MonsterSpawnMgr::Destroy_Instance();
 }
