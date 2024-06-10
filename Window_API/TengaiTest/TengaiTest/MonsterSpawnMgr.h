@@ -37,10 +37,10 @@ public:
 private:
 	static CMonsterSpawnMgr* m_pInstance;
 
-	DWORD m_LimitSpawnTime = 2000;
+	DWORD m_LimitSpawnTime = 1500;
 	DWORD m_dwSpawnSmallMonsterTime = GetTickCount();
 	DWORD m_dwBossDeadSaveTime;
-	int m_iMaxSpawnMonster = 4;
+	int m_iMaxSpawnMonster = 6;
 	float spawnX = 816.f;
 	int m_iMonsterKillCount;
 	bool m_BossMonsterSpawn;

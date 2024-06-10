@@ -28,7 +28,7 @@ void CMonsterSpawnMgr::Update()
 
 	if (m_dwSpawnSmallMonsterTime + m_LimitSpawnTime < GetTickCount())
 	{
-		if (iMonsterSize <= m_iMaxSpawnMonster)
+		if (iMonsterSize <= m_iMaxSpawnMonster&&(!m_BossMonsterDead))
 		{
 			float randY = 100.f + rand() % 400;
 			ObjMgr->Add_Object(OBJ_ID::OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create(spawnX,randY));
