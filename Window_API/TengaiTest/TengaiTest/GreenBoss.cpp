@@ -26,7 +26,7 @@ void CGreenBoss::Initialize()
     m_fSpeed = 1.f;
     //패턴시간제어
     m_fSaveTime = GetTickCount();
-    m_fCoolTime = 1500.f;
+    m_fCoolTime = 1700.f;
 
     m_eCurState = IDLE;
     m_ePattern = BOSS_PATTERN_END;
@@ -292,8 +292,8 @@ void CGreenBoss::Pattern1()
 
         m_fAngle = fRadian * 180.f / PI;
     }
-    m_Pattern1EndPoint.x = (int)(m_Pattern1StartPoint.x + cos(m_fAngle * PI / 180.f) * 400.f);
-    m_Pattern1EndPoint.y = (int)(m_Pattern1StartPoint.y - sin(m_fAngle * PI / 180.f) * 400.f);
+    m_Pattern1EndPoint.x = (int)(m_Pattern1StartPoint.x + cos(m_fAngle * PI / 180.f) * 500.f);
+    m_Pattern1EndPoint.y = (int)(m_Pattern1StartPoint.y - sin(m_fAngle * PI / 180.f) * 500.f);
 
 }
 
