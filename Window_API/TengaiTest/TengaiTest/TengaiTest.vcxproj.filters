@@ -103,6 +103,12 @@
     <Filter Include="02.Scene\GameOver">
       <UniqueIdentifier>{d5dc5a6e-a3ba-4178-a707-3ff3600509be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Scene\StageMove">
+      <UniqueIdentifier>{4a1dbb01-dc6f-4f90-880c-a4c36c355bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Scene\GameClear">
+      <UniqueIdentifier>{fbf5c5f5-8d88-4d77-886c-1c05e965950e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -249,6 +255,12 @@
     <ClInclude Include="GameOverScene.h">
       <Filter>02.Scene\GameOver</Filter>
     </ClInclude>
+    <ClInclude Include="Hemisphere.h">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="StageMove.h">
+      <Filter>02.Scene\StageMove</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TengaiTest.cpp">
@@ -367,6 +379,12 @@
     </ClCompile>
     <ClCompile Include="GameOverScene.cpp">
       <Filter>02.Scene\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="Hemisphere.cpp">
+      <Filter>03. Obj\02. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="StageMove.cpp">
+      <Filter>02.Scene\StageMove</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

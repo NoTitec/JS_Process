@@ -193,7 +193,7 @@ void CObjMgr::Late_Update()
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_MONSTERBULLET],m_ObjList[OBJ_PLAYER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_BOSSMONSTER]);
 	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
-	if (dwSaveTime+300<GetTickCount())
+	if (dwSaveTime+150<GetTickCount())
 	{
 		if (!m_ObjList[OBJ_PLAYERBOMB].empty())
 		{

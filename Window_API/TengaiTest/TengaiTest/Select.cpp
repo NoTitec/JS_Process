@@ -27,6 +27,9 @@ void CSelect::Initialize()
 
 int CSelect::Update()
 {
+	if(m_dwPlayerselectTime+3000<GetTickCount())
+		CSceneMgr::Get_Instance()->Scene_Change(CSceneMgr::SC_STAGE_1);
+
     return 0;
 }
 
@@ -34,7 +37,31 @@ void CSelect::Late_Update()
 {
 	if (CKeyMgr::Get_Instance()->Key_Down(VK_RETURN))
 	{
-		CSceneMgr::Get_Instance()->Scene_Change(CSceneMgr::SC_STAGE_1);
+		m_dwPlayerselectTime = GetTickCount();
+		switch (m_iselectindex)
+		{
+		case 0:
+			SoundMgr->PlaySoundW(L"select koyori.wav",SOUND_SELECT,1.f);
+			break;
+		case 1:
+			SoundMgr->PlaySoundW(L"select tengai.wav", SOUND_SELECT, 1.f);
+
+			break;
+		case 2:
+			SoundMgr->PlaySoundW(L"select katana.wav", SOUND_SELECT, 1.f);
+
+			break;
+		case 3:
+			SoundMgr->PlaySoundW(L"select sho.wav", SOUND_SELECT, 1.f);
+
+			break;
+		case 4:
+			SoundMgr->PlaySoundW(L"select_junis.wav", SOUND_SELECT, 1.f);
+
+			break;
+
+		}
+		//CSceneMgr::Get_Instance()->Scene_Change(CSceneMgr::SC_STAGE_1);
 		return;
 	}
 	if (KeyMgr->Key_Down(VK_RIGHT))

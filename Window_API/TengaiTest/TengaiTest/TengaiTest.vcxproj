@@ -138,6 +138,7 @@
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GreenBossDeadEffect.h" />
+    <ClInclude Include="Hemisphere.h" />
     <ClInclude Include="MikoBomb.h" />
     <ClInclude Include="MikoPet.h" />
     <ClInclude Include="MikoPetBasicBullet.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="SpinningMonster.h" />
     <ClInclude Include="Stage2.h" />
+    <ClInclude Include="StageMove.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="enumDefine.h" />
@@ -187,6 +189,7 @@
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GreenBossDeadEffect.cpp" />
+    <ClCompile Include="Hemisphere.cpp" />
     <ClCompile Include="MikoBomb.cpp" />
     <ClCompile Include="MikoPet.cpp" />
     <ClCompile Include="MikoPetBasicBullet.cpp" />
@@ -202,6 +205,7 @@
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="SpinningMonster.cpp" />
     <ClCompile Include="Stage2.cpp" />
+    <ClCompile Include="StageMove.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="GreenBoss.cpp" />

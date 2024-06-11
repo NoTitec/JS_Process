@@ -23,9 +23,9 @@ void CBladeMonster::Initialize()
     //m_tInfo = {750.f,50.f,32.f,29.f};
     m_tInfo.fCX=32.f;
     m_tInfo.fCY = 29.f;
-    m_iHp = 5;
+    m_iHp = 8;
     m_eDir = DIR_LEFT;
-    m_fSpeed = 3.f;
+    m_fSpeed = 2.5f;
     m_fmaxAngle = 0.1f;
     //비트이미지 가로
     m_tFrame.iFrameStart = -1;
@@ -48,7 +48,7 @@ int CBladeMonster::Update()
     m_pTarget = ObjMgr->Get_Target_Within_Certain_Distance(OBJ_PLAYER,this,400.f);
     if (m_pTarget)
     {
-        m_fSpeed = 5.f;
+        m_fSpeed = 4.f;
         float	fWidth(0.f), fHeight(0.f), fDiagonal(0.f), fRadian(0.f);
 
         fWidth = m_pTarget->Get_Info().fX - m_tInfo.fX;
@@ -142,7 +142,7 @@ void CBladeMonster::OnHit(CObj* _pObj)
             MonsterSpawnMgr->KillCountUp();
             ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
             int i = rand() % 10;
-            if(i>7)
+            if(i>8)
                 ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
 
         }
@@ -156,7 +156,7 @@ void CBladeMonster::OnHit(CObj* _pObj)
             MonsterSpawnMgr->KillCountUp();
             ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
             int i = rand() % 10;
-            if (i > 7)
+            if (i > 8)
                 ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
 
         }

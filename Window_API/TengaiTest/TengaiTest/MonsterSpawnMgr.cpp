@@ -1,5 +1,6 @@
 #include "MonsterSpawnMgr.h"
 #include "ObjMgr.h"
+#include "SceneMgr.h"
 #include "AbstractFactory.h"
 #include "BladeMonster.h"
 #include "GreenBoss.h"
@@ -39,8 +40,11 @@ void CMonsterSpawnMgr::Update()
 	{
 		if (m_BossMonsterSpawn)
 		{
-			ObjMgr->Add_Object(OBJ_BOSSMONSTER, CAbstractFactory<CGreenBoss>::Create());
-			m_BossMonsterSpawn = false;
+			if (SceneMgr->Get_SceneID() == CSceneMgr::SC_STAGE_1)
+			{
+				ObjMgr->Add_Object(OBJ_BOSSMONSTER, CAbstractFactory<CGreenBoss>::Create());
+				m_BossMonsterSpawn = false;
+			}
 		}
 	}
 

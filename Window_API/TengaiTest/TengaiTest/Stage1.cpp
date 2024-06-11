@@ -16,6 +16,7 @@
 #include "GreenBoss.h"
 #include "BladeMonster.h"
 #include "SpinningMonster.h"
+#include "Hemisphere.h"
 #include "MonsterSpawnMgr.h"
 CStage1::CStage1(): m_iScrollXSpeed(3),m_iScrollX(0),SceneEnd(false)
 {
@@ -67,8 +68,14 @@ int CStage1::Update()
     UIMgr->Update();
     if (MonsterSpawnMgr->Get_BossMonsterDead())
     {
-        if(MonsterSpawnMgr->Get_BossMonsterDeadTime()+m_dwNextStageStartDelay<GetTickCount())
-            SceneMgr->Scene_Change(CSceneMgr::SC_STAGE_2);
+        if (MonsterSpawnMgr->Get_BossMonsterDeadTime() + m_dwNextStageStartDelay < GetTickCount())
+        {
+            SceneMgr->Set_LoadCallerID(CSceneMgr::SC_STAGE_1);
+            
+            SceneMgr->Scene_Change(CSceneMgr::SC_Load);
+        }
+            
+            
     }
     MonsterSpawnMgr->Update();
     return 0;

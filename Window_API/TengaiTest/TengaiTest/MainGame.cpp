@@ -39,6 +39,8 @@ void CMainGame::Initialize()
 
 #pragma region 이미지 삽입구문들
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Back.bmp", L"Back");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/LoadScene/Load.bmp", L"Load");
+
 	BmpMgr->Insert_Bmp(L"../ResourceImage/GameOver/GameOver.bmp",L"GameOver");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/ForwardMove/Miko_Fly_Forward.bmp",L"Miko_Fly_Forward");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/BackMove/Miko_Fly_Backward.bmp",L"Miko_Fly_Backward");
@@ -50,6 +52,11 @@ void CMainGame::Initialize()
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss/GreenBoss_Idle_White.bmp",L"GreenBoss_Idle_White");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BossEffect/BossDead.bmp", L"GreenBossDeadEffect");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BossAttack/Boss_Attack_Pattern1.bmp", L"Boss_Attack_Pattern1");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/BossAttack/Boss_Attack_Pattern1_White.bmp", L"Boss_Attack_Pattern1_White");
+
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss2/Boss2_Idle.bmp",L"Boss2_Idle");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss2Attack/Boss2_Attack.bmp", L"Boss2_Attack");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Boss2Attack/Boss2_Attack_White.bmp", L"Boss2_Attack_White");
 
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Item/PowerItem.bmp",L"PowerItem");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/BombItem/BombItem.bmp", L"BombItem");

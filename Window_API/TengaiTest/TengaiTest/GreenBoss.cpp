@@ -22,7 +22,7 @@ void CGreenBoss::Initialize()
 {
     m_eID = OBJ_BOSSMONSTER;
     m_tInfo = { 600.f, WINCY / 2.f, 82.f, 72.f };
-    m_iHp = 150;
+    m_iHp = 50;
     m_fSpeed = 1.f;
     //패턴시간제어
     m_fSaveTime = GetTickCount();
@@ -114,6 +114,9 @@ void CGreenBoss::Late_Update()
             m_pFrameKey = L"GreenBoss_Idle";
             m_tFrame.bRepeat = true;
             break;
+        case ATTACK:
+            m_pFrameKey = L"Boss_Attack_Pattern1";
+            m_tFrame.bRepeat = false;
         }
         
     }
@@ -206,6 +209,10 @@ void CGreenBoss::OnHit(CObj* _pObj)
             m_pFrameKey = L"GreenBoss_Idle_White";
             m_tFrame.bRepeat = false;
             break;
+        case ATTACK:
+            m_pFrameKey = L"Boss_Attack_Pattern1_White";
+            m_tFrame.bRepeat = false;
+            break;
         }
         if (m_iHp == 0)
             Set_Dead();
@@ -217,6 +224,10 @@ void CGreenBoss::OnHit(CObj* _pObj)
         {
         case IDLE:
             m_pFrameKey = L"GreenBoss_Idle_White";
+            m_tFrame.bRepeat = false;
+            break;
+        case ATTACK:
+            m_pFrameKey = L"Boss_Attack_Pattern1_White";
             m_tFrame.bRepeat = false;
             break;
         }

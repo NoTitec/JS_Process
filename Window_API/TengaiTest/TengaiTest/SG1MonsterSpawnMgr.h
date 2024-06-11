@@ -11,8 +11,11 @@ public:
 	void		Late_Update();
 	void		Release();
 	void		KillCountUp() { ++m_iMonsterKillCount; }
-	void		Set_Stage2ClearTime() { m_dwStage2ClearSaveTime = GetTickCount(); }
-	DWORD		Get_Stage2ClearTime() { return m_dwStage2ClearSaveTime; }
+	void		Set_BossMonsterDead() { m_BossMonsterDead = true; m_dwBossDeadSaveTime = GetTickCount(); }
+	bool		Get_BossMonsterDead() { return m_BossMonsterDead; }
+	int			Get_BossMonsterDeadTime() { return m_dwBossDeadSaveTime; }
+	/*void		Set_Stage2ClearTime() { m_dwStage2ClearSaveTime = GetTickCount(); }
+	DWORD		Get_Stage2ClearTime() { return m_dwStage2ClearSaveTime; }*/
 public:
 	static CSG1MonsterSpawnMgr* Get_Instance()
 	{
@@ -34,11 +37,15 @@ private:
 
 	DWORD m_LimitSpawnTime = 2000;
 	DWORD m_dwSpawnSmallMonsterTime = GetTickCount();
-	DWORD m_dwStage2ClearSaveTime;
-	int m_iMaxSpawnMonster = 4;
+	//DWORD m_dwStage2ClearSaveTime;
+	DWORD m_dwBossDeadSaveTime;
+
+	int m_iMaxSpawnMonster = 3;
 	float spawnX = 816.f;
 	int m_iMonsterKillCount;
-	bool m_bstageend;
+	bool m_BossMonsterSpawn;
+	bool m_BossMonsterDead;
+	//bool m_bstageend;
 };
 
 #define SG1MonsterSpawnMgr CSG1MonsterSpawnMgr::Get_Instance()

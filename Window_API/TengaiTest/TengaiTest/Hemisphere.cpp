@@ -1,31 +1,37 @@
-#include "SpinningMonster.h"
-#include "MonsterBullet1.h"
-#include "GreenBossDeadEffect.h"
+#include "Hemisphere.h"
+#include "EventDefine.h"
+#include "BmpMgr.h"
+#include "SoundMgr.h"
+#include "AbstractFactory.h"
 #include "PowerItem.h"
+#include "BombItem.h"
+#include "MonsterSpawnMgr.h"
+#include "BladeMonster.h"
+#include "GreenBoss.h"
+#include "GreenBossDeadEffect.h"
+#include "MonsterBullet1.h"
 #include "SG1MonsterSpawnMgr.h"
-CSpinningMonster::CSpinningMonster()
+CHemisphere::CHemisphere()
 {
 }
 
-CSpinningMonster::~CSpinningMonster()
+CHemisphere::~CHemisphere()
 {
 	Release();
 }
 
-void CSpinningMonster::Initialize()
+void CHemisphere::Initialize()
 {
-    m_eID = OBJ_MONSTER;
-    m_tInfo.fX = 700.f;
-    m_tInfo.fY = 100.f;
-    m_tInfo.fCX = 42.f;
-    m_tInfo.fCY = 48.f;
-    m_iHp = 10;
+    m_eID = OBJ_BOSSMONSTER;
+    m_tInfo = { 600.f, WINCY / 2.f, 76.f,128.f };
+    m_iHp = 40;
     m_fSpeed = 1.f;
     //패턴시간제어
     m_fSaveTime = GetTickCount();
-    m_fCoolTime = 2000.f;
+    m_fCoolTime = 5000.f;
 
     m_eCurState = IDLE;
+    m_ePattern = BOSS_PATTERN_END;
     //비트이미지 가로
     m_tFrame.iFrameStart = -1;
     //비트이미지 최대 개수
@@ -33,14 +39,13 @@ void CSpinningMonster::Initialize()
     //비트이미지 세로
     m_tFrame.iMotion = 0;
     m_tFrame.dwTime = GetTickCount();
-    m_tFrame.dwSpeed = 200;
-    m_pFrameKey = L"SpinningMonster";
+    m_tFrame.dwSpeed = 100;
+    m_pFrameKey = L"Boss2_Idle";
     m_tFrame.bRepeat = true;
-    m_bSpawnInit = true;
     m_AttackEnd = false;
 }
 
-int CSpinningMonster::Update()
+int CHemisphere::Update()
 {
     if (m_bDead)
         return OBJ_DEAD;
@@ -48,26 +53,17 @@ int CSpinningMonster::Update()
     switch (m_eCurState)
     {
     case IDLE:
-        if (m_bSpawnInit)
+        //패턴상태때 다른패턴공격방지도들어가야함
+        if ((m_fSaveTime + m_fCoolTime < GetTickCount()))
         {
-            m_tInfo.fX -= 2.f;
-            if(m_tInfo.fX<650.f)
-                m_bSpawnInit = false;
+            //내상태를 패턴상태로 전환하는함수
+            Change_State();
+            m_fSaveTime = GetTickCount();
+            m_fAngle = rand() % 360;
         }
-            
-        else
-        {
-            //패턴상태때 다른패턴공격방지도들어가야함
-            if ((m_fSaveTime + m_fCoolTime < GetTickCount()))
-            {
-                //내상태를 패턴상태로 전환하는함수
-                Change_State();
-                m_fSaveTime = GetTickCount();
-                m_fAngle = rand() % 360;
-            }
-            m_tInfo.fX += cos(m_fAngle * PI / 180.f) * m_fSpeed;
-            m_tInfo.fY -= sin(m_fAngle * PI / 180.f) * m_fSpeed;
-        }
+        m_tInfo.fX += cos(m_fAngle * PI / 180.f) * m_fSpeed;
+        m_tInfo.fY -= sin(m_fAngle * PI / 180.f) * m_fSpeed;
+
         break;
     case ATTACK:
         if (m_AttackEnd)
@@ -75,16 +71,47 @@ int CSpinningMonster::Update()
             Set_State_Idle();
             m_AttackEnd = false;
         }
-           
-        break;
+        //switch (m_ePattern)
+        //{
+        //case ONEPATTERN:
+        //    if (m_bMoveForward)
+        //    {
+        //        m_tInfo.fX += cos(m_fAngle * PI / 180.f) * m_fSpeed;
+        //        m_tInfo.fY -= sin(m_fAngle * PI / 180.f) * m_fSpeed;
 
+        //        //printf("(%f, %f) \n", m_tInfo.fX, m_tInfo.fY);
+        //        //printf("<%d, %d> \n", m_Pattern1EndPoint.x, m_Pattern1EndPoint.y);
+        //        //정밀도 문제로 정수형으로 형변환해야 오류 안생김
+        //        if (abs(m_Pattern1EndPoint.x - (int)m_tInfo.fX) < 20 && abs(m_Pattern1EndPoint.y - (int)m_tInfo.fY) < 20)
+        //            //if ((int)m_tInfo.fX == m_Pattern1EndPoint.x && (int)m_tInfo.fY == m_Pattern1EndPoint.y)
+        //        {
+        //            m_bMoveForward = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        m_tInfo.fX += cos(m_fAngle * PI / 180.f) * -m_fSpeed;
+        //        m_tInfo.fY -= sin(m_fAngle * PI / 180.f) * -m_fSpeed;
+        //        if (abs(m_Pattern1StartPoint.x - (int)m_tInfo.fX) < 20 && abs(m_Pattern1StartPoint.y - (int)m_tInfo.fY) < 20)
+        //            //if ((int)m_tInfo.fX == m_Pattern1StartPoint.x && (int)m_tInfo.fY == m_Pattern1StartPoint.y)
+        //        {
+        //            //m_bMoveForward = true;
+        //            SoundMgr->StopSound(SOUND_BOSS_PATTERN1SOUND);
+        //            Set_State_Idle();
+        //        }
+        //    }
+        //    break;
+        //case TWOPATTERN:
+        //    break;
+        //}
+        break;
     }
     __super::Update_Rect();
 
     return OBJ_NOEVENT;
 }
 
-void CSpinningMonster::Late_Update()
+void CHemisphere::Late_Update()
 {
     Motion_Change();
     if ((m_HitFrameSaveTime + 200 < GetTickCount()))
@@ -92,17 +119,17 @@ void CSpinningMonster::Late_Update()
         switch (m_eCurState)
         {
         case IDLE:
-            m_pFrameKey = L"SpinningMonster";
+            m_pFrameKey = L"Boss2_Idle";
             m_tFrame.bRepeat = true;
             break;
         case ATTACK:
-            m_pFrameKey = L"Spinning_Attack";
+            m_pFrameKey = L"Boss2_Attack";
             m_tFrame.bRepeat = false;
         }
 
     }
     __super::Move_Frame();
-    
+
     int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
     //상충돌이면 angle 180~360
     //하충돌이면 0~180
@@ -139,7 +166,7 @@ void CSpinningMonster::Late_Update()
     }
 }
 
-void CSpinningMonster::Render(HDC hDC)
+void CHemisphere::Render(HDC hDC)
 {
     int	iScrollX = (int)CScrollMgr::Get_Instance()->Get_ScrollX();
     int	iScrollY = (int)CScrollMgr::Get_Instance()->Get_ScrollY();
@@ -159,13 +186,15 @@ void CSpinningMonster::Render(HDC hDC)
         RGB(255, 0, 212));
 }
 
-void CSpinningMonster::Release()
+void CHemisphere::Release()
 {
+    ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
+    ObjMgr->Add_Object(OBJ_BOMB_ITEM, CAbstractFactory<CBombItem>::Create(m_tInfo.fX, m_tInfo.fY));
     ObjMgr->Add_Object(OBJ_EFFECT, CAbstractFactory<CGreenBossDeadEffect>::Create(m_tInfo.fX, m_tInfo.fY));
-    SG1MonsterSpawnMgr->KillCountUp();
+    SG1MonsterSpawnMgr->Set_BossMonsterDead();
 }
 
-void CSpinningMonster::OnHit(CObj* _pObj)
+void CHemisphere::OnHit(CObj* _pObj)
 {
     OBJ_ID pObj_ID = _pObj->Get_ID();
     switch (pObj_ID)
@@ -174,147 +203,123 @@ void CSpinningMonster::OnHit(CObj* _pObj)
         //cout << "bombattacked" << endl;
     case OBJ_PLAYERBULLET:
         m_HitFrameSaveTime = GetTickCount();
-        --m_iHp;
+        //--m_iHp;
         switch (m_eCurState)
         {
-        case IDLE:
+        /*case IDLE:
             m_pFrameKey = L"SpinningMonster_White";
             m_tFrame.bRepeat = false;
-            break;
+            break;*/
         case ATTACK:
-            m_pFrameKey = L"Spinning_Attack_White";
+            --m_iHp;
+            m_pFrameKey = L"Boss2_Attack_White";
             m_tFrame.bRepeat = false;
             break;
         }
         if (m_iHp == 0)
-        {
-            int i = rand() % 10;
-            if (i > 8)
-                ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
             Set_Dead();
-        }
-            
         break;
     case OBJ_PETBULLET:
         m_HitFrameSaveTime = GetTickCount();
-        --m_iHp;
+        //--m_iHp;
         switch (m_eCurState)
         {
-        case IDLE:
+        /*case IDLE:
             m_pFrameKey = L"SpinningMonster_White";
             m_tFrame.bRepeat = false;
-            break;
+            break;*/
         case ATTACK:
-            m_pFrameKey = L"Spinning_Attack_White";
+            --m_iHp;
+            m_pFrameKey = L"Boss2_Attack_White";
             m_tFrame.bRepeat = false;
             break;
         }
         if (m_iHp == 0)
-        {
-            int i = rand() % 10;
-            if (i > 8)
-                ObjMgr->Add_Object(OBJ_ITEM, CAbstractFactory<CPowerItem>::Create(m_tInfo.fX, m_tInfo.fY));
             Set_Dead();
-        }
-            
         break;
     }
 }
 
-void CSpinningMonster::On_Motion_End()
+void CHemisphere::On_Motion_End()
 {
     if (m_tFrame.bRepeat != true)
     {
         switch (m_eCurState)
         {
         case IDLE:
-            m_pFrameKey = L"SpinningMonster";
+            m_pFrameKey = L"Boss2_Idle";
             m_tFrame.iFrameStart = 0;
             m_tFrame.iFrameEnd = 3;
             m_tFrame.iMotion = 0;
             m_tFrame.dwTime = GetTickCount();
-            m_tFrame.dwSpeed = 200;
+            m_tFrame.dwSpeed = 100;
             //m_tFrame.bRepeat = true;
             //m_AttackEnd = true;
             break;
         case ATTACK:
-            m_pFrameKey = L"SpinningMonster";
+            m_pFrameKey = L"Boss2_Attack";
             m_tFrame.iFrameStart = 0;
             m_tFrame.iFrameEnd = 3;
             m_tFrame.iMotion = 0;
             m_tFrame.dwTime = GetTickCount();
-            m_tFrame.dwSpeed = 200;
+            m_tFrame.dwSpeed = 625;
             //m_tFrame.bRepeat = false;
-  
+
             m_AttackEnd = true;
             break;
         }
     }
 }
 
-void CSpinningMonster::Change_State()
+void CHemisphere::Change_State()
 {
     m_eCurState = ATTACK;
     Pattern1();
 }
 
-void CSpinningMonster::Pattern1()
+void CHemisphere::Pattern1()
 {
-    m_pFrameKey = L"Spinning_Attack";
+    m_pFrameKey = L"Boss2_Attack";
     //해당 스프라이트 반복아님 명시해야함!!!!!!!!!!!!
     m_tFrame.bRepeat = false;
     //몬스터 총알 생성코드(총알 클래스 생성필요)
-    cout << "콘솔 총알 생성 확인용" << endl;
+    cout << "콘솔 몬스터 생성 확인용" << endl;
+    //Create_three_Bullet<CMonsterBullet1>();
+    //ObjMgr->Add_Object(OBJ_BOSSMONSTER, CAbstractFactory<CGreenBoss>::Create(m_tInfo.fX-20.f, m_tInfo.fY));
+    ObjMgr->Add_Object(OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create(m_tInfo.fX, m_tInfo.fY-50.f));
+    ObjMgr->Add_Object(OBJ_MONSTER, CAbstractFactory<CBladeMonster>::Create(m_tInfo.fX, m_tInfo.fY + 50.f));
     Create_three_Bullet<CMonsterBullet1>();
+    m_tInfo.fCX = 68.f;
+    m_tInfo.fCY = 68.f;
 }
 
-void CSpinningMonster::Motion_Change()
+void CHemisphere::Pattern2()
+{
+}
+
+void CHemisphere::Motion_Change()
 {
     if (m_ePreState != m_eCurState)
     {
         switch (m_eCurState)
         {
-        case CSpinningMonster::IDLE:
-            m_tFrame.iFrameStart = 0;
-            m_tFrame.iFrameEnd = 3;
-            m_tFrame.iMotion = 0;
-            m_tFrame.dwTime = GetTickCount();
-            m_tFrame.dwSpeed = 200;
-            break;
-        case CSpinningMonster::ATTACK:
-
+        case CHemisphere::IDLE:
             m_tFrame.iFrameStart = 0;
             m_tFrame.iFrameEnd = 3;
             m_tFrame.iMotion = 0;
             m_tFrame.dwTime = GetTickCount();
             m_tFrame.dwSpeed = 100;
             break;
+        case CHemisphere::ATTACK:
+
+            m_tFrame.iFrameStart = 0;
+            m_tFrame.iFrameEnd = 3;
+            m_tFrame.iMotion = 0;
+            m_tFrame.dwTime = GetTickCount();
+            m_tFrame.dwSpeed = 625;
+            break;
 
         }
     }
     m_ePreState = m_eCurState;
-
-    
-}
-
-void CSpinningMonster::Move_Frame_once_and_Return_Idle_State()
-{
-    if (m_tFrame.dwTime + m_tFrame.dwSpeed < GetTickCount())
-    {
-        ++m_tFrame.iFrameStart;
-
-        if (m_tFrame.iFrameStart > m_tFrame.iFrameEnd)
-            Set_State_Idle();
-
-        m_tFrame.dwTime = GetTickCount();
-    }
-}
-
-template<typename T>
-inline void CSpinningMonster::Create_three_Bullet()
-{
-        ObjMgr->Add_Object(OBJ_MONSTERBULLET, CAbstractFactory<T>::Create(m_tInfo.fX , m_tInfo.fY, DIR_LEFT));
-        ObjMgr->Add_Object(OBJ_MONSTERBULLET, CAbstractFactory<T>::Create(m_tInfo.fX , m_tInfo.fY - 20.f, DIR_LD));
-        ObjMgr->Add_Object(OBJ_MONSTERBULLET, CAbstractFactory<T>::Create(m_tInfo.fX , m_tInfo.fY + 20.f, DIR_LU));
-        
 }

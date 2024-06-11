@@ -16,6 +16,7 @@
 #include "BombItem.h"
 #include "GreenBoss.h"
 #include "BladeMonster.h"
+#include "Hemisphere.h"
 //#include "MonsterSpawnMgr.h"
 #include "SG1MonsterSpawnMgr.h"
 CStage2::CStage2()
@@ -29,6 +30,8 @@ CStage2::~CStage2()
 
 void CStage2::Initialize()
 {
+    //ObjMgr->Add_Object(OBJ_BOSSMONSTER, CAbstractFactory<CHemisphere>::Create());
+
     ObjMgr->Get_Player_Pointer()->Initialize();
     //스테이지 2 용 스폰매니저로 교체필요
     CSG1MonsterSpawnMgr::Get_Instance()->Initialize();
@@ -64,9 +67,14 @@ int CStage2::Update()
         UIMgr->Delete_ID(UI_PLAYER_HEAD_MASSAGE);
         UIMgr->Delete_ID(UI_PLAYER_LIFE);
         UIMgr->Delete_ID(UI_PLAYER_BOMB);
+        if (ObjMgr->Get_Player_DeadTime() + 3000 < GetTickCount())
+        {
+            ObjMgr->Delete_All();
+            SceneMgr->Scene_Change(CSceneMgr::SC_GAMEOVER);
+        }
     }
     UIMgr->Update();
-    if (SG1MonsterSpawnMgr->Get_Stage2ClearTime() + m_dwStageEndDelay < GetTickCount())
+    if (SG1MonsterSpawnMgr->Get_BossMonsterDeadTime() + m_dwStageEndDelay < GetTickCount())
     {
         SceneMgr->Scene_Change(CSceneMgr::SC_LOGO);
     }
