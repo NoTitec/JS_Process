@@ -106,6 +106,8 @@ void CMikoBasicBullet::OnHit(CObj* _pObj)
 	{
 	case OBJ_MONSTER:
 	case OBJ_BOSSMONSTER:
+		SoundMgr->StopSound(SOUND_BULLET_DESTROY);
+		SoundMgr->PlaySoundW(L"final_audio_clip.wav", SOUND_BULLET_DESTROY, 1.f);
 		Set_Dead();
 		break;
 	}

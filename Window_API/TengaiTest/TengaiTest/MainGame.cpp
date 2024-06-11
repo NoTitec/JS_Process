@@ -38,8 +38,10 @@ void CMainGame::Initialize()
 	SceneMgr->Scene_Change(CSceneMgr::SC_LOGO);
 
 #pragma region 이미지 삽입구문들
-	BmpMgr->Insert_Bmp(L"../ResourceImage/Back.bmp", L"Back");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Clear/Cheers.bmp", L"Back");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/LoadScene/Load.bmp", L"Load");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/Clear/ChearsImage.bmp", L"Clear");
+
 
 	BmpMgr->Insert_Bmp(L"../ResourceImage/GameOver/GameOver.bmp",L"GameOver");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Player(Miko)/ForwardMove/Miko_Fly_Forward.bmp",L"Miko_Fly_Forward");
@@ -71,7 +73,7 @@ void CMainGame::Initialize()
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/PlayerLife/MikoLife.bmp", L"MikoLife");
 	BmpMgr->Insert_Bmp(L"../ResourceImage/UI/BombCount/BombCount.bmp", L"BombCount");
 
-	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBomb/BigCircle_kangi/BigCircleKangiNoBolt.bmp", L"BigCircleKangiNoBolt");
+	BmpMgr->Insert_Bmp(L"../ResourceImage/PlayerAttack/MikoBomb/MikoAlt_Effect/MikoAlt.bmp", L"BigCircleKangiNoBolt");
 
 	BmpMgr->Insert_Bmp(L"../ResourceImage/Monster_1/BladeMonster.bmp",L"BladeMonster");
 

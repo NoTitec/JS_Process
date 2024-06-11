@@ -76,7 +76,7 @@ int CStage2::Update()
     UIMgr->Update();
     if (SG1MonsterSpawnMgr->Get_BossMonsterDeadTime() + m_dwStageEndDelay < GetTickCount())
     {
-        SceneMgr->Scene_Change(CSceneMgr::SC_LOGO);
+        SceneMgr->Scene_Change(CSceneMgr::SC_CLEAR);
     }
     SG1MonsterSpawnMgr->Update();
     return 0;

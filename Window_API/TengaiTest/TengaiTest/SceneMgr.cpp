@@ -7,6 +7,7 @@
 #include "Stage2.h"
 #include "GameOverScene.h"
 #include "StageMove.h"
+#include "GameClear.h"
 CSceneMgr* CSceneMgr::m_pInstance = nullptr;
 
 CSceneMgr::CSceneMgr() : m_pScene(nullptr), m_ePreScene(SC_END), m_eCurScene(SC_LOGO)
@@ -47,6 +48,9 @@ void CSceneMgr::Scene_Change(SCENEID eScene)
 			break;
 		case SC_STAGE_2:
 			m_pScene = new CStage2;
+			break;
+		case SC_CLEAR:
+			m_pScene = new CGameClear;
 			break;
 		}
 		m_pScene->Initialize();

@@ -23,11 +23,11 @@ void CMikoBomb::Initialize()
     //비트이미지 가로
     m_tFrame.iFrameStart = -1;
     //비트이미지 최대 개수
-    m_tFrame.iFrameEnd = 8;
+    m_tFrame.iFrameEnd = 17;
     //비트이미지 세로
     m_tFrame.iMotion = 0;
     m_tFrame.dwTime = GetTickCount();
-    m_tFrame.dwSpeed = 300;
+    m_tFrame.dwSpeed = 150;
     m_pFrameKey = L"BigCircleKangiNoBolt";
 }
 

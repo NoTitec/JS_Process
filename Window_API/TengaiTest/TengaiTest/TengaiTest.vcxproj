@@ -136,6 +136,7 @@
     <ClInclude Include="BmpMgr.h" />
     <ClInclude Include="BombItem.h" />
     <ClInclude Include="CollisionMgr.h" />
+    <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GreenBossDeadEffect.h" />
     <ClInclude Include="Hemisphere.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="BmpMgr.cpp" />
     <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
+    <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GreenBossDeadEffect.cpp" />
     <ClCompile Include="Hemisphere.cpp" />
