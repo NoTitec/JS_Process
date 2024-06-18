@@ -38,7 +38,7 @@ int CPlayer::Update()
 	m_tInfo.vDir.x /= fLength;
 	m_tInfo.vDir.y /= fLength;
 	m_tInfo.vDir.z = 0.f;
-	m_tInfo.vPos += m_tInfo.vDir;
+	m_tInfo.vPos += m_tInfo.vDir*m_fSpeed;
 
 
 	return 0;

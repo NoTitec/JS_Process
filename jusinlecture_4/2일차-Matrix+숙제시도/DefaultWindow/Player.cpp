@@ -27,11 +27,11 @@ int CPlayer::Update()
 	//키입력 처리
 	Key_Input();
 	m_tPosin.x = m_tInfo.vPos.x + m_fDistance * cos(m_fRotation * (D3DX_PI / 180.f));
-	m_tPosin.x = m_tInfo.vPos.y - m_fDistance * sin(m_fRotation * (D3DX_PI / 180.f));
+	m_tPosin.y = m_tInfo.vPos.y - m_fDistance * sin(m_fRotation * (D3DX_PI / 180.f));
 
 #pragma region 과제 풀이
 	//플레이어에서 마우스 포인터쪽의 방향벡터 구하기
-	//m_tInfo.vDir = Get_Mouse() - m_tInfo.vPos;
+	m_tInfo.vDir = Get_Mouse() - m_tInfo.vPos;
 	// 
 	//위치벡터 정규화
 	/*float fLength = sqrt(m_tInfo.vDir.x * m_tInfo.vDir.x + m_tInfo.vDir.y * m_tInfo.vDir.y);
@@ -40,7 +40,7 @@ int CPlayer::Update()
 	m_tInfo.vDir.y /= fLength;
 	m_tInfo.vDir.z = 0.f;*/
 
-	//D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
+	D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
 	// 
 	//방향벡터 정규화
 	/*float fLength2 = sqrt(m_tInfo.vLook.x * m_tInfo.vLook.x + m_tInfo.vLook.y * m_tInfo.vLook.y);
@@ -49,19 +49,19 @@ int CPlayer::Update()
 	m_tInfo.vLook.y /= fLength2;
 	m_tInfo.vLook.z = 0.f;*/
 
-	//D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
+	D3DXVec3Normalize(&m_tInfo.vLook, &m_tInfo.vLook);
 
 
 	//벡터 내적
 	//float	fDot = m_tInfo.vDir.x * m_tInfo.vLook.x + m_tInfo.vDir.y * m_tInfo.vLook.y;
-	//float fDot = D3DXVec3Dot(&m_tInfo.vDir, &m_tInfo.vLook);
-	//float	fAngle = acos(fDot);
+	float fDot = D3DXVec3Dot(&m_tInfo.vDir, &m_tInfo.vLook);
+	float	fAngle = acos(fDot);
 
-	//if (m_tInfo.vPos.y < Get_Mouse().y)
-	//	fAngle = 2.f * D3DX_PI - fAngle;
+	if (m_tInfo.vPos.y < Get_Mouse().y)
+		fAngle = 2.f * D3DX_PI - fAngle;
 
-	//m_tInfo.vPos.x += cos(fAngle) * m_fSpeed;
-	//m_tInfo.vPos.y -= sin(fAngle) * m_fSpeed;
+	m_tInfo.vPos.x += cos(fAngle) * m_fSpeed;
+	m_tInfo.vPos.y -= sin(fAngle) * m_fSpeed;
 #pragma endregion 과제 풀이
 
 	// 벡터의 정규화를 수행하는 함수
@@ -156,19 +156,9 @@ void CPlayer::Key_Input()
 		// 현재 회전 값에 더하기
 		m_fRotation -= rotationSpeed;
 
-		// 플레이어의 위치를 원점으로 이동
-		D3DXMATRIX matTranslateToOrigin;
-		D3DXMatrixTranslation(&matTranslateToOrigin, -m_tInfo.vPos.x, -m_tInfo.vPos.y, 0.0f);
 		// 회전 행렬 생성
 		D3DXMATRIX matRotate;
 		D3DXMatrixRotationZ(&matRotate, m_fRotation);
-
-		// 다시 원래 위치로 이동
-		D3DXMATRIX matTranslateBack;
-		D3DXMatrixTranslation(&matTranslateBack, m_tInfo.vPos.x, m_tInfo.vPos.y, 0.0f);
-
-		// 최종 행렬 계산 (순서 중요: 원점으로 이동 -> 회전 -> 원래 위치로 이동)
-		D3DXMATRIX matFinal = matTranslateToOrigin * matRotate * matTranslateBack;
 
 		// 현재 위치 벡터 생성
 		D3DXVECTOR3 currentPosition(m_tInfo.vPos.x, m_tInfo.vPos.y, 0.0f);
