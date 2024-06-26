@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. MainGame">
+      <UniqueIdentifier>{b5fae22a-2996-4b63-8c45-2b9ef3e41e8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj">
+      <UniqueIdentifier>{d41bcb03-2646-410d-8942-60a31207f2cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\00. Player">
+      <UniqueIdentifier>{40d67726-adc5-4f65-bf98-244dcf0e824e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Obj\01. Monster">
+      <UniqueIdentifier>{bedd51d7-8f97-4162-88ec-ee31bff38e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr">
+      <UniqueIdentifier>{3ba72d8f-8f60-41b7-9711-53ec76963f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\KeyMgr">
+      <UniqueIdentifier>{06ed14e6-e704-497a-bc21-a8acb1878e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="03. Mgr\ObjMgr">
+      <UniqueIdentifier>{ed406d40-3742-4de1-aa26-ee684e1a77ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\ColMgr">
+      <UniqueIdentifier>{32b2323c-e570-4a2e-a3f9-18cf6253d2fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\BmpMgr">
+      <UniqueIdentifier>{83e70691-9b67-463f-8327-c3d432645e72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\SoundMgr">
+      <UniqueIdentifier>{ce983935-812e-4d8f-b0c9-b1a3303a2b6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design">
+      <UniqueIdentifier>{865b4625-e7fc-42a7-81ae-c754be42a49b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99.Design\AbstractFactory">
+      <UniqueIdentifier>{60b09890-bfd5-47cc-a6ca-f5191f3109d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Mgr\SceneMgr">
+      <UniqueIdentifier>{be739d6d-38d0-4343-8911-ab2e4d65404d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Scene">
+      <UniqueIdentifier>{1c4188ff-d28e-4b49-b6c1-52e2a41b1b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Scene\01.ny">
+      <UniqueIdentifier>{7a6f63a5-69e2-4b94-a25f-94dfdc2903ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Scene\02.sang">
+      <UniqueIdentifier>{b3c75bb2-0c37-4d14-96a6-d63b57568a9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Scene\03.sun">
+      <UniqueIdentifier>{c3417693-e511-4e81-984c-05a70ba28c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Scene\04.jun">
+      <UniqueIdentifier>{60a223fd-4fd7-465b-9637-3df56fe98c7c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>01. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>01. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>01. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultWindow.h">
+      <Filter>01. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>01. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>02. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>01. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>02. Obj\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>02. Obj\01. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>03. Mgr\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs.h">
+      <Filter>01. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>99.Design\AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="ColMgr.h">
+      <Filter>03. Mgr\ColMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>03. Mgr\ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMgr.h">
+      <Filter>03. Mgr\SoundMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>03. Mgr\BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>03. Mgr\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>04.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="NYScene.h">
+      <Filter>04.Scene\01.ny</Filter>
+    </ClInclude>
+    <ClInclude Include="SunScene.h">
+      <Filter>04.Scene\03.sun</Filter>
+    </ClInclude>
+    <ClInclude Include="SunPlayer.h">
+      <Filter>02. Obj\00. Player</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultWindow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>01. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>02. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>02. Obj\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>02. Obj\01. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>03. Mgr\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractFactory.cpp">
+      <Filter>99.Design\AbstractFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="ColMgr.cpp">
+      <Filter>03. Mgr\ColMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>03. Mgr\ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundMgr.cpp">
+      <Filter>03. Mgr\SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>03. Mgr\BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>03. Mgr\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>04.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="NYScene.cpp">
+      <Filter>04.Scene\01.ny</Filter>
+    </ClCompile>
+    <ClCompile Include="SunScene.cpp">
+      <Filter>04.Scene\03.sun</Filter>
+    </ClCompile>
+    <ClCompile Include="SunPlayer.cpp">
+      <Filter>02. Obj\00. Player</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DefaultWindow.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="DefaultWindow.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

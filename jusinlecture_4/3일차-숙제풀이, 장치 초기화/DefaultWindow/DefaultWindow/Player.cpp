@@ -23,6 +23,7 @@ void CPlayer::Initialize()
 	m_vPoint[2] = { m_tInfo.vPos.x + 50.f, m_tInfo.vPos.y + 50.f, 0.f };
 	m_vPoint[3] = { m_tInfo.vPos.x - 50.f, m_tInfo.vPos.y + 50.f, 0.f };
 
+	//로컬 좌표 저장
 	for (int i = 0; i < 4; ++i)
 		m_vOriginPoint[i] = m_vPoint[i];
 
@@ -39,13 +40,14 @@ int CPlayer::Update()
 
 	/*for (int i = 0; i < 4; ++i)
 	{
+		//로컬좌표 가져옴
 		D3DXVECTOR3	vTemp = m_vOriginPoint[i];
-
+		//이동
 		vTemp -= {400.f, 300.f, 0.f};
-
+		//회전
 		m_vPoint[i].x = vTemp.x * cos(m_fAngle) - vTemp.y * sin(m_fAngle);
 		m_vPoint[i].y = vTemp.x * sin(m_fAngle) + vTemp.y * cos(m_fAngle);
-
+		//회전시킨점들 정보를 Point에 반영
 		m_vPoint[i] += m_tInfo.vPos;
 	}
 
@@ -63,7 +65,7 @@ int CPlayer::Update()
 
 	D3DXMATRIX		matScale, matRotZ, matTrans;
 
-	D3DXMatrixScaling(&matScale, -1.f, 1.f, 1.f);
+	D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
 	D3DXMatrixRotationZ(&matRotZ, m_fAngle);
 	D3DXMatrixTranslation(&matTrans, m_tInfo.vPos.x, m_tInfo.vPos.y, 0.f);
 
@@ -71,6 +73,7 @@ int CPlayer::Update()
 
 	for (int i = 0; i < 4; ++i)
 	{
+		//원래 로컬좌표저장한거 불러와서 원점좌표계이동후 월드 변환행렬 적용하여 이동
 		m_vPoint[i]  = m_vOriginPoint[i];
 		m_vPoint[i] -= { 400.f, 300.f, 0.f};
 
@@ -95,7 +98,7 @@ void CPlayer::Render(HDC hDC)
 	{
 		LineTo(hDC, (int)m_vPoint[i].x, (int)m_vPoint[i].y);
 
-		if(i > 0)
+		if(i > 1)
 			continue;
 
 		Ellipse(hDC,
@@ -128,7 +131,7 @@ void CPlayer::Key_Input()
 	{
 		// m_tInfo.vDir.x = m_tInfo.vLook.x * cos(m_fAngle) - m_tInfo.vLook.y * sin(m_fAngle);
 		// m_tInfo.vDir.y = m_tInfo.vLook.x * sin(m_fAngle) + m_tInfo.vLook.y * cos(m_fAngle);
-
+		//?????
 		D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vLook, &m_tInfo.matWorld);
 
 		m_tInfo.vPos += m_tInfo.vDir * m_fSpeed;

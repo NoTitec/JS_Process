@@ -88,10 +88,10 @@ void CDevice::Set_Parameters(D3DPRESENT_PARAMETERS & d3dpp)
 	d3dpp.BackBufferHeight;
 	d3dpp.BackBufferFormat;
 	d3dpp.BackBufferCount;
-
+	//안티에일리어싱
 	d3dpp.MultiSampleType;
 	d3dpp.MultiSampleQuality;
-
+	//가장중요한 옵션
 	d3dpp.SwapEffect;
 	d3dpp.hDeviceWindow;
 	d3dpp.Windowed;
