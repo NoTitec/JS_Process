@@ -58,5 +58,6 @@
 #include <list>
 #include <map>
 #include <algorithm>
+#include <atlimage.h>
 
 using namespace std;
