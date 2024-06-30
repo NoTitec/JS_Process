@@ -4,7 +4,7 @@
 IMPLEMENT_SINGLETON(CDevice)
 
 CDevice::CDevice()
-	: m_pSDK(nullptr), m_pDevice(nullptr), m_pSprite(nullptr)
+	: m_pSDK(nullptr), m_pDevice(nullptr), m_pSprite(nullptr), m_pFont(nullptr)
 {
 }
 
@@ -32,7 +32,7 @@ HRESULT CDevice::Init_Device()
 
 	if (FAILED(m_pSDK->GetDeviceCaps(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, &DeviceCaps)))
 	{
-		AfxMessageBox(L"GetDeviceCaps Failed");
+		ERR_MSG(L"GetDeviceCaps Failed");
 		return E_FAIL;
 	}
 
@@ -57,14 +57,31 @@ HRESULT CDevice::Init_Device()
 									&d3dpp, 
 									&m_pDevice)))
 	{
-		AfxMessageBox(L"CreateDevice Failed");
+		ERR_MSG(L"CreateDevice Failed");
 		return E_FAIL;
 	}
 	
 	// 스프라이트 컴 객체
 	if (FAILED(D3DXCreateSprite(m_pDevice, &m_pSprite)))
 	{
-		AfxMessageBox(L"D3DXCreateSprite Failed");
+		ERR_MSG(L"D3DXCreateSprite Failed");
+		return E_FAIL;
+	}
+
+	// 폰트 컴객체
+
+	D3DXFONT_DESCW	tFontInfo;
+	ZeroMemory(&tFontInfo, sizeof(D3DXFONT_DESCW));
+
+	tFontInfo.Height = 20;
+	tFontInfo.Width = 10;
+	tFontInfo.Weight = FW_HEAVY;
+	tFontInfo.CharSet = HANGEUL_CHARSET;
+	lstrcpy(tFontInfo.FaceName, L"궁서");
+
+	if (FAILED(D3DXCreateFontIndirect(m_pDevice, &tFontInfo, &m_pFont)))
+	{
+		ERR_MSG(L"Create Font Failed");
 		return E_FAIL;
 	}
 
@@ -78,7 +95,7 @@ void CDevice::Render_Begin()
 	m_pDevice->Clear(0,		// 렉트 개수
 					nullptr,// 렉트 중 첫 번 째 주소
 					D3DCLEAR_STENCIL | D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, 
-					D3DCOLOR_ARGB(255, 100, 100, 100), // 후면 버퍼 색상
+					D3DCOLOR_ARGB(255, 0, 0, 255), // 후면 버퍼 색상
 					1.f, // 깊이 버퍼 초기화 값
 					0);	 // 스텐실 버퍼 초기화 값
 
@@ -100,7 +117,7 @@ void CDevice::Render_End(HWND hWnd)
 
 void CDevice::Release()
 {
-	//Release 순서 반듸 자식부터호출해야 메모리 누수 안생김
+	Safe_Release(m_pFont);
 	Safe_Release(m_pSprite);
 	Safe_Release(m_pDevice);
 	Safe_Release(m_pSDK);
